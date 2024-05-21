@@ -23,7 +23,18 @@ module Vizbor::Services::Admin
       target_dir: "users/avatars",
       default: "assets/media/default/no_avatar.png",
       thumbnails: [{"xs", 40}, {"sm", 80}, {"md", 120}, {"lg", 160}],
+      # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 2097152, # 2 MB
+    )
+    getter first_name = DynFork::Fields::TextField.new(
+      label: "First name",
+      placeholder: "Enter your First name",
+      maxlength: 150,
+    )
+    getter last_name = DynFork::Fields::TextField.new(
+      label: "First name",
+      placeholder: "Enter your Last name",
+      maxlength: 150,
     )
     getter email = DynFork::Fields::EmailField.new(
       label: "E-mail",
