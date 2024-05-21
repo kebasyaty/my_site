@@ -66,6 +66,11 @@ module Vizbor::Services::Admin
       default: false,
       hint: "Is this an active account?",
     )
+    getter last_login = DynFork::Fields::DateTimeField.new(
+      label: "Last login",
+      disabled: true,
+      hint: "A datetime of the user’s last login.",
+    )
     getter slug = DynFork::Fields::SlugField.new(
       label: "Slug",
       slug_sources: ["username"],
