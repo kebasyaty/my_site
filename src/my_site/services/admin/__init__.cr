@@ -1,3 +1,3 @@
-module Vizbor::Services::Admin
+module Vizbor::Services::Admin::Init
   # ...
 end
