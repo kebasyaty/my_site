@@ -44,6 +44,14 @@ shards:
     git: https://github.com/kemalcr/kemal.git
     version: 1.5.0
 
+  kemal-csrf:
+    git: https://github.com/kemalcr/kemal-csrf.git
+    version: 1.1.0
+
+  kemal-session:
+    git: https://github.com/kemalcr/kemal-session.git
+    version: 1.0.0
+
   pluto:
     git: https://github.com/phenopolis/pluto.git
     version: 1.0.1
@@ -70,7 +78,7 @@ shards:
 
   vizbor:
     git: https://github.com/kebasyaty/vizbor.git
-    version: 0.1.0+git.commit.26ce634f5e3b9e608c9f91e30dc95130dd4deef1
+    version: 0.1.0+git.commit.c9745f1327e540ff1ddd297a0a978f03cfd17cfb
 
   webslug:
     git: https://github.com/iomcr/webslug.git
