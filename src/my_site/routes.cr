@@ -1,5 +1,5 @@
 # Basic Routes
-module Vizbor::Routes
+module Vizbor::Server::Routes
   get "/" do
     "Hello World!"
   end
