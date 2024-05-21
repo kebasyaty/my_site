@@ -43,6 +43,10 @@ module Vizbor::Services::Admin
       required: true,
       unique: true,
     )
+    getter phone = DynFork::Fields::PhoneField.new(
+      label: "Phone number",
+      placeholder: "Enter your phone number",
+    )
     getter slug = DynFork::Fields::SlugField.new(
       label: "Slug",
       slug_sources: ["username"],
