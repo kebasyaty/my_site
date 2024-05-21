@@ -17,12 +17,25 @@ module Vizbor::Services::Admin
       required: true,
       unique: true
     )
+    getter avatar = DynFork::Fields::ImageField.new(
+      label: "Avatar",
+      placeholder: "Upload your photo",
+      target_dir: "users/avatars",
+      default: "assets/media/default/no_avatar.png",
+      thumbnails: [{"xs", 40}, {"sm", 80}, {"md", 120}, {"lg", 160}],
+      maxsize: 2097152, # 2 MB
+    )
     getter email = DynFork::Fields::EmailField.new(
       label: "E-mail",
       placeholder: "Enter your email",
       maxlength: 320,
       required: true,
       unique: true,
+    )
+    getter slug = DynFork::Fields::SlugField.new(
+      label: "Slug",
+      slug_sources: ["username"],
+      hide: true,
     )
   end
 end
