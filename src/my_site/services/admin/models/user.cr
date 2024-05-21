@@ -1,4 +1,4 @@
-module Vizbor::Services::Admin
+module Vizbor::Services::Admin::Models
   @[DynFork::Meta(
     service_name: "Admin",
     delete_doc?: false,
