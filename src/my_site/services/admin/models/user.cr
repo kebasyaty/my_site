@@ -32,7 +32,7 @@ module Vizbor::Services::Admin
       maxlength: 150,
     )
     getter last_name = DynFork::Fields::TextField.new(
-      label: "First name",
+      label: "Last name",
       placeholder: "Enter your Last name",
       maxlength: 150,
     )
