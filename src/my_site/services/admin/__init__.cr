@@ -1,0 +1,3 @@
+module Vizbor::Services::Admin
+  # ...
+end

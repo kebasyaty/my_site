@@ -1,0 +1,3 @@
+module Vizbor::URLs
+  # ...
+end
