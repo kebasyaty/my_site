@@ -47,6 +47,25 @@ module Vizbor::Services::Admin
       label: "Phone number",
       placeholder: "Enter your phone number",
     )
+    getter password = DynFork::Fields::PasswordField.new(
+      label: "Password",
+      placeholder: "Enter your password",
+      required: true,
+    )
+    getter confirm_password = DynFork::Fields::PasswordField.new(
+      label: "Confirm password",
+      ignored: true
+    )
+    getter is_admin = DynFork::Fields::BoolField.new(
+      label: "is admin?",
+      default: false,
+      hint: "Can this user access the admin panel?",
+    )
+    getter is_active = DynFork::Fields::BoolField.new(
+      label: "is active?",
+      default: false,
+      hint: "Is this an active account?",
+    )
     getter slug = DynFork::Fields::SlugField.new(
       label: "Slug",
       slug_sources: ["username"],
