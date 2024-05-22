@@ -55,6 +55,7 @@ module Vizbor::Middleware
     config.domain = Vizbor::Settings.domain_name
     # Scope cookie to a particular path.
     config.path = "/"
+    config.samesite = !Vizbor::Settings.debug? ? HTTP::Cookie::SameSite::Lax : nil
   end
 
   # CSRF Configuration.
@@ -68,5 +69,6 @@ module Vizbor::Middleware
     error: "Forbidden (CSRF)",
     allowed_routes: [] of String,
     http_only: !Vizbor::Settings.debug?,
+    samesite: !Vizbor::Settings.debug? ? HTTP::Cookie::SameSite::Lax : nil,
   )
 end
