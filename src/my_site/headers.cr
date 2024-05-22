@@ -2,9 +2,8 @@ module Vizbor::StaticHeaders
   # Adds headers to Kemal::StaticFileHandler.
   # This is especially useful for stuff like CORS or caching.
   static_headers do |response, filepath, filestat|
-    if filepath =~ /\.html$/
-      response.headers.add("Access-Control-Allow-Origin", "*")
-    end
+    response.headers.add("Access-Control-Allow-Origin", Vizbor::Settings.domain_name)
+    #
     response.headers.add("Content-Size", filestat.size.to_s)
     response.headers.add("X-XSS-Protection", "1; mode=block")
     response.headers.add("X-Frame-Options", "deny")
