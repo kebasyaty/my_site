@@ -32,10 +32,6 @@ module Vizbor::Settings
   # You can add logging statements to your code:
   # Example: Log.info { "Log message with or without embedded #{variables}" }
   class_getter? use_logging : Bool = true
-  # Maximum upload content size for a web form.
-  # 1 MB = 1048576 Bytes (in binary).
-  # Default: 1048576 * 2 = 2097152 = 2 MB
-  class_getter max_upload_size : Int32 = 2097152
   # Security
   # To generate a key (This is not an advertisement): https://randompasswordgen.com/
   # Minimum 64 characters.
