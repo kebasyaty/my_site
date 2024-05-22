@@ -3,7 +3,7 @@ module Vizbor::StaticHeaders
   # This is especially useful for stuff like CORS or caching.
   static_headers do |response, _filepath, filestat|
     # Add CORS
-    response.headers.add("Access-Control-Allow-Origin", Vizbor::Settings.app_url)
+    response.headers.add("Access-Control-Allow-Origin", app_url)
     response.headers.add("Access-Control-Allow-Methods", "GET")
     response.headers.add("Access-Control-Allow-Headers", "origin, content-type, accept")
     response.headers.add("Access-Control-Max-Age", Vizbor::Settings.debug? ? "-1" : "3600")
@@ -31,5 +31,13 @@ module Vizbor::StaticHeaders
       " frame-ancestors 'self' http%{s}:;" \
       " object-src 'none';" % {s: Vizbor::Settings.debug? ? "" : "s"}
     )
+  end
+
+  def self.app_url : String
+    if Vizbor::Settings.debug?
+      %Q(http://#{Vizbor::Settings.domain_name}:#{@@port})
+    else
+      %Q(https://#{Vizbor::Settings.domain_name})
+    end
   end
 end
