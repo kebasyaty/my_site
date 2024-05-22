@@ -4,8 +4,8 @@ module Vizbor::StaticHeaders
   static_headers do |response, _filepath, filestat|
     # Add CORS
     response.headers.add("Access-Control-Allow-Origin", Vizbor::Settings.domain_name)
-    response.headers.add("Access-Control-Allow-Methods", "GET")
-    response.headers.add("Access-Control-Allow-Headers", "content-type,authorization,accept")
+    response.headers.add("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+    response.headers.add("Access-Control-Allow-Headers", "origin, content-type, accept")
     response.headers.add("Access-Control-Max-Age", Vizbor::Settings.debug? ? "-1" : "3600")
     # Add Headers
     response.headers.add("Content-Size", filestat.size.to_s)
