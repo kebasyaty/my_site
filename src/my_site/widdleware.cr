@@ -15,7 +15,7 @@ module Vizbor::Middleware
     # Used to sign the session ids before theyre saved in the cookie.
     config.secret = Vizbor::Settings.secret_key
     # The cookie used for session management should only be transmitted over encrypted connections.
-    config.secure = false
+    config.secure = !Vizbor::Settings.debug?
     # Domain to use to scope cookie.
     config.domain = nil
     # Scope cookie to a particular path.
