@@ -17,6 +17,18 @@ module Vizbor::StaticHeaders
       Vizbor::Settings.debug? ? "max-age=0" : "max-age=31536000; includeSubDomains; preload",
     )
     response.headers.add("Referrer-Policy", "strict-origin-when-cross-origin")
-    response.headers.add("Content-Security-Policy", "")
+    response.headers.add(
+      "Content-Security-Policy",
+      "default-src 'self';" \
+      " connect-src 'self' ws: http%s:;" \
+      " font-src 'self' data: 'unsafe-inline' http%s:;" \
+      " img-src 'self' data: content: blob: http%s:;" \
+      " media-src 'self' http%s:;" \
+      " style-src 'self' 'unsafe-inline' http%s:;" \
+      " script-src 'self' 'unsafe-inline' 'unsafe-eval' http%s:;" \
+      " frame-src 'self' http%s:;" \
+      " frame-ancestors 'self' http%s:;" \
+      " object-src 'none';" % 's'
+    )
   end
 end
