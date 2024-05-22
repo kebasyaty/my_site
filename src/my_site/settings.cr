@@ -39,7 +39,7 @@ module Vizbor::Settings
   # Minimum 64 characters.
   class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
 
-  def site_url : String
+  def app_url : String
     if @@debug
       %Q(http://#{@@domain_name}:#{@@port})
     else
