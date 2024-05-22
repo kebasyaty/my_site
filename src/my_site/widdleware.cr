@@ -13,7 +13,7 @@ module Vizbor::Middleware
     # In which interval should the garbage collector find and delete expired sessions from the server?
     config.gc_interval = Time::Span.new(0, 4, 0) # 4 minutes
     # Used to sign the session ids before theyre saved in the cookie.
-    config.secret = ""
+    config.secret = Vizbor::Settings.secret_key
     # The cookie used for session management should only be transmitted over encrypted connections.
     config.secure = false
     # Domain to use to scope cookie.
