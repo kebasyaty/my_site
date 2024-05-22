@@ -6,7 +6,7 @@ module Vizbor::Middleware
     # How long is the session valid after last user interaction?
     config.timeout = 1.hours
     # Name of the cookie that holds the session_id on the client.
-    config.cookie_name = "kemal_sessid"
+    config.cookie_name = "session_id"
     # How are the sessions saved on the server?
     # https://github.com/kemalcr/kemal-session#setting-the-engine
     config.engine = Kemal::Session::MemoryEngine.new
