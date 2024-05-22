@@ -1,5 +1,6 @@
 # Settings for your web application.
 module Vizbor::Settings
+  extend self
   # If true,
   # an exception page is rendered when an exception is raised which provides a
   # lot of useful information for debugging.
@@ -36,4 +37,12 @@ module Vizbor::Settings
   # To generate a key (This is not an advertisement): https://randompasswordgen.com/
   # Minimum 64 characters.
   class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
+
+  def app_url : String
+    if @@debug
+      %Q(http://#{@@domain_name}:#{@@port})
+    else
+      %Q(https://#{@@domain_name})
+    end
+  end
 end
