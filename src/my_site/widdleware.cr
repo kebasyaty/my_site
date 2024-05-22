@@ -17,7 +17,7 @@ module Vizbor::Middleware
     # The cookie used for session management should only be transmitted over encrypted connections.
     config.secure = !Vizbor::Settings.debug?
     # Domain to use to scope cookie.
-    config.domain = nil
+    config.domain = Vizbor::Settings.domain_name
     # Scope cookie to a particular path.
     config.path = "/"
   end
