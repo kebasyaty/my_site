@@ -33,6 +33,5 @@ module Vizbor::Middleware
     error: "Forbidden (CSRF)",
     allowed_routes: [] of String,
     http_only: true,
-    samesite: nil,
   )
 end
