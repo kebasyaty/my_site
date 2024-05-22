@@ -32,7 +32,7 @@ module Vizbor::Middleware
     parameter_name: "authenticity_token",
     error: "Forbidden (CSRF)",
     allowed_routes: [] of String,
-    http_only: false,
+    http_only: true,
     samesite: nil,
   )
 end
