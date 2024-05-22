@@ -1,7 +1,6 @@
 # Settings for your web application.
 module Vizbor::Settings
   extend self
-
   # If true,
   # an exception page is rendered when an exception is raised which provides a
   # lot of useful information for debugging.
