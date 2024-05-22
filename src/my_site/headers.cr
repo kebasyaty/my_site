@@ -18,7 +18,7 @@ module Vizbor::StaticHeaders
     )
     response.headers.add("Referrer-Policy", "strict-origin-when-cross-origin")
     response.headers.add(
-      "Content-Security-Policy",
+      "Content-Security-Policy" \
       "Content-Security-Policy" \
       "default-src 'self';" \
       " connect-src 'self' ws: http%{s}:;" \
