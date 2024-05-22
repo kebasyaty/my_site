@@ -1,9 +1,4 @@
-# Basic Routes
-module Vizbor::Basic::Routes
-  get "/" do
-    "Hello World!"
-  end
-
+module Vizbor::BasicRoutes
   get "/favicon.ico" do
     # ...
   end
