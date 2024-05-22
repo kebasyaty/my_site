@@ -1,5 +1,27 @@
 # https://kemalcr.com/guide/#middleware
 module Vizbor::Middleware
+  # Session Configuration.
+  # https://github.com/kemalcr/kemal-session
+  Kemal::Session.config do |config|
+    # How long is the session valid after last user interaction?
+    config.timeout = Time::Span.new(1, 0, 0) # 1 hour
+    # Name of the cookie that holds the session_id on the client.
+    config.cookie_name = "kemal_sessid"
+    # How are the sessions saved on the server?
+    # https://github.com/kemalcr/kemal-session#setting-the-engine
+    config.engine = Kemal::Session::MemoryEngine.new
+    # In which interval should the garbage collector find and delete expired sessions from the server?
+    config.gc_interval = Time::Span.new(0, 4, 0) # 4 minutes
+    # Used to sign the session ids before theyre saved in the cookie.
+    config.secret = ""
+    # The cookie used for session management should only be transmitted over encrypted connections.
+    config.secure = false
+    # Domain to use to scope cookie.
+    config.domain = nil
+    # Scope cookie to a particular path.
+    config.path = "/"
+  end
+
   # CSRF Configuration.
   # https://github.com/kemalcr/kemal-csrf
   # To access the CSRF token of the active session you can do the following in your .ecr form(s):
