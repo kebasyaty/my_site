@@ -1,7 +1,9 @@
 # https://kemalcr.com/guide/#middleware
 module Vizbor::Middleware
-  # CSRF
+  # CSRF Configuration.
   # https://github.com/kemalcr/kemal-csrf
+  # To access the CSRF token of the active session you can do the following in your .ecr form(s):
+  # <input type="hidden" name="authenticity_token" value='<%= env.session.string("csrf") %>'>
   add_handler CSRF.new(
     header: "X_CSRF_TOKEN",
     allowed_methods: ["GET", "HEAD", "OPTIONS", "TRACE"],
