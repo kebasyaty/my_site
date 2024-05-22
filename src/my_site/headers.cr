@@ -12,7 +12,7 @@ module Vizbor::StaticHeaders
     response.headers.add("Content-Security-Policy", "")
     response.headers.add(
       "Strict-Transport-Security",
-      Vizbor::Settings.debug ? "max-age=0" : "max-age=31536000; includeSubDomains; preload",
+      Vizbor::Settings.debug? ? "max-age=0" : "max-age=31536000; includeSubDomains; preload",
     )
     response.headers.add("Referrer-Policy", "strict-origin-when-cross-origin")
     response.headers.add("", "")
