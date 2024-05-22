@@ -7,7 +7,6 @@ module Vizbor::StaticHeaders
     response.headers.add("Access-Control-Allow-Methods", "GET")
     response.headers.add("Access-Control-Allow-Headers", "content-type,authorization,accept")
     response.headers.add("Access-Control-Max-Age", Vizbor::Settings.debug? ? "-1" : "3600")
-    response.headers.add("", "")
     # Add Headers
     response.headers.add("Content-Size", filestat.size.to_s)
     response.headers.add("X-XSS-Protection", "1; mode=block")
