@@ -35,7 +35,7 @@ module Vizbor::StaticHeaders
 
   def self.app_url : String
     if Vizbor::Settings.debug?
-      %Q(http://#{Vizbor::Settings.domain_name}:#{@@port})
+      %Q(http://#{Vizbor::Settings.domain_name}:#{Vizbor::Settings.port})
     else
       %Q(https://#{Vizbor::Settings.domain_name})
     end
