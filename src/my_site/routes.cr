@@ -1,14 +1,19 @@
 module Vizbor::BasicRoutes
-  get "/favicon.ico" do
-    # ...
+  get "/favicon.ico" do |env|
+    send_file env, "assets/static/favicons/favicon.ico"
   end
 
-  get "/favicons/:icon" do
-    # ...
+  get "/favicons/:icon" do |env|
+    icon = env.params.url["icon"]
+    send_file env, "assets/static/favicons/#{icon}"
   end
 
-  get "/robots.txt" do
-    # ...
+  get "/robots.txt" do |env|
+    env.response.content_type = "text/plain"
+    uri = URI.parse Vizbor::Settings.app_url
+    host = uri.host
+    scheme = uri.scheme
+    render "templates/robots.ecr"
   end
 
   get "/sitemap.xml" do
@@ -16,6 +21,6 @@ module Vizbor::BasicRoutes
   end
 
   error 404 do
-    "This is a customized 404 page."
+    render "templates/404.ecr"
   end
 end

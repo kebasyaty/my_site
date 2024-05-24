@@ -40,7 +40,7 @@ module Vizbor::Settings
 
   def app_url : String
     if @@debug
-      "http://" + @@domain_name + @@port.to_s
+      "http://" + @@domain_name + ":" + @@port.to_s
     else
       "https://" + @@domain_name
     end
