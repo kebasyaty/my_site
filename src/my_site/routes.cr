@@ -10,9 +10,8 @@ module Vizbor::BasicRoutes
 
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
-    uri = URI.parse Vizbor::Settings.app_url
-    host = uri.host
-    scheme = uri.scheme
+    host = Vizbor::Settings.domain_name
+    scheme = !Vizbor::Settings.debug? ? "https" : "http"
     render "templates/robots.ecr"
   end
 
