@@ -12,14 +12,14 @@ module Vizbor::BasicRoutes
     env.response.content_type = "text/plain"
     host = Vizbor::Settings.host
     scheme = Vizbor::Settings.scheme
-    render "templates/robots.ecr"
+    render "views/robots.ecr"
   end
 
   get "/sitemap.xml" do
-    # ...
+    env.response.content_type = "application/xml"
   end
 
   error 404 do
-    render "templates/404.ecr"
+    render "views/404.ecr"
   end
 end
