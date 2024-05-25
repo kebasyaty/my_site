@@ -8,7 +8,7 @@ module Vizbor::Middleware
     response.headers.add("Access-Control-Allow-Origin", Vizbor::Settings.app_url)
     response.headers.add("Access-Control-Allow-Methods", "GET")
     response.headers.add("Access-Control-Allow-Headers", "origin, content-type, accept")
-    response.headers.add("Access-Control-Max-Age", Vizbor::Settings.debug? ? "-1" : "3600")
+    response.headers.add("Access-Control-Max-Age", !Vizbor::Settings.debug? ? "3600" : "-1")
     # Add Headers
     response.headers.add("Content-Size", filestat.size.to_s)
     response.headers.add("X-XSS-Protection", "1; mode=block")
@@ -31,7 +31,7 @@ module Vizbor::Middleware
       " script-src 'self' 'unsafe-inline' 'unsafe-eval' http%{s}:;" \
       " frame-src 'self' http%{s}:;" \
       " frame-ancestors 'self' http%{s}:;" \
-      " object-src 'none';" % {s: Vizbor::Settings.debug? ? "" : "s"}
+      " object-src 'none';" % {s: !Vizbor::Settings.debug? ? "s" : ""}
     )
   end
 
