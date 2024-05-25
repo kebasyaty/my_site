@@ -10,7 +10,7 @@ module Vizbor::Settings
   class_getter app_name : String = "MySite"
   # Match regular expression: /^[a-zA-Z0-9]{16}$/
   # To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter unique_app_key : String = "6DfInSVrUeCjmpO2"
+  class_getter unique_app_key : String = "skowoMeyMtTsn9QV"
   # Maximum 60 characters.
   # Hint: If the line is empty, the name will be generated automatically.
   class_getter database_name : String = ""
@@ -19,7 +19,7 @@ module Vizbor::Settings
   # Security
   # To generate a key (This is not an advertisement): https://randompasswordgen.com/
   # Minimum 64 characters.
-  class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
+  class_getter secret_key : String = "d421a07ee91de270852641a9689a8e864e549b9d8bdfaa5785801fab0e3da311d6e64b5b21566095f5a19aa9d0c69efe0972473ec9b825247981ed57c31635a2"
 
   # KEMAL PARAMETERS
   # ----------------------------------------------------------------------------
