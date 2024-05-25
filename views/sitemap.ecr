@@ -2,7 +2,7 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 {% for item in items %}
    <url>
-      <loc>{{ item.loc|safe }}</loc>
+      <loc>{{ item.loc }}</loc>
       <lastmod>{{ item.lastmod }}</lastmod>
       <changefreq>{{ item.changefreq }}</changefreq>
       <priority>{{ item.priority }}</priority>
