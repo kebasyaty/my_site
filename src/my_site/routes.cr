@@ -17,12 +17,12 @@ module Vizbor::BasicRoutes
 
   get "/sitemap.xml" do |env|
     env.response.content_type = "application/xml"
-    items = Array(NamedTuple(
+    items : Array(NamedTuple(
       loc: String,
       lastmod: String,
       changefreq: String,
       priority: Float64,
-    )).new
+    )) = [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}]
     render "views/sitemap.ecr"
   end
 
