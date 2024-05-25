@@ -10,14 +10,14 @@ module Vizbor::BasicRoutes
 
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
-    host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
-    scheme = Vizbor::Settings.scheme
+    _host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
+    _scheme = Vizbor::Settings.scheme
     render "views/robots.ecr"
   end
 
   get "/sitemap.xml" do |env|
     env.response.content_type = "application/xml"
-    items : Array(NamedTuple(
+    _items : Array(NamedTuple(
       loc: String,
       lastmod: String,
       changefreq: String,
