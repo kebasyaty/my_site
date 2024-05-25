@@ -64,7 +64,7 @@ module Vizbor::Middleware
   # <input type="hidden" name="authenticity_token" value='<%= env.session.string("csrf") %>'>
   add_handler CSRF.new(
     header: "X_CSRF_TOKEN",
-    allowed_methods: ["GET", "OPTIONS", "TRACE"],
+    allowed_methods: ["GET", "POST", "OPTIONS", "TRACE"],
     parameter_name: "authenticity_token",
     error: "Forbidden (CSRF)",
     allowed_routes: [] of String,
