@@ -17,6 +17,7 @@ module Vizbor::BasicRoutes
 
   get "/sitemap.xml" do
     env.response.content_type = "application/xml"
+    render "views/sitemap.ecr"
   end
 
   error 404 do
