@@ -16,7 +16,7 @@ module Vizbor::Middleware
     response.headers.add("X-Content-Type-Options", "nosniff")
     response.headers.add(
       "Strict-Transport-Security",
-      Vizbor::Settings.debug? ? "max-age=0" : "max-age=31536000; includeSubDomains; preload",
+      !Vizbor::Settings.debug? ? "max-age=31536000; includeSubDomains; preload" : "max-age=0",
     )
     response.headers.add("Referrer-Policy", "strict-origin-when-cross-origin")
     response.headers.add(
