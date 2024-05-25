@@ -10,7 +10,7 @@ module Vizbor::BasicRoutes
 
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
-    host = Vizbor::Settings.host
+    host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
     scheme = Vizbor::Settings.scheme
     render "views/robots.ecr"
   end

@@ -57,12 +57,12 @@ module Vizbor::Settings
     if !@@debug
       "www.your-site-name.net"
     else
-      "0.0.0.0" + ":" + port.to_s
+      "0.0.0.0"
     end
   end
 
   # Application URL
   def app_url : String
-    scheme + "://" + host
+    scheme + "://" + host + ":" + port.to_s
   end
 end
