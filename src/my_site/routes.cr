@@ -15,7 +15,7 @@ module Vizbor::BasicRoutes
     render "views/robots.ecr"
   end
 
-  get "/sitemap.xml" do
+  get "/sitemap.xml" do |env|
     env.response.content_type = "application/xml"
     render "views/sitemap.ecr"
   end
