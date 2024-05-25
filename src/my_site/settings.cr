@@ -15,10 +15,6 @@ module Vizbor::Settings
   class_getter database_name : String = ""
   # https://github.com/crystal-i18n/i18n
   class_getter default_locale : Symbol = :en
-  # Domain names.
-  class_getter domain_name : String = @@debug ? "0.0.0.0" : "www.your-site-name.net"
-  # Port for test server.
-  class_getter port : Int32 = 3000
   # Static File Options.
   # https://kemalcr.com/guide/
   # Example: {"gzip" => true, "dir_listing" => false}
@@ -38,11 +34,35 @@ module Vizbor::Settings
   # Minimum 64 characters.
   class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
 
-  def app_url : String
-    if @@debug
-      "http://" + @@domain_name + ":" + @@port.to_s
+  # URI Scheme
+  def scheme : String
+    if !@@debug
+      "https"
     else
-      "https://" + @@domain_name
+      "http"
+    end
+  end
+
+  # URI Host - Domain name
+  def host : String
+    if !@@debug
+      "www.your-site-name.net"
+    else
+      "0.0.0.0"
+    end
+  end
+
+  # URI Port
+  def port : Int32
+    3000
+  end
+
+  # Application URL
+  def app_url : String
+    if !@@debug
+      scheme + "://" + host
+    else
+      scheme + "://" + host + ":" + port.to_s
     end
   end
 end
