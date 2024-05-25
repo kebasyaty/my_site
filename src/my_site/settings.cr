@@ -1,6 +1,7 @@
 # Settings for your web application.
 module Vizbor::Settings
   extend self
+
   # If true,
   # an exception page is rendered when an exception is raised which provides a
   # lot of useful information for debugging.
@@ -15,6 +16,13 @@ module Vizbor::Settings
   class_getter database_name : String = ""
   # https://github.com/crystal-i18n/i18n
   class_getter default_locale : Symbol = :en
+  # Security
+  # To generate a key (This is not an advertisement): https://randompasswordgen.com/
+  # Minimum 64 characters.
+  class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
+
+  # KEMAL PARAMETERS
+  # ----------------------------------------------------------------------------
   # Static File Options.
   # https://kemalcr.com/guide/
   # Example: {"gzip" => true, "dir_listing" => false}
@@ -29,10 +37,6 @@ module Vizbor::Settings
   # You can add logging statements to your code:
   # Example: Log.info { "Log message with or without embedded #{variables}" }
   class_getter? use_logging : Bool = true
-  # Security
-  # To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  # Minimum 64 characters.
-  class_getter secret_key : String = "a0d8207419bd18daeb73a6190c5b4603aa01b5eccb23c9ebe07536d883a51070c0e6d3ce8eff9fb860c91489dfbb69745ebee7e8d7d3c850427d53f0f645c513"
 
   # URI Scheme
   def scheme : String
@@ -43,26 +47,22 @@ module Vizbor::Settings
     end
   end
 
-  # URI Host - Domain name
-  def host : String
-    if !@@debug
-      "www.your-site-name.net"
-    else
-      "0.0.0.0"
-    end
-  end
-
   # URI Port
   def port : Int32
     3000
   end
 
+  # URI Host - Domain name
+  def host : String
+    if !@@debug
+      "www.your-site-name.net"
+    else
+      "0.0.0.0" + ":" + port.to_s
+    end
+  end
+
   # Application URL
   def app_url : String
-    if !@@debug
-      scheme + "://" + host
-    else
-      scheme + "://" + host + ":" + port.to_s
-    end
+    scheme + "://" + host
   end
 end
