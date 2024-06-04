@@ -12,6 +12,7 @@
 /bin/
 /.shards/
 *.dwarf
+shard.lock
 
 # Editor directories and files
 .idea
