@@ -1,7 +1,7 @@
 module Vizbor::Services::Admin::Routes
   # Admin panel page
-  get "/admin" do
-    "Hello Admin!"
+  get "/admin" do |env|
+    env.redirect "/sign-in"
   end
 
   # Login page
