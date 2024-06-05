@@ -6,7 +6,7 @@ module Vizbor::Services::Admin::Routes
 
   # Login page
   get "/sign-in" do |env|
-    if (user = env.session.object?("user")).nil?
+    if env.session.object?("user").nil?
       if Vizbor::Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
         first_user = Vizbor::Services::Admin::Models::User.new
@@ -17,7 +17,13 @@ module Vizbor::Services::Admin::Routes
         first_user.is_admin.value = true
         first_user.is_active.value = true
 
-        first_user.print_err unless first_user.save
+        unless first_user.save
+          first_user.print_err
+          raise DynFork::Errors::Panic.new(
+            "Model : `Vizbor::Services::Admin::Models::User` => " +
+            "Error while creating the first user (administrator)."
+          )
+        end
       end
     end
   end
