@@ -7,10 +7,14 @@ module Vizbor::Services::Admin::Routes
 
     getter hash : String
     getter username : String
+    getter? is_admin : Bool
+    getter? is_active : Bool
 
     def initialize(
       @hash : String,
-      @username : String
+      @username : String,
+      @is_admin : Bool,
+      @is_active : Bool
     ); end
   end
 end
