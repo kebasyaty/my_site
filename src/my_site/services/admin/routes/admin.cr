@@ -26,5 +26,6 @@ module Vizbor::Services::Admin::Routes
         end
       end
     end
+    render "views/admin/index.html"
   end
 end
