@@ -1,3 +1,4 @@
+# Auxiliary elements for routes
 module Vizbor::Services::Admin::Routes
   # To store user data in a session
   class UserStorableObject
