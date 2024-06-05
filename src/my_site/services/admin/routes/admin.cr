@@ -4,6 +4,11 @@ module Vizbor::Services::Admin::Routes
     env.redirect "/sign-in"
   end
 
+  # Get language code
+  get "/language-code" do |env|
+    env.redirect "/sign-in"
+  end
+
   # Login page
   get "/sign-in" do |env|
     if env.session.object?("user").nil?
@@ -26,6 +31,6 @@ module Vizbor::Services::Admin::Routes
         end
       end
     end
-    render "views/admin/index.html"
+    send_file env, "views/admin/index.html"
   end
 end
