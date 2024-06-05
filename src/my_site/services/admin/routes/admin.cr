@@ -6,7 +6,7 @@ module Vizbor::Services::Admin::Routes
 
   # Get language code
   get "/language-code" do |env|
-    env.redirect "/sign-in"
+    env.response.content_type = "application/json"
   end
 
   # Login page
