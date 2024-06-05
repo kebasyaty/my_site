@@ -56,12 +56,12 @@ module Vizbor::Services::Admin::Models
       label: "Confirm password",
       ignored: true
     )
-    getter is_admin = DynFork::Fields::BoolField.new(
+    getter? is_admin = DynFork::Fields::BoolField.new(
       label: "is admin?",
       default: false,
       hint: "Can this user access the admin panel?",
     )
-    getter is_active = DynFork::Fields::BoolField.new(
+    getter? is_active = DynFork::Fields::BoolField.new(
       label: "is active?",
       default: false,
       hint: "Is this an active account?",
