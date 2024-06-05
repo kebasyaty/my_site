@@ -21,7 +21,7 @@ module Vizbor::Services::Admin::Models
       label: "Avatar",
       placeholder: "Upload your photo",
       target_dir: "users/avatars",
-      default: "assets/media/default/no_avatar.png",
+      default: "public/media/default/no_avatar.png",
       thumbnails: [{"xs", 40}, {"sm", 80}, {"md", 120}, {"lg", 160}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 2097152, # 2 MB
