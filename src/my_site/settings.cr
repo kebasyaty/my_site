@@ -2,26 +2,23 @@
 module Vizbor::Settings
   extend self
 
-  # KEMAL PARAMETERS
-  # ----------------------------------------------------------------------------
-
-  # Static File Options.
-  # NOTE: https://kemalcr.com/guide/
-  # NOTE: Example: {"gzip" => true, "dir_listing" => false}
-  class_getter! static_file_options : Hash(String, Bool)
-  # Disable Static Files.
-  class_getter? disable_static_files : Bool = false
-  # Using Reuse Port for Multiple Kemal Processes.
-  # NOTE: https://kemalcr.com/cookbook/reuse_port/
-  class_getter? server_reuse_port : Bool = false
-  # Use Logging?
-  # NOTE: https://kemalcr.com/guide/
-  # NOTE: You can add logging statements to your code:
-  # NOTE: Example: Log.info { "Log message with or without embedded #{variables}" }
-  class_getter? use_logging : Bool = true
-
-  # VIZBOR PARAMETERS
-  # ----------------------------------------------------------------------------
+  module Kemal
+    extend self
+    # Static File Options.
+    # NOTE: https://kemalcr.com/guide/
+    # NOTE: Example: {"gzip" => true, "dir_listing" => false}
+    class_getter! static_file_options : Hash(String, Bool)
+    # Disable Static Files.
+    class_getter? disable_static_files : Bool = false
+    # Using Reuse Port for Multiple Kemal Processes.
+    # NOTE: https://kemalcr.com/cookbook/reuse_port/
+    class_getter? server_reuse_port : Bool = false
+    # Use Logging?
+    # NOTE: https://kemalcr.com/guide/
+    # NOTE: You can add logging statements to your code:
+    # NOTE: Example: Log.info { "Log message with or without embedded #{variables}" }
+    class_getter? use_logging : Bool = true
+  end
 
   # If true,
   # an exception page is rendered when an exception is raised which provides a
