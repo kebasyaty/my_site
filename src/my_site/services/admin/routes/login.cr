@@ -34,6 +34,14 @@ module Vizbor::Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
-    # ...
+    is_authenticated : Bool = false
+    username = env.params.json["username"].as(String)
+    password = env.params.json["password"].as(String)
+
+    if (user = env.session.object?("user")).nil?
+      # ...
+    end
+
+    env.response.content_type = "application/json"
   end
 end
