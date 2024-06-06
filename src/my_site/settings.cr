@@ -4,6 +4,7 @@ module Vizbor::Settings
 
   # KEMAL PARAMETERS
   # ----------------------------------------------------------------------------
+
   # Static File Options.
   # NOTE: https://kemalcr.com/guide/
   # NOTE: Example: {"gzip" => true, "dir_listing" => false}
@@ -21,6 +22,7 @@ module Vizbor::Settings
 
   # VIZBOR PARAMETERS
   # ----------------------------------------------------------------------------
+
   # If true,
   # an exception page is rendered when an exception is raised which provides a
   # lot of useful information for debugging.
