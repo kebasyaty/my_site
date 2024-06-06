@@ -42,7 +42,6 @@ module Vizbor::Settings
   # WARNING: Maximum 320 characters.
   class_getter admin_prod_email = "???"
   # Administrator production password.
-  # WARNING: Valid characters by default: a-z A-Z 0-9 - . _ ! " ` ' # % & , : ; < > = @ { } ~ $ ( ) * + / \ ? [ ] ^ |
   # WARNING: Default number of characters: max = 256, min = 8
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
   class_getter admin_prod_pass = "???"
