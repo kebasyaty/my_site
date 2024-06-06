@@ -8,7 +8,6 @@ module Vizbor::Services::Admin::Models
       label: "Username",
       placeholder: "Enter your username",
       maxlength: 150,
-      minlength: 1,
       regex: "^[a-zA-Z0-9_@.+]+$",
       regex_err_msg: I18n.t(
         "allowed_chars.interpolation",

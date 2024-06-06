@@ -19,11 +19,15 @@ module Vizbor::Services::Admin::Routes
     if env.session.object?("user").nil?
       if Vizbor::Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
+        #
+        admin_prod_email = "???"
+        admin_prod_pass = "???"
+        #
         first_user = Vizbor::Services::Admin::Models::User.new
         first_user.username.value = "admin"
-        first_user.email.value = !Vizbor::Settings.debug? ? "???" : "no_reply@email.net"
-        first_user.password.value = !Vizbor::Settings.debug? ? "???" : "12345678"
-        first_user.confirm_password.value = !Vizbor::Settings.debug? ? "???" : "12345678"
+        first_user.email.value = !Vizbor::Settings.debug? ? admin_prod_email : "no_reply@email.net"
+        first_user.password.value = !Vizbor::Settings.debug? ? admin_prod_pass : "12345678"
+        first_user.confirm_password.value = !Vizbor::Settings.debug? ? admin_prod_pass : "12345678"
         first_user.is_admin.value = true
         first_user.is_active.value = true
 
