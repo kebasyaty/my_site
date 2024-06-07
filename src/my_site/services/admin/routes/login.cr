@@ -53,6 +53,14 @@ module Vizbor::Services::Admin::Routes
         # User password verification
         if user.verify_password?(password)
           # Add user details to session
+          uso = UserStorableObject.new(
+            hash: "",
+            username: "",
+            email: "",
+            is_admin: false,
+            is_active: false,
+          )
+          env.session.object("user", uso)
         else
           msg_err = "Authentication failed."
         end
