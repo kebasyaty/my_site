@@ -3,11 +3,6 @@ module Vizbor::BasicRoutes
     send_file env, "public/static/favicons/favicon.ico"
   end
 
-  get "/favicons/:icon" do |env|
-    icon = env.params.url["icon"]
-    send_file env, "public/static/favicons/#{icon}"
-  end
-
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
     _host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
