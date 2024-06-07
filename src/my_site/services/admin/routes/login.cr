@@ -36,8 +36,8 @@ module Vizbor::Services::Admin::Routes
   post "/admin/login" do |env|
     is_authenticated : Bool = false
     msg_err : String = ""
-    username = env.params.json["username"].as(String)
-    password = env.params.json["password"].as(String)
+    username : String = env.params.json["username"].as(String)
+    password : String = env.params.json["password"].as(String)
 
     if !(user = env.session.object?("user")).nil?
       if username == user.username &&
