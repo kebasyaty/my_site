@@ -35,13 +35,25 @@ module Vizbor::Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     is_authenticated : Bool = false
+    msg_err : String = ""
     username = env.params.json["username"].as(String)
     password = env.params.json["password"].as(String)
 
     if (user = env.session.object?("user")).nil?
-      # ...
+      if user.username == username &&
+         !user.hash.empty? && user.is_admin? && user.is_active?
+        is_authenticated = true
+      else
+        msg_err = "Authentication failed."
+      end
     end
 
+    result = {
+      username:         login_form.username,
+      is_authenticated: is_authenticated,
+      msg_err:          msg_err,
+    }.to_json
     env.response.content_type = "application/json"
+    result
   end
 end
