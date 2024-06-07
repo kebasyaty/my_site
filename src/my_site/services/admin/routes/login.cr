@@ -62,11 +62,11 @@ module Vizbor::Services::Admin::Routes
           end
           # Add user details to session
           uso = UserStorableObject.new(
-            hash: "",
-            username: "",
-            email: "",
-            is_admin: false,
-            is_active: false,
+            hash: user.hash.value,
+            username: user.username.value,
+            email: user.email.value,
+            is_admin: user.is_admin.value,
+            is_active: user.is_active.value,
           )
           env.session.object("user", uso)
         else
