@@ -61,6 +61,7 @@ module Vizbor::Services::Admin::Routes
             is_active: false,
           )
           env.session.object("user", uso)
+          is_authenticated = true
         else
           msg_err = "Authentication failed."
         end
