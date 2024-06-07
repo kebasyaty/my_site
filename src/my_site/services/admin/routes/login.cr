@@ -54,7 +54,9 @@ module Vizbor::Services::Admin::Routes
         if user.verify_password?(password)
           # Update last visit date
           user.last_login.refrash_val_datetime(Time.utc)
-          unless user.save
+          if user.save
+            is_authenticated = true
+          else
             user.print_err
             msg_err = I18n.t(:auth_failed)
           end
@@ -67,7 +69,6 @@ module Vizbor::Services::Admin::Routes
             is_active: false,
           )
           env.session.object("user", uso)
-          is_authenticated = true
         else
           msg_err = I18n.t(:auth_failed)
         end
