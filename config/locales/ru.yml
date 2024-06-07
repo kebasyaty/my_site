@@ -53,3 +53,4 @@ ru:
   forbidden_saving: "Запрещено сохранять!"
   forbidden_updating: "Запрещено обновлять!"
   forbidden_deleting: "Запрещено удалять!"
+  auth_failed: "Аутентификация не удалась."

@@ -53,3 +53,4 @@ en:
   forbidden_saving: "It is forbidden to save!"
   forbidden_updating: "Updating is prohibited!"
   forbidden_deleting: "It is forbidden to delete!"
+  auth_failed: "Authentication failed."

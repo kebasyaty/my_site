@@ -53,3 +53,4 @@ eo:
   forbidden_saving: "Estas malpermesite ŝpari!"
   forbidden_updating: "Ĝisdatigo estas malpermesita!"
   forbidden_deleting: "Estas malpermesite forigi!"
+  auth_failed: "Aŭtentigo malsukcesis."
