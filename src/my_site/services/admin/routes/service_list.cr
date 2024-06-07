@@ -1,4 +1,16 @@
 module Vizbor::Services::Admin::Routes
+  type ServiceList = [
+    {
+      service:     {title: String, icon: String},
+      collections: [
+        {
+          title:     String,
+          model_key: String,
+          fields:    [{field: String, title: String}],
+        },
+      ],
+    },
+  ]
   # Get service list
   post "/admin/service-list" do |env|
     is_authenticated : Bool = false
