@@ -39,8 +39,8 @@ module Vizbor::Services::Admin::Routes
     username = env.params.json["username"].as(String)
     password = env.params.json["password"].as(String)
 
-    if (user = env.session.object?("user")).nil?
-      if user.username == username &&
+    if !(user = env.session.object?("user")).nil?
+      if username == user.username &&
          !user.hash.empty? && user.is_admin? && user.is_active?
         is_authenticated = true
       else
@@ -49,7 +49,7 @@ module Vizbor::Services::Admin::Routes
     end
 
     result = {
-      username:         login_form.username,
+      username:         username,
       is_authenticated: is_authenticated,
       msg_err:          msg_err,
     }.to_json
