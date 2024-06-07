@@ -44,7 +44,7 @@ module Vizbor::Services::Admin::Routes
          !user.hash.empty? && user.is_admin? && user.is_active?
         is_authenticated = true
       else
-        msg_err = "Authentication failed."
+        msg_err = I18n.t(:auth_failed)
       end
     else
       # Get user from database
@@ -56,7 +56,7 @@ module Vizbor::Services::Admin::Routes
           user.last_login.refrash_val_datetime(Time.utc)
           unless user.save
             user.print_err
-            msg_err = "Authentication failed."
+            msg_err = I18n.t(:auth_failed)
           end
           # Add user details to session
           uso = UserStorableObject.new(
@@ -69,10 +69,10 @@ module Vizbor::Services::Admin::Routes
           env.session.object("user", uso)
           is_authenticated = true
         else
-          msg_err = "Authentication failed."
+          msg_err = I18n.t(:auth_failed)
         end
       else
-        msg_err = "Authentication failed."
+        msg_err = I18n.t(:auth_failed)
       end
     end
 
