@@ -52,6 +52,9 @@ module Vizbor::Services::Admin::Routes
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
         # User password verification
         if user.verify_password?(password)
+          # Update last visit date
+          user.last_login.refrash_val_datetime(Time.utc)
+          user.print_err unless user.save
           # Add user details to session
           uso = UserStorableObject.new(
             hash: "",
