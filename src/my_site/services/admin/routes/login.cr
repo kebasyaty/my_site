@@ -54,7 +54,10 @@ module Vizbor::Services::Admin::Routes
         if user.verify_password?(password)
           # Update last visit date
           user.last_login.refrash_val_datetime(Time.utc)
-          user.print_err unless user.save
+          unless user.save
+            user.print_err
+            msg_err = "Authentication failed."
+          end
           # Add user details to session
           uso = UserStorableObject.new(
             hash: "",
