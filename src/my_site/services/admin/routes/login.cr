@@ -46,6 +46,19 @@ module Vizbor::Services::Admin::Routes
       else
         msg_err = "Authentication failed."
       end
+    else
+      # Get user from database
+      filter = {username: username, is_admin: true, is_active: true}
+      if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+        # User password verification
+        if user.verify_password?(password)
+          # Add user details to session
+        else
+          msg_err = "Authentication failed."
+        end
+      else
+        msg_err = "Authentication failed."
+      end
     end
 
     result = {
