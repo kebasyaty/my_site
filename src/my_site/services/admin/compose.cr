@@ -1,5 +1,5 @@
 # Service structure for the admin panel.
-module Vizbor::Services::Admin::Composition
+module Vizbor::Services::Admin::Compose
   # type ServiceList = [
   #   {
   #     service:     {title: String, icon: String},
