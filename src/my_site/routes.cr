@@ -26,7 +26,7 @@ module Vizbor::BasicRoutes
     render "views/sitemap.ecr"
   end
 
-  error 404 do
-    render "views/404.ecr"
+  error 404 do |env|
+    send_file env, "views/404.html"
   end
 end
