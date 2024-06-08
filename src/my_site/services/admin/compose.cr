@@ -2,6 +2,7 @@
 module Vizbor::Services::Admin
   struct Compose < Vizbor::Composition::AdminPanelMenu
     def self.composition : Vizbor::Composition::Service
+      # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
         service:     {title: "Accounts", icon: "account-multiple"},
         collections: [
