@@ -4,7 +4,7 @@ module Vizbor::Services::Home
     def self.composition : Vizbor::Composition::Service
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
-        service:     {title: "???", icon: "help"},
+        service:     {title: "Home", icon: "help"},
         collections: [
           {
             title:     "???",
