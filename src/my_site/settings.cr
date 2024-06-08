@@ -33,7 +33,7 @@ module Vizbor::Settings
   # WARNING: If the line is empty, the name will be generated automatically.
   class_getter database_name : String = ""
   # NOTE: https://github.com/crystal-i18n/i18n
-  class_getter default_locale : Symbol = :en
+  class_getter default_locale : String = "en"
   # Security
   # WARNING: Minimum 64 characters.
   class_getter secret_key : String = "d421a07ee91de270852641a9689a8e864e549b9d8bdfaa5785801fab0e3da311d6e64b5b21566095f5a19aa9d0c69efe0972473ec9b825247981ed57c31635a2"

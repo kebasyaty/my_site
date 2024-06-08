@@ -17,7 +17,7 @@ module Vizbor::Services::Admin::Routes
       @email : String,
       @is_admin : Bool,
       @is_active : Bool,
-      @lang_code : String = Vizbor::Settings.default_locale.to_s
+      @lang_code : String = Vizbor::Settings.default_locale
     ); end
   end
 
