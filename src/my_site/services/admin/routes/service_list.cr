@@ -19,9 +19,9 @@ module Vizbor::Services::Admin::Routes
     result = {
       is_authenticated: is_authenticated,
       logo:             "",
-      brand:            "",
-      slogan:           "",
-      service_list:     Vizbor::Composition::AdminPanelMenu.json,
+      brand:            "Brand ???",
+      slogan:           "Slogan ???",
+      service_list:     Vizbor::Composition::AdminPanelMenu.get,
       msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"
