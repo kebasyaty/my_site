@@ -1,3 +1,3 @@
-module Vizbor::Services::Home::Init
+module Vizbor::Services::Home
   # ...
 end

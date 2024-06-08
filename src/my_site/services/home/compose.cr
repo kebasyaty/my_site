@@ -1,7 +1,7 @@
 # Service composition for menu structure of admin panel.
 module Vizbor::Services::Home
-  struct Compose < Vizbor::Composition::AdminPanelMenu
-    def self.composition : Vizbor::Composition::Service
+  struct Compose < Vizbor::Compose
+    def self.composition : Vizbor::Composition
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
         service:     {title: "Home", icon: "help"},
