@@ -1,4 +1,4 @@
-# Service composition for the admin panel menu structure.
+# Service composition for menu structure of admin panel.
 module Vizbor::Services::Admin
   struct Compose < Vizbor::Composition::AdminPanelMenu
     def self.composition : Vizbor::Composition::Service
