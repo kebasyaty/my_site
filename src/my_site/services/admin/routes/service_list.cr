@@ -21,7 +21,7 @@ module Vizbor::Services::Admin::Routes
       logo:             "",
       brand:            "",
       slogan:           "",
-      service_list:     Vizbor::Composition.json,
+      service_list:     Vizbor::Composition::AdminPanelMenu.json,
       msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"
