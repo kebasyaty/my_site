@@ -9,7 +9,7 @@ module Vizbor::Services::Admin::Routes
     getter email : String
     getter? is_admin : Bool
     getter? is_active : Bool
-    getter language_code : String
+    getter lang_code : String
 
     def initialize(
       @hash : String,
@@ -17,7 +17,7 @@ module Vizbor::Services::Admin::Routes
       @email : String,
       @is_admin : Bool,
       @is_active : Bool,
-      @language_code : String = Vizbor::Settings.default_locale
+      @lang_code : String = Vizbor::Settings.default_locale
     ); end
   end
 
