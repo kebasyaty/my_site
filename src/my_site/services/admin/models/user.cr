@@ -81,7 +81,7 @@ module Vizbor::Services::Admin::Models
       ],
     )
     getter slug = DynFork::Fields::SlugField.new(
-      label: "Slug",
+      label: I18n.t(:slug),
       slug_sources: ["username"],
     )
   end

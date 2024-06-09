@@ -77,3 +77,4 @@ en:
   datetime_of_user_last_login: "Date and time of user last login."
   lang_code: "Language code"
   choose_lang_that_is_convenient_for_you: "Choose a language that is convenient for you."
+  slug: "Slug"
