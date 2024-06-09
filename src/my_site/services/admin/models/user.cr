@@ -61,9 +61,9 @@ module Vizbor::Services::Admin::Models
       hint: I18n.t(:can_this_user_access_admin_panel),
     )
     getter is_active = DynFork::Fields::BoolField.new(
-      label: "is active?",
+      label: I18n.t(:is_active),
       default: false,
-      hint: "Is this an active account?",
+      hint: I18n.t(:is_this_an_active_account),
     )
     getter last_login = DynFork::Fields::DateTimeField.new(
       label: "Last login",

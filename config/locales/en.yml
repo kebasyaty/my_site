@@ -71,3 +71,5 @@ en:
   confirm_password: "Confirm password"
   is_admin: "is admin?"
   can_this_user_access_admin_panel: "Can this user access the admin panel?"
+  is_active: "is active?"
+  is_this_an_active_account: "Is this an active account?"
