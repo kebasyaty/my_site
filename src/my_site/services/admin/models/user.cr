@@ -26,13 +26,13 @@ module Vizbor::Services::Admin::Models
       maxsize: 2097152, # 2 MB
     )
     getter first_name = DynFork::Fields::TextField.new(
-      label: "First name",
-      placeholder: "Enter your First name",
+      label: I18n.t(:first_name),
+      placeholder: I18n.t(:enter_your_first_name),
       maxlength: 150,
     )
     getter last_name = DynFork::Fields::TextField.new(
-      label: "Last name",
-      placeholder: "Enter your Last name",
+      label: I18n.t(:last_name),
+      placeholder: I18n.t(:enter_your_last_name),
       maxlength: 150,
     )
     getter email = DynFork::Fields::EmailField.new(
