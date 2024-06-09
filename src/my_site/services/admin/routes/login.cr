@@ -35,7 +35,7 @@ module Vizbor::Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     authenticated? : Bool = false
-    msg_err : String = ""
+    lang_code : String = Vizbor::Settings.default_locale
     username : String = env.params.json["username"].as(String)
     password : String = env.params.json["password"].as(String)
 
@@ -43,9 +43,8 @@ module Vizbor::Services::Admin::Routes
       user = user.as(Vizbor::Session::UserStorableObject)
       if username == user.username &&
          !user.hash.empty? && user.is_admin? && user.is_active?
+        lang_code = user.lang_code
         authenticated? = true
-      else
-        msg_err = I18n.t(:auth_failed)
       end
     else
       # Get user from database
@@ -59,7 +58,6 @@ module Vizbor::Services::Admin::Routes
             authenticated? = true
           else
             user.print_err
-            msg_err = I18n.t(:auth_failed)
           end
           # Add user details to session
           uso = Vizbor::Session::UserStorableObject.new(
@@ -68,21 +66,21 @@ module Vizbor::Services::Admin::Routes
             email: user.email.value,
             is_admin: user.is_admin.value,
             is_active: user.is_active.value,
+            lang_code: user.lang_code.value,
           )
           env.session.object("user", uso)
-        else
-          msg_err = I18n.t(:auth_failed)
         end
-      else
-        msg_err = I18n.t(:auth_failed)
       end
     end
 
-    result = {
-      username:         username,
-      is_authenticated: authenticated?,
-      msg_err:          msg_err,
-    }.to_json
+    result : String? = nil
+    I18n.with_locale(lang_code) do
+      result = {
+        username:         username,
+        is_authenticated: authenticated?,
+        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
+      }.to_json
+    end
     env.response.content_type = "application/json"
     result
   end

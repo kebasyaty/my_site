@@ -2,7 +2,6 @@ module Vizbor::Services::Admin::Routes
   # Get service list
   post "/admin/service-list" do |env|
     authenticated? : Bool = false
-    msg_err : String = ""
     lang_code : String = Vizbor::Settings.default_locale
 
     if !(user = env.session.object?("user")).nil?
