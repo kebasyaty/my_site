@@ -75,9 +75,9 @@ module Vizbor::Services::Admin::Models
       hint: I18n.t(:choose_lang_that_is_convenient_for_you),
       default: "en",
       choices: [
-        {"en", "English"},
-        {"ru", "Russian"},
-        {"eo", "Esperanto"},
+        {"en", I18n.t(:english)},
+        {"ru", I18n.t(:russian)},
+        {"eo", I18n.t(:esperanto)},
       ],
     )
     getter slug = DynFork::Fields::SlugField.new(
