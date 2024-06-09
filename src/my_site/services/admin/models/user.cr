@@ -71,8 +71,8 @@ module Vizbor::Services::Admin::Models
       hint: I18n.t(:datetime_of_user_last_login),
     )
     getter lang_code : DynFork::Fields::ChoiceTextField.new(
-      label: "Language code",
-      hint: "Choose a language that is convenient for you.",
+      label: I18n.t(:lang_code),
+      hint: I18n.t(:choose_lang_that_is_convenient_for_you),
       default: "en",
       choices: [
         {"en", "English"},
