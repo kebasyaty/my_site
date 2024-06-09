@@ -11,14 +11,6 @@ module Vizbor::Services::Admin::Routes
          !user.hash.empty? && user.is_admin? && user.is_active?
         lang_code = user.lang_code
         authenticated? = true
-      else
-        I18n.with_locale(lang_code) do
-          msg_err = I18n.t(:auth_failed)
-        end
-      end
-    else
-      I18n.with_locale(lang_code) do
-        msg_err = I18n.t(:auth_failed)
       end
     end
 
@@ -30,7 +22,7 @@ module Vizbor::Services::Admin::Routes
         brand:            "Brand ???",
         slogan:           "Slogan ???",
         service_list:     Vizbor::Compose.get,
-        msg_err:          msg_err,
+        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
       }.to_json
     end
     env.response.content_type = "application/json"
