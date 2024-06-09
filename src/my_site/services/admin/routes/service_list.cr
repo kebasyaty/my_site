@@ -22,6 +22,7 @@ module Vizbor::Services::Admin::Routes
       end
     end
 
+    result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
@@ -31,8 +32,8 @@ module Vizbor::Services::Admin::Routes
         service_list:     Vizbor::Compose.get,
         msg_err:          msg_err,
       }.to_json
-      env.response.content_type = "application/json"
-      return result
     end
+    env.response.content_type = "application/json"
+    result
   end
 end
