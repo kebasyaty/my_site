@@ -36,15 +36,15 @@ module Vizbor::Services::Admin::Models
       maxlength: 150,
     )
     getter email = DynFork::Fields::EmailField.new(
-      label: "E-mail",
-      placeholder: "Enter your email",
+      label: I18n.t(:email),
+      placeholder: I18n.t(:enter_your_email),
       maxlength: 320,
       required: true,
       unique: true,
     )
     getter phone = DynFork::Fields::PhoneField.new(
-      label: "Phone number",
-      placeholder: "Enter your phone number",
+      label: I18n.t(:phone),
+      placeholder: I18n.t(:enter_your_phone_number),
     )
     getter password = DynFork::Fields::PasswordField.new(
       label: "Password",

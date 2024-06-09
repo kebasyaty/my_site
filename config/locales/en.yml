@@ -62,3 +62,7 @@ en:
   enter_your_first_name: "Enter your First name"
   last_name: "Last name"
   enter_your_last_name: "Enter your Last name"
+  email: "E-mail"
+  enter_your_email: "Enter your email"
+  phone: "Phone number"
+  enter_your_phone_number: "Enter your phone number"
