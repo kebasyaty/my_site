@@ -10,7 +10,7 @@ module Vizbor::Services::Admin
             title:     "Users",
             model_key: Vizbor::Services::Admin::Models::User.full_model_name,
             fields:    [
-              {field: "username", title: "Nickname"},
+              {field: "username", title: I18n.t(:username)},
               {field: "avatar", title: "Avatar"},
               {field: "first_name", title: "First name"},
               {field: "last_name", title: "Last name"},
