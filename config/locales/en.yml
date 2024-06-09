@@ -64,5 +64,7 @@ en:
   enter_your_last_name: "Enter your Last name"
   email: "E-mail"
   enter_your_email: "Enter your email"
-  phone: "Phone number"
+  phone_number: "Phone number"
   enter_your_phone_number: "Enter your phone number"
+  password: "Password"
+  enter_your_password: "Enter your password"

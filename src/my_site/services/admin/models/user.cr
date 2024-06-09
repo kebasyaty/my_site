@@ -43,12 +43,12 @@ module Vizbor::Services::Admin::Models
       unique: true,
     )
     getter phone = DynFork::Fields::PhoneField.new(
-      label: I18n.t(:phone),
+      label: I18n.t(:phone_number),
       placeholder: I18n.t(:enter_your_phone_number),
     )
     getter password = DynFork::Fields::PasswordField.new(
-      label: "Password",
-      placeholder: "Enter your password",
+      label: I18n.t(:password),
+      placeholder: I18n.t(:enter_your_password),
       required: true,
     )
     getter confirm_password = DynFork::Fields::PasswordField.new(
