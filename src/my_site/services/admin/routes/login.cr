@@ -34,7 +34,7 @@ module Vizbor::Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
-    is_authenticated : Bool = false
+    authenticated? : Bool = false
     msg_err : String = ""
     username : String = env.params.json["username"].as(String)
     password : String = env.params.json["password"].as(String)
@@ -43,7 +43,7 @@ module Vizbor::Services::Admin::Routes
       user = user.as(Vizbor::Session::UserStorableObject)
       if username == user.username &&
          !user.hash.empty? && user.is_admin? && user.is_active?
-        is_authenticated = true
+        authenticated? = true
       else
         msg_err = I18n.t(:auth_failed)
       end
@@ -56,7 +56,7 @@ module Vizbor::Services::Admin::Routes
           # Update last visit date
           user.last_login.refrash_val_datetime(Time.utc)
           if user.save
-            is_authenticated = true
+            authenticated? = true
           else
             user.print_err
             msg_err = I18n.t(:auth_failed)
@@ -80,7 +80,7 @@ module Vizbor::Services::Admin::Routes
 
     result = {
       username:         username,
-      is_authenticated: is_authenticated,
+      is_authenticated: authenticated?,
       msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"
