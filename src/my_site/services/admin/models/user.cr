@@ -52,7 +52,7 @@ module Vizbor::Services::Admin::Models
       required: true,
     )
     getter confirm_password = DynFork::Fields::PasswordField.new(
-      label: "Confirm password",
+      label: I18n.t(:confirm_password),
       ignored: true
     )
     getter is_admin = DynFork::Fields::BoolField.new(
