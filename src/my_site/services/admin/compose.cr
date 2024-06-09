@@ -7,7 +7,7 @@ module Vizbor::Services::Admin
         service:     {title: I18n.t(:accounts), icon: "account-multiple"},
         collections: [
           {
-            title:     "Users",
+            title:     I18n.t(:users),
             model_key: Vizbor::Services::Admin::Models::User.full_model_name,
             fields:    [
               {field: "username", title: I18n.t(:nickname)},
