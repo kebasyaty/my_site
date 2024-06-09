@@ -4,7 +4,7 @@ module Vizbor::Services::Admin
     def self.composition : Vizbor::Composition
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
-        service:     {title: "Accounts", icon: "account-multiple"},
+        service:     {title: I18n.t(:accounts), icon: "account-multiple"},
         collections: [
           {
             title:     "Users",
