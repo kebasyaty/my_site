@@ -54,3 +54,5 @@ en:
   forbidden_updating: "Updating is prohibited!"
   forbidden_deleting: "It is forbidden to delete!"
   auth_failed: "Authentication failed."
+  username: "Username"
+  enter_username: "Enter your username"

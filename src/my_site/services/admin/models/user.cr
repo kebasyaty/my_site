@@ -5,8 +5,8 @@ module Vizbor::Services::Admin::Models
   )]
   struct User < DynFork::Model
     getter username = DynFork::Fields::TextField.new(
-      label: "Username",
-      placeholder: "Enter your username",
+      label: I18n.t(:username),
+      placeholder: I18n.t(:enter_username),
       maxlength: 150,
       regex: "^[a-zA-Z0-9_@.+]+$",
       regex_err_msg: I18n.t(
