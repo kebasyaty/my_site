@@ -3,6 +3,7 @@ module Vizbor::Services::Home
   struct HomePage < Vizbor::Compose
     def self.composition : Vizbor::Composition
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
+      # Example:
       {
         service:     {title: "Home Page", icon: "help"},
         collections: [
