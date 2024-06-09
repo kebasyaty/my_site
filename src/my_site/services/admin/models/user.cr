@@ -70,6 +70,15 @@ module Vizbor::Services::Admin::Models
       disabled: true,
       hint: "A datetime of the user’s last login.",
     )
+    getter lang_code : DynFork::Fields::ChoiceTextField.new(
+      label: "Language code",
+      default: "en",
+      choices: [
+        {"en", "English"},
+        {"ru", "Russian"},
+        {"eo", "Esperanto"},
+      ],
+    )
     getter slug = DynFork::Fields::SlugField.new(
       label: "Slug",
       slug_sources: ["username"],
