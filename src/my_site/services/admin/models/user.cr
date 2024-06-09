@@ -72,6 +72,7 @@ module Vizbor::Services::Admin::Models
     )
     getter lang_code : DynFork::Fields::ChoiceTextField.new(
       label: "Language code",
+      hint: "Select your primary language.",
       default: "en",
       choices: [
         {"en", "English"},
