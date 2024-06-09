@@ -56,9 +56,9 @@ module Vizbor::Services::Admin::Models
       ignored: true
     )
     getter is_admin = DynFork::Fields::BoolField.new(
-      label: "is admin?",
+      label: I18n.t(:is_admin),
       default: false,
-      hint: "Can this user access the admin panel?",
+      hint: I18n.t(:can_this_user_access_admin_panel),
     )
     getter is_active = DynFork::Fields::BoolField.new(
       label: "is active?",
