@@ -43,4 +43,16 @@ module Vizbor::Session
       @lang_code : String = Vizbor::Settings.default_locale
     ); end
   end
+
+  # To store guest data in a session.
+  class GuestStorableObject
+    include JSON::Serializable
+    include Kemal::Session::StorableObject
+
+    getter lang_code : String
+
+    def initialize(
+      @lang_code : String = Vizbor::Settings.default_locale
+    ); end
+  end
 end
