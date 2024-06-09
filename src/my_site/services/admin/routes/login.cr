@@ -40,7 +40,7 @@ module Vizbor::Services::Admin::Routes
     password : String = env.params.json["password"].as(String)
 
     if !(user = env.session.object?("user")).nil?
-      user = user.as(UserStorableObject)
+      user = user.as(Vizbor::Session::UserStorableObject)
       if username == user.username &&
          !user.hash.empty? && user.is_admin? && user.is_active?
         is_authenticated = true
@@ -62,7 +62,7 @@ module Vizbor::Services::Admin::Routes
             msg_err = I18n.t(:auth_failed)
           end
           # Add user details to session
-          uso = UserStorableObject.new(
+          uso = Vizbor::Session::UserStorableObject.new(
             hash: user.hash.value,
             username: user.username.value,
             email: user.email.value,

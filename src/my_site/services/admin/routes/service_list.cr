@@ -5,7 +5,7 @@ module Vizbor::Services::Admin::Routes
     msg_err : String = ""
 
     if !(user = env.session.object?("user")).nil?
-      user = user.as(UserStorableObject)
+      user = user.as(Vizbor::Session::UserStorableObject)
       if !user.username.empty? &&
          !user.hash.empty? && user.is_admin? && user.is_active?
         is_authenticated = true
