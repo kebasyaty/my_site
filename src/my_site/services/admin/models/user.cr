@@ -66,9 +66,9 @@ module Vizbor::Services::Admin::Models
       hint: I18n.t(:is_this_an_active_account),
     )
     getter last_login = DynFork::Fields::DateTimeField.new(
-      label: "Last login",
+      label: I18n.t(:last_login),
       disabled: true,
-      hint: "A datetime of the user’s last login.",
+      hint: I18n.t(:datetime_of_user_last_login),
     )
     getter lang_code : DynFork::Fields::ChoiceTextField.new(
       label: "Language code",

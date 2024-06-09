@@ -73,3 +73,5 @@ en:
   can_this_user_access_admin_panel: "Can this user access the admin panel?"
   is_active: "is active?"
   is_this_an_active_account: "Is this an active account?"
+  last_login: "Last login"
+  datetime_of_user_last_login: "Date and time of user last login."
