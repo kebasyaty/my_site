@@ -2,8 +2,8 @@
 module Vizbor::Services::Home
   struct HomePage < Vizbor::Compose
     def self.composition : Vizbor::Composition
+      # For example, look at 'compose.cr' in Vizbor::Services::Admin.
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
-      # Example:
       {
         service:     {title: "Home Page", icon: "help"},
         collections: [
