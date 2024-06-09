@@ -55,4 +55,6 @@ en:
   forbidden_deleting: "It is forbidden to delete!"
   auth_failed: "Authentication failed."
   username: "Username"
-  enter_username: "Enter your username"
+  enter_your_username: "Enter your username"
+  avatar: "Avatar"
+  upload_your_photo: "Upload your photo"

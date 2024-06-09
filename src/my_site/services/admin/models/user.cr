@@ -6,7 +6,7 @@ module Vizbor::Services::Admin::Models
   struct User < DynFork::Model
     getter username = DynFork::Fields::TextField.new(
       label: I18n.t(:username),
-      placeholder: I18n.t(:enter_username),
+      placeholder: I18n.t(:enter_your_username),
       maxlength: 150,
       regex: "^[a-zA-Z0-9_@.+]+$",
       regex_err_msg: I18n.t(
@@ -17,8 +17,8 @@ module Vizbor::Services::Admin::Models
       unique: true
     )
     getter avatar = DynFork::Fields::ImageField.new(
-      label: "Avatar",
-      placeholder: "Upload your photo",
+      label: I18n.t(:avatar),
+      placeholder: I18n.t(:upload_your_photo),
       target_dir: "users/avatars",
       default: "public/media/default/no_avatar.png",
       thumbnails: [{"xs", 32}, {"sm", 64}, {"md", 128}, {"lg", 256}],
