@@ -40,7 +40,7 @@ module Vizbor::Services::Admin::Routes
     password : String = env.params.json["password"].as(String)
 
     if !(user = env.session.object?("user")).nil?
-      user = user.as(Vizbor::Session::UserStorableObject)
+      user = user.as(Vizbor::Middleware::Session::UserStorableObject)
       if username == user.username &&
          !user.hash.empty? && user.is_admin? && user.is_active?
         lang_code = user.lang_code
@@ -60,7 +60,7 @@ module Vizbor::Services::Admin::Routes
             user.print_err
           end
           # Add user details to session
-          uso = Vizbor::Session::UserStorableObject.new(
+          uso = Vizbor::Middleware::Session::UserStorableObject.new(
             hash: user.hash.value,
             username: user.username.value,
             email: user.email.value,
