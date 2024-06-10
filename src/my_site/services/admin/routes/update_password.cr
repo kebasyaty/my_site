@@ -1,6 +1,6 @@
 module Vizbor::Services::Admin::Routes
-  # Get service list
-  post "/admin/service-list" do |env|
+  # Update password
+  post "/admin/update-password" do |env|
     authenticated? : Bool = false
     lang_code : String = Vizbor::Settings.default_locale
 
