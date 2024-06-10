@@ -8,7 +8,10 @@ module Vizbor::Services::Admin::Models
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_company_name),
-      maxlength: 150,
+    )
+    getter slogan = DynFork::Fields::TextField.new(
+      label: I18n.t(:slogan),
+      placeholder: I18n.t(:enter_company_name),
     )
     getter email = DynFork::Fields::EmailField.new(
       label: I18n.t(:email_for_feedback),
