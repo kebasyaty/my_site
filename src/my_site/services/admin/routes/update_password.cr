@@ -3,6 +3,7 @@ module Vizbor::Services::Admin::Routes
   post "/admin/update-password" do |env|
     authenticated? : Bool = false
     lang_code : String = Vizbor::Settings.default_locale
+    msg_err : String = ""
     username : String = env.params.json["username"].as(String)
     old_pass : String = env.params.json["old_pass"].as(String)
     new_pass : String = env.params.json["new_pass"].as(String)
@@ -14,6 +15,8 @@ module Vizbor::Services::Admin::Routes
       user = user.as(Vizbor::Middleware::Session::UserStorableObject)
       if user.is_admin? && user.is_active?
         authenticated? = true
+      else
+        msg_err = I18n.t(:auth_failed)
       end
     end
 
@@ -30,7 +33,7 @@ module Vizbor::Services::Admin::Routes
               new_password: new_pass,
             )
           rescue ex : DynFork::Errors::Password::OldPassNotMatch
-            halt env, status_code: 400, response: ex.message
+            msg_err = ex.message
           end
         else
           halt env, status_code: 400, response: "User is not found." if user.nil?
@@ -45,7 +48,7 @@ module Vizbor::Services::Admin::Routes
       result = {
         is_authenticated: authenticated?,
         service_list:     Vizbor::Compose.get,
-        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
+        msg_err:          msg_err,
       }.to_json
     end
     env.response.content_type = "application/json"
