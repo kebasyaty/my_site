@@ -33,7 +33,7 @@ module Vizbor::Services::Admin
         collections: [
           {
             title:     I18n.t(:parameters),
-            model_key: Vizbor::Services::Admin::Models::User.full_model_name,
+            model_key: Vizbor::Services::Admin::Models::SiteParameters.full_model_name,
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},

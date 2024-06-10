@@ -17,6 +17,13 @@ module Vizbor::Services::Admin::Routes
       end
     end
 
+    # Update password
+    if authenticated?
+      if model_key == Vizbor::Services::Admin::Models::User.full_model_name
+        # ...
+      end
+    end
+
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
