@@ -23,8 +23,18 @@ module Vizbor::Services::Admin::Routes
         halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
         halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)
         filter = {"_id": BSON::ObjectId.new(doc_hash)}
-        user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-        halt env, status_code: 400, response: "User is not found." if user.nil?
+        if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+          begin
+            user.update_password(
+              old_password: old_pass,
+              new_password: new_pass,
+            )
+          rescue ex : DynFork::Errors::Password::OldPassNotMatch
+            halt env, status_code: 400, response: ex.message
+          end
+        else
+          halt env, status_code: 400, response: "User is not found." if user.nil?
+        end
       else
         halt env, status_code: 400, response: "The model key does not match."
       end
