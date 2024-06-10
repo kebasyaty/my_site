@@ -70,16 +70,6 @@ module Vizbor::Services::Admin::Models
       disabled: true,
       hint: I18n.t(:datetime_of_user_last_login),
     )
-    getter lang_code = DynFork::Fields::ChoiceTextField.new(
-      label: I18n.t(:language),
-      hint: I18n.t(:choose_lang_that_is_convenient_for_you),
-      default: "en",
-      choices: [
-        {"en", I18n.t(:english)},
-        {"ru", I18n.t(:russian)},
-        {"eo", I18n.t(:esperanto)},
-      ],
-    )
     getter slug = DynFork::Fields::SlugField.new(
       label: I18n.t(:slug),
       slug_sources: ["username"],
