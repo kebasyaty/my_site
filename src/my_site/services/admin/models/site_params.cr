@@ -1,6 +1,7 @@
 module Vizbor::Services::Admin::Models
   @[DynFork::Meta(
     service_name: "Admin",
+    fixture_name: "SiteParameters",
     create_doc?: false,
     delete_doc?: false,
   )]
