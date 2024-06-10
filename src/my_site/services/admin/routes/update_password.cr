@@ -20,7 +20,13 @@ module Vizbor::Services::Admin::Routes
     # Update password
     if authenticated?
       if model_key == Vizbor::Services::Admin::Models::User.full_model_name
-        # ...
+        object_id = BSON::ObjectId.new(doc_hash)
+        filter = {"_id": object_id}
+        if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+          # ...
+        end
+      else
+        halt env, status_code: 400, response: "The model key does not match."
       end
     end
 
