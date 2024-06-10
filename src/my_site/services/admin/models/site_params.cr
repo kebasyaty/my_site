@@ -9,8 +9,6 @@ module Vizbor::Services::Admin::Models
       label: I18n.t(:email_for_feedback),
       placeholder: I18n.t(:enter_email),
       maxlength: 320,
-      required: true,
-      unique: true,
     )
     getter phone = DynFork::Fields::PhoneField.new(
       label: I18n.t(:phone_for_feedback),
