@@ -1,5 +1,5 @@
 # https://kemalcr.com/guide/#middleware
-module Vizbor::Middleware
+module Vizbor::Middleware::Session
   # Session Configuration.
   # https://github.com/kemalcr/kemal-session
   Kemal::Session.config do |config|
