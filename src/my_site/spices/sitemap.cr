@@ -1,0 +1,3 @@
+module Vizbor::Spices::Sitemap
+  # ...
+end

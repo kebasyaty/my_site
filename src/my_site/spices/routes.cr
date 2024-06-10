@@ -1,4 +1,4 @@
-module Vizbor::BasicRoutes
+module Vizbor::Spices::Routes
   get "/favicon.ico" do |env|
     send_file env, "public/static/favicons/favicon.ico"
   end
