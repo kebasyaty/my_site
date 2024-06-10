@@ -6,8 +6,8 @@ module Vizbor::Services::Admin::Models
   )]
   struct SiteParameters < DynFork::Model
     getter email = DynFork::Fields::EmailField.new(
-      label: I18n.t(:email),
-      placeholder: I18n.t(:enter_your_email),
+      label: I18n.t(:email_for_feedback),
+      placeholder: I18n.t(:enter_email),
       maxlength: 320,
       required: true,
       unique: true,

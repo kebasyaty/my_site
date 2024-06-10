@@ -85,3 +85,5 @@ en:
   accounts: "Accounts"
   users: "Users"
   nickname: "Nickname"
+  email_for_feedback: "Email for feedback"
+  enter_email: "Enter email"
