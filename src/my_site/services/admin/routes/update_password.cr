@@ -9,7 +9,7 @@ module Vizbor::Services::Admin::Routes
     model_key : String = env.params.json["model_key"].as(String)
     doc_hash : String = env.params.json["doc_hash"].as(String)
 
-    # User authentication
+    # Admin Authentication Verification
     if !(user = env.session.object?("user")).nil?
       user = user.as(Vizbor::Middleware::Session::UserStorableObject)
       if user.is_admin? && user.is_active?
