@@ -29,7 +29,7 @@ module Vizbor::Services::Admin
     def self.composition : Vizbor::Composition
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
-        service:     {title: I18n.t(:site_parameters), icon: "account-multiple"},
+        service:     {title: I18n.t(:site_parameters), icon: "cog"},
         collections: [
           {
             title:     I18n.t(:parameters),
