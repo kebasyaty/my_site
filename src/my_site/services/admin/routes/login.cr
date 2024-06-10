@@ -41,9 +41,7 @@ module Vizbor::Services::Admin::Routes
 
     if !(user = env.session.object?("user")).nil?
       user = user.as(Vizbor::Middleware::Session::UserStorableObject)
-      if username == user.username &&
-         !user.hash.empty? && user.is_admin? && user.is_active?
-        lang_code = user.lang_code
+      if username == user.username && user.is_admin? && user.is_active?
         authenticated? = true
       end
     else

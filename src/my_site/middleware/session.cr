@@ -33,27 +33,13 @@ module Vizbor::Middleware::Session
     getter email : String
     getter? is_admin : Bool
     getter? is_active : Bool
-    getter lang_code : String
 
     def initialize(
       @hash : String,
       @username : String,
       @email : String,
       @is_admin : Bool,
-      @is_active : Bool,
-      @lang_code : String = Vizbor::Settings.default_locale
-    ); end
-  end
-
-  # To store guest data in a session.
-  class GuestStorableObject
-    include JSON::Serializable
-    include Kemal::Session::StorableObject
-
-    getter lang_code : String
-
-    def initialize(
-      @lang_code : String = Vizbor::Settings.default_locale
+      @is_active : Bool
     ); end
   end
 end
