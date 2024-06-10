@@ -66,7 +66,6 @@ module Vizbor::Services::Admin::Routes
             email: user.email.value,
             is_admin: user.is_admin.value,
             is_active: user.is_active.value,
-            lang_code: user.lang_code.value,
           )
           env.session.object("user", uso)
         end
