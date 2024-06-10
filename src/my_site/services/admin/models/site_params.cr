@@ -7,11 +7,11 @@ module Vizbor::Services::Admin::Models
   struct SiteParameters < DynFork::Model
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
-      placeholder: I18n.t(:enter_company_name),
+      placeholder: I18n.t(:enter_your_company_name),
     )
     getter slogan = DynFork::Fields::TextField.new(
       label: I18n.t(:slogan),
-      placeholder: I18n.t(:enter_company_name),
+      placeholder: I18n.t(:enter_your_company_slogan),
     )
     getter email = DynFork::Fields::EmailField.new(
       label: I18n.t(:email_for_feedback),
