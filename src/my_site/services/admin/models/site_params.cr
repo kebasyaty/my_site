@@ -14,6 +14,16 @@ module Vizbor::Services::Admin::Models
       label: I18n.t(:slogan),
       placeholder: I18n.t(:enter_your_company_slogan),
     )
+    getter meta_title = DynFork::Fields::TextField.new(
+      label: I18n.t(:meta_title),
+      placeholder: I18n.t(:enter_meta_title),
+      hint: I18n.t(:for_meta_tag_title),
+    )
+    getter meta_description = DynFork::Fields::TextField.new(
+      label: I18n.t(:meta_description),
+      placeholder: I18n.t(:enter_meta_description),
+      hint: I18n.t(:for_meta_tag_description),
+    )
     getter email = DynFork::Fields::EmailField.new(
       label: I18n.t(:email_for_feedback),
       placeholder: I18n.t(:enter_email),
