@@ -87,3 +87,5 @@ en:
   nickname: "Nickname"
   email_for_feedback: "Email for feedback"
   enter_email: "Enter email"
+  phone_for_feedback: "Phone for feedback"
+  enter_phone_number: "Enter phone number"

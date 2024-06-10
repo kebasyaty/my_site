@@ -87,3 +87,5 @@ ru:
   nickname: "Псевдоним"
   email_for_feedback: "Почта для обратной связи"
   enter_email: "Введите адрес электронной почты"
+  phone_for_feedback: "Телефон для обратной связи"
+  enter_phone_number: "Введите номер телефона"

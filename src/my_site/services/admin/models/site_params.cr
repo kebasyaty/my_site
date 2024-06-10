@@ -13,8 +13,8 @@ module Vizbor::Services::Admin::Models
       unique: true,
     )
     getter phone = DynFork::Fields::PhoneField.new(
-      label: I18n.t(:phone_number),
-      placeholder: I18n.t(:enter_your_phone_number),
+      label: I18n.t(:phone_for_feedback),
+      placeholder: I18n.t(:enter_phone_number),
     )
   end
 end
