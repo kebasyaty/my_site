@@ -1,6 +1,7 @@
 # Esperanto
 #
 eo:
+  # DynFork
   invalid_color_code: "Nevalida Kolorkodo."
   allowed_chars:
     interpolation: "Permesitaj signoj: %{chars}"
@@ -53,6 +54,7 @@ eo:
   forbidden_saving: "Estas malpermesite ŝpari!"
   forbidden_updating: "Ĝisdatigo estas malpermesita!"
   forbidden_deleting: "Estas malpermesite forigi!"
+  # Vizbor
   auth_failed: "Aŭtentigo malsukcesis."
   username: "Uzantnomo"
   enter_your_username: "Enigu vian uzantnomon"

@@ -1,6 +1,7 @@
 # English
 #
 en:
+  # DynFork
   invalid_color_code: "Invalid Color code."
   allowed_chars:
     interpolation: "Allowed chars: %{chars}"
@@ -53,6 +54,7 @@ en:
   forbidden_saving: "It is forbidden to save!"
   forbidden_updating: "Updating is prohibited!"
   forbidden_deleting: "It is forbidden to delete!"
+  # Vizbor
   auth_failed: "Authentication failed."
   username: "Username"
   enter_your_username: "Enter your username"

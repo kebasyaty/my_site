@@ -1,6 +1,7 @@
 # Russian
 #
 ru:
+  # DynFork
   invalid_color_code: "Неправильный цветовой код."
   allowed_chars:
     interpolation: "Допустимые символы: %{chars}"
@@ -53,6 +54,7 @@ ru:
   forbidden_saving: "Запрещено сохранять!"
   forbidden_updating: "Запрещено обновлять!"
   forbidden_deleting: "Запрещено удалять!"
+  # Vizbor
   auth_failed: "Аутентификация не удалась."
   username: "Имя пользователя"
   enter_your_username: "Введите имя пользователя"
