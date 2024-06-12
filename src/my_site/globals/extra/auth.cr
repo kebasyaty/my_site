@@ -1,3 +1,4 @@
+# Additional tools for Models.
 module Vizbor::Globals::Extra
   extend self
 
