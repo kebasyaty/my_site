@@ -49,7 +49,7 @@ module Vizbor::Services::Admin::Routes
       filter = {username: username, is_admin: true, is_active: true}
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
         # User password verification
-        if user.verify_password?(password)
+        if user.verify_password(password)
           # Update last visit date
           user.last_login.refrash_val_datetime(Time.utc)
           if user.save
