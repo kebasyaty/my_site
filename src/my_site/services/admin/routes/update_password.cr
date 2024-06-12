@@ -1,7 +1,7 @@
 module Vizbor::Services::Admin::Routes
   # Update password
   post "/admin/update-password" do |env|
-    authenticated? : Bool = false
+    admin_authenticated? : Bool = false
     lang_code : String = Vizbor::Settings.default_locale
     msg_err : String = ""
     old_pass : String = env.params.json["old_pass"].as(String)
@@ -13,14 +13,14 @@ module Vizbor::Services::Admin::Routes
     if !(user = env.session.object?("user")).nil?
       user = user.as(Vizbor::Middleware::Session::UserStorableObject)
       if user.is_admin? && user.is_active?
-        authenticated? = true
+        admin_authenticated? = true
       else
         msg_err = I18n.t(:auth_failed)
       end
     end
 
     # Update password
-    if authenticated?
+    if admin_authenticated?
       if model_key == Vizbor::Services::Admin::Models::User.full_model_name
         halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
         halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)
@@ -45,7 +45,7 @@ module Vizbor::Services::Admin::Routes
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
-        is_authenticated: authenticated?,
+        is_authenticated: admin_authenticated?,
         service_list:     Vizbor::Compose.get,
         msg_err:          msg_err,
       }.to_json
