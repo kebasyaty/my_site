@@ -1,5 +1,5 @@
 # Additional tools for Models.
-module Vizbor::Globals::Extra
+module Vizbor::Globals::Extra::Auth
   extend self
 
   # User authorization
