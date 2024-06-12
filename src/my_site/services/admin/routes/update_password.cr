@@ -35,7 +35,7 @@ module Vizbor::Services::Admin::Routes
             msg_err = ex.message.to_s
           end
         else
-          halt env, status_code: 400, response: "User is not found." if user.nil?
+          halt env, status_code: 400, response: "User is not found."
         end
       else
         halt env, status_code: 400, response: "The model key does not match."
