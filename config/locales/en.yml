@@ -70,6 +70,7 @@ en:
   password: "Password"
   enter_your_password: "Enter your password"
   confirm_password: "Confirm password"
+  repeat_your_password: "Repeat your password"
   is_admin: "is administrator?"
   can_this_user_access_admin_panel: "Can this user access the admin panel?"
   is_active: "is active?"

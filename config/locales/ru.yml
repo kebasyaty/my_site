@@ -70,6 +70,7 @@ ru:
   password: "Пароль"
   enter_your_password: "Введите ваш пароль"
   confirm_password: "Повторите пароль"
+  repeat_your_password: "Повторите свой пароль"
   is_admin: "администратор?"
   can_this_user_access_admin_panel: "Может ли этот пользователь получить доступ к панели администратора?"
   is_active: "активен?"

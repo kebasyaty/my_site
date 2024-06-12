@@ -70,6 +70,7 @@ eo:
   password: "Pasvorto"
   enter_your_password: "Enigu vian pasvorton"
   confirm_password: "Ripetu pasvorton"
+  repeat_your_password: "Ripetu vian pasvorton"
   is_admin: "estas administranto?"
   can_this_user_access_admin_panel: "Ĉu ĉi tiu uzanto povas aliri la administran panelon?"
   is_active: "estas aktiva?"
