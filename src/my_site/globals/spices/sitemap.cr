@@ -1,3 +1,0 @@
-module Vizbor::Spices::Sitemap
-  # Generate sitemap ...
-end
