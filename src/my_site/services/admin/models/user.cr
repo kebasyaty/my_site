@@ -23,7 +23,7 @@ module Vizbor::Services::Admin::Models
       default: "public/media/default/no_avatar.png",
       thumbnails: [{"xs", 32}, {"sm", 64}, {"md", 128}, {"lg", 256}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
-      maxsize: 2097152, # 2 MB
+      maxsize: 1048576, # 1 MB
     )
     getter first_name = DynFork::Fields::TextField.new(
       label: I18n.t(:first_name),
