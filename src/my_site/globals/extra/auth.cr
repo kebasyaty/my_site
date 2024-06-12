@@ -2,13 +2,13 @@
 module Vizbor::Globals::Extra
   extend self
 
-  # Administrator authorization
-  def admin_auth
+  # User authorization
+  def user_auth
     # ...
   end
 
-  # User authentication
-  def user_auth
+  # Check if the user is authenticated?
+  def user_is_auth?
     # ...
   end
 end
