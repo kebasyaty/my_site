@@ -100,8 +100,7 @@ module Vizbor::Services::Admin::Models
           "username": 1,
         },
         options: {
-          unique: true,
-          name:   "userIdx",
+          name: "usernameIdx",
         }
       )
     end
