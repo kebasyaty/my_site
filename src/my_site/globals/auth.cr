@@ -21,8 +21,6 @@ module Vizbor::Globals::Auth
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
       filter = {
         "_id":     BSON::ObjectId.new(uso.hash),
-        username:  uso.username,
-        email:     uso.email,
         is_admin:  is_admin?,
         is_active: true,
       }
