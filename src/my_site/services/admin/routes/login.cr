@@ -39,6 +39,7 @@ module Vizbor::Services::Admin::Routes
     username : String = env.params.json["username"].as(String)
     password : String = env.params.json["password"].as(String)
 
+    # Check if the user is authenticated?
     if !(user = env.session.object?("user")).nil?
       user = user.as(Vizbor::Middleware::Session::UserStorableObject)
       if username == user.username && user.is_admin? && user.is_active?
