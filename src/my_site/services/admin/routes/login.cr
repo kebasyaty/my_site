@@ -35,13 +35,13 @@ module Vizbor::Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     lang_code : String = Vizbor::Settings.default_locale
-    admin_authenticated? : Bool = Vizbor::Globals::Auth.user_authenticated? env, true
+    authenticated? : Bool = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     # Web form data
     username : String = env.params.json["username"].as(String)
     password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?
-    unless admin_authenticated?
+    unless authenticated?
       # Get user from database
       filter = {username: username, is_admin: true, is_active: true}
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
@@ -50,7 +50,7 @@ module Vizbor::Services::Admin::Routes
           # Update last visit date
           user.last_login.refrash_val_datetime(Time.utc)
           if user.save
-            admin_authenticated? = true
+            authenticated? = true
           else
             user.print_err
           end
@@ -71,8 +71,8 @@ module Vizbor::Services::Admin::Routes
     I18n.with_locale(lang_code) do
       result = {
         username:         username,
-        is_authenticated: admin_authenticated?,
-        msg_err:          admin_authenticated? ? "" : I18n.t(:auth_failed),
+        is_authenticated: authenticated?,
+        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
       }.to_json
     end
     env.response.content_type = "application/json"
