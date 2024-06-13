@@ -1,7 +1,8 @@
 module Vizbor::Services::Admin::Routes
   # Get service list
   post "/admin/service-list" do |env|
-    authenticated? : Bool = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    authenticated? : Bool = auth[:authenticated?]
     lang_code : String = Vizbor::Settings.default_locale
 
     result : String? = nil

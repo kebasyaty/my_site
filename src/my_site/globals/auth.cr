@@ -14,8 +14,9 @@ module Vizbor::Globals::Auth
   def user_authenticated?(
     env : HTTP::Server::Context,
     is_admin? : Bool = false
-  ) : Bool
+  ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     authenticated? : Bool = false
+    user : Vizbor::Services::Admin::Models::User? = nil
     if !(uso = env.session.object?("user")).nil?
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
       filter = {
@@ -29,6 +30,6 @@ module Vizbor::Globals::Auth
         authenticated? = true
       end
     end
-    authenticated?
+    {authenticated?: authenticated?, user: user}
   end
 end
