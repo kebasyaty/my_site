@@ -34,18 +34,14 @@ module Vizbor::Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
-    admin_authenticated? : Bool = false
     lang_code : String = Vizbor::Settings.default_locale
+    admin_authenticated? : Bool = Vizbor::Globals::Auth.user_authenticated? env, true
+    # Web form data
     username : String = env.params.json["username"].as(String)
     password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?
-    if !(user = env.session.object?("user")).nil?
-      user = user.as(Vizbor::Middleware::Session::UserStorableObject)
-      if username == user.username && user.is_admin? && user.is_active?
-        admin_authenticated? = true
-      end
-    else
+    unless admin_authenticated?
       # Get user from database
       filter = {username: username, is_admin: true, is_active: true}
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
