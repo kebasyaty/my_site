@@ -43,29 +43,13 @@ module Vizbor::Services::Admin::Routes
 
     # Check if the user is authenticated?
     unless authenticated?
-      # Get user from database
-      filter = {username: login, is_admin: true, is_active: true}
-      if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-        # User password verification
-        if user.verify_password(password)
-          # Update last visit date
-          user.last_login.refrash_val_datetime(Time.utc)
-          if user.save
-            authenticated? = true
-          else
-            user.print_err
-          end
-          # Add user details to session
-          uso = Vizbor::Middleware::Session::UserStorableObject.new(
-            hash: user.hash.value,
-            username: user.username.value,
-            email: user.email.value,
-            is_admin: user.is_admin.value,
-            is_active: user.is_active.value,
-          )
-          env.session.object("user", uso)
-        end
-      end
+      auth = Vizbor::Globals::Auth.user_authentication(
+        env,
+        login: login,
+        password: password,
+        is_admin?: true,
+      )
+      authenticated? = auth[:authenticated?]
     end
 
     result : String? = nil
