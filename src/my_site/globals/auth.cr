@@ -8,7 +8,13 @@ module Vizbor::Globals::Auth
     token : String, # username or email
     is_admin? : Bool = false
   )
-    # ...
+    filter = {"is_active" => true}
+    filter["is_admin?"] = true if is_admin?
+    if token
+      filter["email"] = token
+    else
+      filter["username"] = token
+    end
   end
 
   # Check if the user is authenticated?
