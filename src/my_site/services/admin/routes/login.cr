@@ -38,13 +38,13 @@ module Vizbor::Services::Admin::Routes
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
     # Login form data
-    login : String = env.params.json["login"].as(String)
+    login : String = env.params.json["login"].as(String) # username or email or phone
     password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?
     unless authenticated?
       # Get user from database
-      filter = {username: username, is_admin: true, is_active: true}
+      filter = {username: login, is_admin: true, is_active: true}
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
         # User password verification
         if user.verify_password(password)
