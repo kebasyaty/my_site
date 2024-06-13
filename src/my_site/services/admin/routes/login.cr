@@ -1,7 +1,8 @@
 module Vizbor::Services::Admin::Routes
   # Login page
   get "/admin/sign-in" do |env|
-    if env.session.object?("user").nil?
+    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    if !auth[:authenticated?]
       if Vizbor::Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
         first_user = Vizbor::Services::Admin::Models::User.new
