@@ -81,6 +81,7 @@ module Vizbor::Services::Admin::Models
       slug_sources: ["username"],
     )
 
+    # Additional validation
     private def add_validation : Hash(String, String)
       error_map = Hash(String, String).new
       # Get clean data.
