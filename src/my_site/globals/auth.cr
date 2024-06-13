@@ -9,6 +9,7 @@ module Vizbor::Globals::Auth
     password : String,
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
+    authenticated? : Bool = false
     filter = {"is_active" => true}
     filter["is_admin?"] = true if is_admin?
     if Valid.email? login
@@ -18,9 +19,29 @@ module Vizbor::Globals::Auth
     end
     user : Vizbor::Services::Admin::Models::User? = nil
     if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-      # ...
+      # User password verification
+      if user.verify_password(password)
+        # Update last visit date
+        user.last_login.refrash_val_datetime(Time.utc)
+        if user.save
+          authenticated? = true
+        else
+          user.print_err
+        end
+        # Add user details to session
+        if authenticated?
+          uso = Vizbor::Middleware::Session::UserStorableObject.new(
+            hash: user.hash.value,
+            username: user.username.value,
+            email: user.email.value,
+            is_admin: user.is_admin.value,
+            is_active: user.is_active.value,
+          )
+          env.session.object("user", uso)
+        end
+      end
     end
-    {authenticated?: !user.nil?, user: user}
+    {authenticated?: authenticated?, user: user}
   end
 
   # Check if the user is authenticated?
