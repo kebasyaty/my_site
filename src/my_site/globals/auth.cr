@@ -10,7 +10,7 @@ module Vizbor::Globals::Auth
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     authenticated? : Bool = false
-    filter = {"is_active" => true}
+    filter : Hash(String, BSON::ObjectId | String | Bool) = {"is_active" => true}
     filter["is_admin?"] = true if is_admin?
     if Valid.email? login
       filter["email"] = login
@@ -48,7 +48,7 @@ module Vizbor::Globals::Auth
     user : Vizbor::Services::Admin::Models::User? = nil
     if !(uso = env.session.object?("user")).nil?
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
-      filter = {
+      filter : Hash(String, BSON::ObjectId | Bool) = {
         "_id"       => BSON::ObjectId.new(uso.hash),
         "is_active" => true,
       }
