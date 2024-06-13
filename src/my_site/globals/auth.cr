@@ -20,10 +20,10 @@ module Vizbor::Globals::Auth
     if !(uso = env.session.object?("user")).nil?
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
       filter = {
-        "_id":     BSON::ObjectId.new(uso.hash),
-        is_admin:  is_admin?,
-        is_active: true,
+        "_id"       => BSON::ObjectId.new(uso.hash),
+        "is_active" => true,
       }
+      filter["is_admin?"] = true if is_admin?
       if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
         authenticated? = true
       end
