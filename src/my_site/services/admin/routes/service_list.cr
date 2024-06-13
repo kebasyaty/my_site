@@ -8,7 +8,7 @@ module Vizbor::Services::Admin::Routes
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
-        service_list:     Vizbor::Compose.get,
+        service_list:     Vizbor::Composition.get,
         msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
       }.to_json
     end
