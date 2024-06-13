@@ -1,6 +1,6 @@
 # Service composition for menu structure of admin panel.
 module Vizbor::Services::Admin
-  struct Accounts < Vizbor::Сomposition
+  struct Accounts < Vizbor::Composition
     def self.composition : Vizbor::CompositionType
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
@@ -25,7 +25,7 @@ module Vizbor::Services::Admin
     end
   end
 
-  struct SiteParameters < Vizbor::Сomposition
+  struct SiteParameters < Vizbor::Composition
     def self.composition : Vizbor::CompositionType
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {

@@ -46,7 +46,7 @@ module Vizbor::Services::Admin::Routes
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: admin_authenticated?,
-        service_list:     Vizbor::Сomposition:.get,
+        service_list:     Vizbor::Composition.get,
         msg_err:          msg_err,
       }.to_json
     end
