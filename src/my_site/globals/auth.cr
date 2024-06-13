@@ -15,7 +15,6 @@ module Vizbor::Globals::Auth
     env : HTTP::Server::Context,
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
-    authenticated? : Bool = false
     user : Vizbor::Services::Admin::Models::User? = nil
     if !(uso = env.session.object?("user")).nil?
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
@@ -24,10 +23,8 @@ module Vizbor::Globals::Auth
         "is_active" => true,
       }
       filter["is_admin?"] = true if is_admin?
-      if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-        authenticated? = true
-      end
+      user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
     end
-    {authenticated?: authenticated?, user: user}
+    {authenticated?: !user.nil?, user: user}
   end
 end
