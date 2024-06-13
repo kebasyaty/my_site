@@ -45,6 +45,7 @@ module Vizbor::Services::Admin::Models
     getter phone = DynFork::Fields::PhoneField.new(
       label: I18n.t(:phone_number),
       placeholder: I18n.t(:enter_your_phone_number),
+      unique: true,
     )
     getter password = DynFork::Fields::PasswordField.new(
       label: I18n.t(:password),
