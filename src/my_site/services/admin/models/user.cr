@@ -93,5 +93,17 @@ module Vizbor::Services::Admin::Models
       end
       error_map
     end
+
+    def self.indexing
+      self.create_index(
+        keys: {
+          "username": 1,
+        },
+        options: {
+          unique: true,
+          name:   "usernameIdx",
+        }
+      )
+    end
   end
 end
