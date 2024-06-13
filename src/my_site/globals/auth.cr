@@ -7,7 +7,7 @@ module Vizbor::Globals::Auth
     env : HTTP::Server::Context,
     token : String, # username or email
     is_admin? : Bool = false
-  )
+  ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     filter = {"is_active" => true}
     filter["is_admin?"] = true if is_admin?
     if Valid.email? token
@@ -15,6 +15,11 @@ module Vizbor::Globals::Auth
     else
       filter["username"] = token
     end
+    user : Vizbor::Services::Admin::Models::User? = nil
+    if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+      # ...
+    end
+    {authenticated?: !user.nil?, user: user}
   end
 
   # Check if the user is authenticated?
