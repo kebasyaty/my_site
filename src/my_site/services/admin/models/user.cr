@@ -8,10 +8,10 @@ module Vizbor::Services::Admin::Models
       label: I18n.t(:username),
       placeholder: I18n.t(:enter_your_username),
       maxlength: 150,
-      regex: "^[a-zA-Z0-9_@.+]+$",
+      regex: "^[a-zA-Z0-9_]+$",
       regex_err_msg: I18n.t(
         "allowed_chars.interpolation",
-        chars: "a-z A-Z 0-9 _ @ . +"
+        chars: "a-z A-Z 0-9 _"
       ),
       required: true,
       unique: true
