@@ -24,6 +24,7 @@ module Vizbor::Globals::Auth
       }
       filter["is_admin?"] = true if is_admin?
       user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+      env.session.destroy if user.nil?
     end
     {authenticated?: !user.nil?, user: user}
   end
