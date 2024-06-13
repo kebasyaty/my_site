@@ -5,6 +5,7 @@ module Vizbor::Globals::Auth
   # User authorization
   def user_authentication(
     env : HTTP::Server::Context,
+    token : String, # username or email
     is_admin? : Bool = false
   )
     # ...
