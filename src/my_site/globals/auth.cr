@@ -32,10 +32,6 @@ module Vizbor::Globals::Auth
         if authenticated?
           uso = Vizbor::Middleware::Session::UserStorableObject.new(
             hash: user.hash.value,
-            username: user.username.value,
-            email: user.email.value,
-            is_admin: user.is_admin.value,
-            is_active: user.is_active.value,
           )
           env.session.object("user", uso)
         end
