@@ -13,6 +13,10 @@ module Vizbor::Services::Admin::Models
         "allowed_chars.interpolation",
         chars: "a-z A-Z 0-9 _"
       ),
+      hint: I18n.t(
+        "allowed_chars.interpolation",
+        chars: "a-z A-Z 0-9 _"
+      ),
       required: true,
       unique: true
     )
