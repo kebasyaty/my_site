@@ -38,7 +38,7 @@ module Vizbor::Services::Admin::Routes
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
     # Login form data
-    username : String = env.params.json["username"].as(String)
+    login : String = env.params.json["login"].as(String)
     password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?
@@ -71,7 +71,6 @@ module Vizbor::Services::Admin::Routes
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
-        username:         username,
         is_authenticated: authenticated?,
         msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
       }.to_json
