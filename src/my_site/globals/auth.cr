@@ -5,15 +5,16 @@ module Vizbor::Globals::Auth
   # User authorization
   def user_authentication(
     env : HTTP::Server::Context,
-    token : String, # username or email
+    login : String, # username or email
+    password : String,
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     filter = {"is_active" => true}
     filter["is_admin?"] = true if is_admin?
-    if Valid.email? token
-      filter["email"] = token
+    if Valid.email? login
+      filter["email"] = login
     else
-      filter["username"] = token
+      filter["username"] = login
     end
     user : Vizbor::Services::Admin::Models::User? = nil
     if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
