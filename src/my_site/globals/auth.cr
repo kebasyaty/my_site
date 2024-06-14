@@ -32,7 +32,6 @@ module Vizbor::Globals::Auth
         # Add user details to session
         if authenticated?
           env.session.string("user_hash", user.hash.value)
-          env.session.string("current_lang", Vizbor::Settings.default_locale)
         end
       end
     end
