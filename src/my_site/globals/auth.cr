@@ -31,10 +31,8 @@ module Vizbor::Globals::Auth
         end
         # Add user details to session
         if authenticated?
-          uso = Vizbor::Middleware::Session::UserStorableObject.new(
-            hash: user.hash.value,
-          )
-          env.session.object("user", uso)
+          env.session.string("hash", user.hash.value)
+          env.session.string("lang", user.hash.value)
         end
       end
     end

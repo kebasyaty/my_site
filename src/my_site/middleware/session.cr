@@ -1,5 +1,5 @@
 # https://kemalcr.com/guide/#middleware
-module Vizbor::Middleware::Session
+module Vizbor::Middleware
   # Session Configuration.
   # https://github.com/kemalcr/kemal-session
   Kemal::Session.config do |config|
@@ -21,17 +21,5 @@ module Vizbor::Middleware::Session
     # Scope cookie to a particular path.
     config.path = "/"
     config.samesite = HTTP::Cookie::SameSite::Lax
-  end
-
-  # To store user data in a session.
-  class UserStorableObject
-    include JSON::Serializable
-    include Kemal::Session::StorableObject
-
-    getter hash : String
-
-    def initialize(
-      @hash : String
-    ); end
   end
 end
