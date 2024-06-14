@@ -16,7 +16,7 @@ module Vizbor::Globals::Auth
     else
       filter["username"] = login
     end
-    filter["is_admin?"] = true if is_admin?
+    filter["is_admin"] = true if is_admin?
     filter["is_active"] = true
     user : Vizbor::Services::Admin::Models::User? = nil
     if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
@@ -47,7 +47,7 @@ module Vizbor::Globals::Auth
     if !(user_hash = env.session.string?("user_hash")).nil?
       filter = Hash(String, BSON::ObjectId | Bool).new
       filter["_id"] = BSON::ObjectId.new(user_hash.as(String))
-      filter["is_admin?"] = true if is_admin?
+      filter["is_admin"] = true if is_admin?
       filter["is_active"] = true
       if (user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)).nil?
         env.session.destroy
