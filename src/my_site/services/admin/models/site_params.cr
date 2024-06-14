@@ -26,12 +26,12 @@ module Vizbor::Services::Admin::Models
       maxlength: 300,
       hint: I18n.t(:for_meta_tag_description),
     )
-    getter email = DynFork::Fields::EmailField.new(
+    getter contact_email = DynFork::Fields::EmailField.new(
       label: I18n.t(:email_for_feedback),
       placeholder: I18n.t(:enter_email),
       maxlength: 320,
     )
-    getter phone = DynFork::Fields::PhoneField.new(
+    getter contact_phone = DynFork::Fields::PhoneField.new(
       label: I18n.t(:phone_for_feedback),
       placeholder: I18n.t(:enter_phone_number),
     )
