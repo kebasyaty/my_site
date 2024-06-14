@@ -15,7 +15,7 @@ module Vizbor::Services::Admin::Routes
         brand:            site_params.brand.value,
         slogan:           site_params.slogan.value,
         is_authenticated: authenticated?,
-        service_list:     Vizbor::Composition.get,
+        service_list:     Vizbor::MenuComposition.get,
         msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
       }.to_json
     end
