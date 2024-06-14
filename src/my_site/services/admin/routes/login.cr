@@ -35,9 +35,9 @@ module Vizbor::Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
-    lang_code : String = Vizbor::Settings.default_locale
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
+    lang_code : String = authenticated? ? env.session.string("current_lang") : Vizbor::Settings.default_locale
     # Login form data
     login : String = env.params.json["login"].as(String) # username or email
     password : String = env.params.json["password"].as(String)
