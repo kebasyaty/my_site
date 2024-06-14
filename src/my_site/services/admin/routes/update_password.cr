@@ -1,7 +1,7 @@
 module Vizbor::Services::Admin::Routes
   # Update password
   post "/admin/update-password" do |env|
-    lang_code : String = Vizbor::Settings.default_locale
+    lang_code : String = env.session.string("current_lang")
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
     msg_err : String = ""

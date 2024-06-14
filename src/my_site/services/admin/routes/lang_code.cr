@@ -1,7 +1,7 @@
 module Vizbor::Services::Admin::Routes
   # Get language code
   get "/admin/lang-code" do |env|
-    redult = {
+    result = {
       lang_code: env.session.string("current_lang"),
       msg_err:   "",
     }.to_json
