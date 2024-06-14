@@ -11,13 +11,13 @@ module Vizbor::Globals::Auth
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     authenticated? : Bool = false
     filter = Hash(String, BSON::ObjectId | String | Bool).new
-    filter["is_active"] = true
-    filter["is_admin?"] = true if is_admin?
     if Valid.email? login
       filter["email"] = login
     else
       filter["username"] = login
     end
+    filter["is_admin?"] = true if is_admin?
+    filter["is_active"] = true
     user : Vizbor::Services::Admin::Models::User? = nil
     if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
       # User password verification
@@ -51,8 +51,8 @@ module Vizbor::Globals::Auth
       uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
       filter = Hash(String, BSON::ObjectId | Bool).new
       filter["_id"] = BSON::ObjectId.new(uso.hash)
-      filter["is_active"] = true
       filter["is_admin?"] = true if is_admin?
+      filter["is_active"] = true
       user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
       env.session.destroy if user.nil?
     end
