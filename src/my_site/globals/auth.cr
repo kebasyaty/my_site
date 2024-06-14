@@ -31,7 +31,7 @@ module Vizbor::Globals::Auth
         end
         # Add user details to session
         if authenticated?
-          env.session.string("hash", user.hash.value)
+          env.session.string("user_hash", user.hash.value)
           env.session.string("lang", user.hash.value)
         end
       end
@@ -45,10 +45,9 @@ module Vizbor::Globals::Auth
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
     user : Vizbor::Services::Admin::Models::User? = nil
-    if !(uso = env.session.object?("user")).nil?
-      uso = uso.as(Vizbor::Middleware::Session::UserStorableObject)
+    if !(user_hash = env.session.string?("user_hash")).nil?
       filter = Hash(String, BSON::ObjectId | Bool).new
-      filter["_id"] = BSON::ObjectId.new(uso.hash)
+      filter["_id"] = BSON::ObjectId.new(user_hash.as(String))
       filter["is_admin?"] = true if is_admin?
       filter["is_active"] = true
       if (user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)).nil?
