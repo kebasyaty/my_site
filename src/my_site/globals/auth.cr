@@ -53,8 +53,9 @@ module Vizbor::Globals::Auth
       filter["_id"] = BSON::ObjectId.new(uso.hash)
       filter["is_admin?"] = true if is_admin?
       filter["is_active"] = true
-      user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-      env.session.destroy if user.nil?
+      if (user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)).nil?
+        env.session.destroy
+      end
     end
     {authenticated?: !user.nil?, user: user}
   end
