@@ -39,7 +39,7 @@ module Vizbor::Services::Admin::Routes
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
     # Login form data
-    login : String = env.params.json["login"].as(String) # username or email or phone
+    login : String = env.params.json["login"].as(String) # username or email
     password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?

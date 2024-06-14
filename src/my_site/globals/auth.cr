@@ -5,7 +5,7 @@ module Vizbor::Globals::Auth
   # User authorization
   def user_authentication(
     env : HTTP::Server::Context,
-    login : String, # username or email or phone
+    login : String, # username or email
     password : String,
     is_admin? : Bool = false
   ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
