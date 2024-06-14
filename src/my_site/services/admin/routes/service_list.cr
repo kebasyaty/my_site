@@ -12,8 +12,8 @@ module Vizbor::Services::Admin::Routes
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
-        brand:            "",
-        slogan:           "",
+        brand:            site_params.brand,
+        slogan:           site_params.slogan,
         is_authenticated: authenticated?,
         service_list:     Vizbor::Composition.get,
         msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
