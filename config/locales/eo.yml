@@ -104,3 +104,5 @@ eo:
   enter_meta_description: "Enigu meta-description"
   site_parameters: "Retejaj Parametroj"
   parameters: "Parametroj"
+  max_size:
+    interpolation: "Maksimuma grandeco: %{size}"

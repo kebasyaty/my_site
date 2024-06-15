@@ -104,3 +104,5 @@ ru:
   enter_meta_description: "Введите meta-description"
   site_parameters: "Параметры сайта"
   parameters: "Параметры"
+  max_size:
+    interpolation: "Максимальный размер: %{size}"
