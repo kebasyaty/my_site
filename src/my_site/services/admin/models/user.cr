@@ -8,7 +8,7 @@ module Vizbor::Services::Admin::Models
       label: I18n.t(:username),
       placeholder: I18n.t(:enter_your_username),
       maxlength: 150,
-      regex: "^[a-zA-Z0-9_]+$", # do not use '@' and '+' chars
+      regex: "^[a-zA-Z0-9_]+$", # do not use `.` and `+` chars
       regex_err_msg: I18n.t(
       "allowed_chars.interpolation",
       chars: "a-z A-Z 0-9 _"
@@ -81,7 +81,7 @@ module Vizbor::Services::Admin::Models
       slug_sources: ["username"],
     )
 
-    # Additional validation
+    # Additional validation (starts automatically)
     private def add_validation : Hash(String, String)
       error_map = Hash(String, String).new
       # Get clean data.
@@ -94,6 +94,7 @@ module Vizbor::Services::Admin::Models
       error_map
     end
 
+    # Run indexing (starts automatically)
     def self.indexing
       self.create_indexes([
         {
