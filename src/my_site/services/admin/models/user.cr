@@ -95,14 +95,16 @@ module Vizbor::Services::Admin::Models
     end
 
     def self.indexing
-      self.create_index(
-        keys: {
-          "username": 1,
+      self.create_indexes([
+        {
+          keys:    {"username": 1},
+          options: {name: "username_Idx"},
         },
-        options: {
-          name: "usernameIdx",
-        }
-      )
+        {
+          keys:    {"email": 1},
+          options: {name: "email_Idx"},
+        },
+      ])
     end
   end
 end
