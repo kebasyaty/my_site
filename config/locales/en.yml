@@ -104,3 +104,5 @@ en:
   enter_meta_description: "Enter meta-description"
   site_parameters: "Site Parameters"
   parameters: "Parameters"
+  max_size:
+    interpolation: "Maximum size: %{size}"

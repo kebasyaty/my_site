@@ -28,6 +28,10 @@ module Vizbor::Services::Admin::Models
       thumbnails: [{"xs", 32}, {"sm", 64}, {"md", 128}, {"lg", 256}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 1048576, # 1 MB
+      hint: I18n.t(
+      "max_size.interpolation",
+      size: "1 MB"
+    ),
     )
     getter first_name = DynFork::Fields::TextField.new(
       label: I18n.t(:first_name),
