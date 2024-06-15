@@ -28,7 +28,7 @@ module Vizbor::Settings
   class_getter app_name : String = "MySite"
   # WARNING: Match regular expression: /^[a-zA-Z0-9]{16}$/
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter unique_app_key : String = "6s5Eh7zORrRIVI7r"
+  class_getter unique_app_key : String = "7uvuc50eD83o4654"
   # WARNING: Maximum 60 characters.
   # WARNING: If the line is empty, the name will be generated automatically.
   class_getter database_name : String = ""
