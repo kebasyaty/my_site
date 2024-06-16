@@ -14,6 +14,6 @@ module Vizbor::Services::Home::Routes
     _styles = Array(String).new
     _scripts = Array(String).new
     env.response.content_type = "text/html"
-    render "views/layouts/home.html.ecr"
+    render "views/layouts/base.html.ecr"
   end
 end
