@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/static/favicons/favicon.ico" />
     <link rel="icon" type="image/png" href="/static/favicons/favicon.png" />
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>" />
@@ -17,6 +16,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
     />
+    <% styles.each do |path| %>
+      <link rel="stylesheet" type="text/css" href="<%= path %>">
+    <% end %>
     <!--END VENDOR STYLES-->
   </head>
 
@@ -27,10 +29,25 @@
         JavaScript enabled. Please enable it to continue.</strong
       >
     </noscript>
-    <header></header>
-    <main><%= content %></main>
-    <footer></footer>
+
+    <header>
+      <h1><%= brand %></h1>
+      <h2><%= slogan %></h2>
+    </header>
+
+    <main>
+      <%= content %>
+    </main>
+
+    <footer>
+      <span>&#169;&#160;</span>
+      <span>copyright</span>
+    </footer>
+
     <!--START VENDOR SCRIPTS-->
+    <% scripts.each do |path| %>
+      <script type="text/javascript" src="<%= path %>"></script>
+    <% end %>
     <!--END VENDOR SCRIPTS-->
   </body>
 </html>
