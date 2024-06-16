@@ -104,5 +104,6 @@ ru:
   enter_meta_description: "Введите meta-description"
   site_parameters: "Параметры сайта"
   basic_settings: "Базовые настройки"
+  home_page_settings: "Настройки домашней страницы"
   max_size:
     interpolation: "Максимальный размер: %{size}"

@@ -104,5 +104,6 @@ en:
   enter_meta_description: "Enter meta-description"
   site_parameters: "Site Parameters"
   basic_settings: "Basic Settings"
+  home_page_settings: "Home Page Settings"
   max_size:
     interpolation: "Maximum size: %{size}"

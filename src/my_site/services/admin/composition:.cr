@@ -42,7 +42,7 @@ module Vizbor::Services::Admin
             ],
           },
           {
-            title:     I18n.t(:basic_settings),
+            title:     I18n.t(:home_page_settings),
             model_key: Vizbor::Services::Home::Models::HomePageSettings.full_model_name,
             fields:    [
               {field: "meta_title", title: I18n.t(:meta_title)},
