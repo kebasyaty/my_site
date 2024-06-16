@@ -37,10 +37,16 @@ module Vizbor::Services::Admin
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
-              {field: "meta_title", title: I18n.t(:meta_title)},
-              {field: "meta_description", title: I18n.t(:meta_description)},
               {field: "email", title: I18n.t(:email)},
               {field: "phone", title: I18n.t(:phone)},
+            ],
+          },
+          {
+            title:     I18n.t(:basic_settings),
+            model_key: Vizbor::Services::Home::Models::HomePageSettings.full_model_name,
+            fields:    [
+              {field: "meta_title", title: I18n.t(:meta_title)},
+              {field: "meta_description", title: I18n.t(:meta_description)},
             ],
           },
         ],
