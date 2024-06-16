@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="<%= lang_code %>">
+<html lang="<%= _lang_code %>">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/static/favicons/favicon.png" />
     <title><%= meta_title %></title>
-    <meta name="description" content="<%= meta_description %>" />
+    <meta name="description" content="<%= _meta_description %>" />
     <!--START VENDOR STYLES-->
     <link
       rel="stylesheet"
@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
     />
-    <% styles.each do |path| %>
+    <% _styles.each do |path| %>
       <link rel="stylesheet" type="text/css" href="<%= path %>">
     <% end %>
     <!--END VENDOR STYLES-->
@@ -31,12 +31,12 @@
     </noscript>
 
     <header>
-      <h1><%= brand %></h1>
-      <h2><%= slogan %></h2>
+      <h1><%= _brand %></h1>
+      <h2><%= _slogan %></h2>
     </header>
 
     <main>
-      <%= content %>
+      <%= _content %>
     </main>
 
     <footer>
@@ -45,7 +45,7 @@
     </footer>
 
     <!--START VENDOR SCRIPTS-->
-    <% scripts.each do |path| %>
+    <% _scripts.each do |path| %>
       <script type="text/javascript" src="<%= path %>"></script>
     <% end %>
     <!--END VENDOR SCRIPTS-->
