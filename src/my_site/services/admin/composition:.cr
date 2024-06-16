@@ -37,8 +37,8 @@ module Vizbor::Services::Admin
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
-              {field: "email", title: I18n.t(:email)},
-              {field: "phone", title: I18n.t(:phone)},
+              {field: "contact_email", title: I18n.t(:email)},
+              {field: "contact_phone", title: I18n.t(:phone)},
             ],
           },
           {
