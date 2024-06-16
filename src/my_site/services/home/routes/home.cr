@@ -1,7 +1,7 @@
 module Vizbor::Services::Home::Routes
   # Home page
   get "/" do |env|
-    _lang_code = ""
+    _lang_code = Vizbor::Settings.default_locale
     _meta_title = ""
     _meta_description = ""
     _brand = ""

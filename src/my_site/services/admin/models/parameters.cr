@@ -1,11 +1,12 @@
 module Vizbor::Services::Admin::Models
+  # Basic site parameters
   @[DynFork::Meta(
     service_name: "Admin",
-    fixture_name: "SiteParameters",
+    fixture_name: "BasicSettings",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct SiteParameters < DynFork::Model
+  struct BasicSettings < DynFork::Model
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_your_company_name),
