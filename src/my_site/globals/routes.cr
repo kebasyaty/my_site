@@ -4,21 +4,21 @@ module Vizbor::Globals::Routes
   end
 
   get "/robots.txt" do |env|
-    env.response.content_type = "text/plain"
     _host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
     _scheme = Vizbor::Settings.scheme
-    render "views/robots.ecr"
+    env.response.content_type = "text/plain"
+    render "views/robots.txt"
   end
 
   get "/sitemap.xml" do |env|
-    env.response.content_type = "application/xml"
     _items : Array(NamedTuple(
       loc: String,
       lastmod: String,
       changefreq: String,
       priority: Float64,
     )) = [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}]
-    render "views/sitemap.ecr"
+    env.response.content_type = "application/xml"
+    render "views/sitemap.xml"
   end
 
   error 404 do |env|
