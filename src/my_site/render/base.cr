@@ -1,4 +1,4 @@
-module Vizbor::Renderer
+module Vizbor::Render
   extend self
 
   def base(
