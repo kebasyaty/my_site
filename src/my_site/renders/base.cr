@@ -3,12 +3,12 @@ module Vizbor::Renders
 
   def base(
     lang_code : String,
-    brand : String,
-    slogan : String,
-    contact_email : String,
-    contact_phone : String,
-    meta_title : String,
-    meta_description : String,
+    brand,
+    slogan,
+    contact_email,
+    contact_phone,
+    meta_title,
+    meta_description,
     content : String,
     styles : Array(String),
     scripts : Array(String)
