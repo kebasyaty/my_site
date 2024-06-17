@@ -2,11 +2,11 @@ module Vizbor::Services::Home::Models
   # Home page parameters
   @[DynFork::Meta(
     service_name: "Home",
-    fixture_name: "HomePageSettings",
+    fixture_name: "HomePageParams",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct HomePageSettings < DynFork::Model
+  struct HomePageParams < DynFork::Model
     getter meta_title = DynFork::Fields::TextField.new(
       label: I18n.t(:meta_title),
       placeholder: I18n.t(:enter_meta_title),
