@@ -4,7 +4,7 @@ module Vizbor::Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
-    basic_params = Vizbor::Services::Admin::Models::BasicSettings.find_one_to_instance
+    basic_params = Vizbor::Services::Admin::Models::BasicParams.find_one_to_instance
     if basic_params.nil?
       halt env, status_code: 400, response: "Basic settings are missing."
     end
