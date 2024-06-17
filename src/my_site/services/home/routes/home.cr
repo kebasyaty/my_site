@@ -4,7 +4,7 @@ module Vizbor::Services::Home::Routes
     basic_params = Vizbor::Services::Admin::Models::BasicSettings.find_one_to_hash.not_nil!
     home_params = Vizbor::Services::Home::Models::HomePageSettings.find_one_to_hash.not_nil!
     env.response.content_type = "text/html"
-    Vizbor::Renders.base(
+    Vizbor::Renderer.base(
       lang_code: Vizbor::Settings.default_locale,
       brand: basic_params["brand"],
       slogan: basic_params["slogan"],
