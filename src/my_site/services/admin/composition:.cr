@@ -33,20 +33,12 @@ module Vizbor::Services::Admin
         collections: [
           {
             title:     I18n.t(:basic_params),
-            model_key: Vizbor::Services::Admin::Models::BasicParams.full_model_name,
+            model_key: Vizbor::Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
               {field: "contact_email", title: I18n.t(:email)},
               {field: "contact_phone", title: I18n.t(:phone)},
-            ],
-          },
-          {
-            title:     I18n.t(:home_page_params),
-            model_key: Vizbor::Services::Home::Models::HomePageParams.full_model_name,
-            fields:    [
-              {field: "meta_title", title: I18n.t(:meta_title)},
-              {field: "meta_description", title: I18n.t(:meta_description)},
             ],
           },
         ],

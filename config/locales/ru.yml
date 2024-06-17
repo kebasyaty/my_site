@@ -102,6 +102,7 @@ ru:
   for_meta_tag_description: "Для метатега - description"
   enter_meta_title: "Введите meta-title"
   enter_meta_description: "Введите meta-description"
+  params: "Параметры"
   site_params: "Параметры сайта"
   basic_params: "Основные параметры"
   home_page_params: "Параметры домашней страницы"
