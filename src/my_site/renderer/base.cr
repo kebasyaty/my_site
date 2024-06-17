@@ -16,6 +16,10 @@ module Vizbor::Renderer
     ECR.render "views/layouts/base.html"
   end
 
+  def base_header : String
+    ECR.render "views/base_header.html"
+  end
+
   def base_content : String
     ECR.render "views/base_content.html"
   end
