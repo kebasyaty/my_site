@@ -13,6 +13,6 @@ module Vizbor::Renders
     styles : Array(String),
     scripts : Array(String)
   ) : String
-    ECR.render "views/layouts/base.html.ecr"
+    ECR.render "views/layouts/base.html"
   end
 end
