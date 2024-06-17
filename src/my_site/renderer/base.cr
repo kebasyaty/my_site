@@ -19,10 +19,14 @@ module Vizbor::Renderer
     brand,
     slogan
   ) : String
-    ECR.render "views/base_header.html"
+    ECR.render "views/base/header.html"
   end
 
   def base_content : String
-    ECR.render "views/base_content.html"
+    ECR.render "views/base/content.html"
+  end
+
+  def base_footer : String
+    ECR.render "views/base/footer.html"
   end
 end
