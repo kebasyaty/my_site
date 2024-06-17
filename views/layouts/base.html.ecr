@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="<%= _lang_code %>">
+<html lang="<%= lang_code %>">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/static/favicons/favicon.png" />
-    <title><%= _meta_title %></title>
-    <meta name="description" content="<%= _meta_description %>" />
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>" />
     <!--START VENDOR STYLES-->
     <link
       rel="stylesheet"
@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
     />
-    <% _styles.each do |path| %>
+    <% styles.each do |path| %>
       <link rel="stylesheet" type="text/css" href="<%= path %>">
     <% end %>
     <!--END VENDOR STYLES-->
@@ -25,20 +25,20 @@
   <body>
     <noscript>
       <strong
-        >We're sorry but <%= _meta_title %> doesn't work properly without
+        >We're sorry but <%= meta_title %> doesn't work properly without
         JavaScript enabled. Please enable it to continue.</strong
       >
     </noscript>
 
     <header>
-      <h1><%= _brand %></h1>
-      <h2><%= _slogan %></h2>
-      <h4><%= _contact_email %></h4>
-      <h4><%= _contact_phone %></h4>
+      <h1><%= brand %></h1>
+      <h2><%= slogan %></h2>
+      <h4><%= contact_email %></h4>
+      <h4><%= contact_phone %></h4>
     </header>
 
     <main>
-      <%= _content %>
+      <%= content %>
     </main>
 
     <footer>
@@ -47,7 +47,7 @@
     </footer>
 
     <!--START VENDOR SCRIPTS-->
-    <% _scripts.each do |path| %>
+    <% scripts.each do |path| %>
       <script type="text/javascript" src="<%= path %>"></script>
     <% end %>
     <!--END VENDOR SCRIPTS-->
