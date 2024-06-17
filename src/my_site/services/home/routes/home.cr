@@ -12,7 +12,7 @@ module Vizbor::Services::Home::Routes
         brand: site_params["brand"],
         slogan: site_params["slogan"],
       ),
-      content: Vizbor::Renderer.base_header,
+      content: Vizbor::Renderer.base_content,
       footer: Vizbor::Renderer.base_header(
         contact_email: site_params["contact_email"],
         contact_phone: site_params["contact_phone"],
