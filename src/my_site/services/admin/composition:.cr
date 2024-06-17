@@ -32,7 +32,7 @@ module Vizbor::Services::Admin
         service:     {title: I18n.t(:site_params), icon: "cog"},
         collections: [
           {
-            title:     I18n.t(:basic_params),
+            title:     I18n.t(:params),
             model_key: Vizbor::Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
