@@ -16,9 +16,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
     />
-    <% styles.each do |path| %>
+    <%- styles.each do |path| -%>
     <link rel="stylesheet" type="text/css" href="<%= path %>" />
-    <% end %>
+    <%- end -%>
     <!--END VENDOR STYLES-->
   </head>
 
@@ -45,9 +45,9 @@
     </footer>
 
     <!--START VENDOR SCRIPTS-->
-    <% scripts.each do |path| %>
+    <%- scripts.each do |path| -%>
     <script type="text/javascript" src="<%= path %>"></script>
-    <% end %>
+    <%- end -%>
     <!--END VENDOR SCRIPTS-->
   </body>
 </html>
