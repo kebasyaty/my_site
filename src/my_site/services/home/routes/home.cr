@@ -6,8 +6,10 @@ module Vizbor::Services::Home::Routes
     env.response.content_type = "text/html"
     Vizbor::Renderer.base(
       lang_code: Vizbor::Settings.default_locale,
-      brand: site_params["brand"],
-      slogan: site_params["slogan"],
+      header: Vizbor::Renderer.base_header(
+        brand: site_params["brand"],
+        slogan: site_params["slogan"],
+      ),
       contact_email: site_params["contact_email"],
       contact_phone: site_params["contact_phone"],
       meta_title: home_params["meta_title"],
