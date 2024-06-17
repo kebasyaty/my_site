@@ -12,7 +12,7 @@ module Vizbor::Services::Home::Routes
       contact_phone: site_params["contact_phone"],
       meta_title: home_params["meta_title"],
       meta_description: home_params["meta_description"],
-      content: "Some render of content ...",
+      content: "Some renderer for content ...", # Example: Vizbor::Renderer.content(...)
       styles: Array(String).new,
       scripts: Array(String).new,
     )
