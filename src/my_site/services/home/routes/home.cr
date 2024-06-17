@@ -1,9 +1,9 @@
 module Vizbor::Services::Home::Routes
   # Home page
   get "/" do |env|
-    env.response.content_type = "text/html"
     basic_params = Vizbor::Services::Admin::Models::BasicSettings.find_one_to_hash.not_nil!
     home_params = Vizbor::Services::Home::Models::HomePageSettings.find_one_to_hash.not_nil!
+    env.response.content_type = "text/html"
     Vizbor::Renders.base(
       lang_code: Vizbor::Settings.default_locale,
       brand: basic_params["brand"].to_s,
