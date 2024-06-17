@@ -3,16 +3,15 @@ module Vizbor::Renderer
 
   def base(
     lang_code : String,
-    contact_email,
-    contact_phone,
     meta_title,
     meta_description,
     header : String,
     content : String,
+    footer : String,
     styles : Array(String),
     scripts : Array(String)
   ) : String
-    ECR.render "views/layouts/base.html"
+    ECR.render "views/base/base.html"
   end
 
   def base_header(
@@ -26,7 +25,10 @@ module Vizbor::Renderer
     ECR.render "views/base/content.html"
   end
 
-  def base_footer : String
+  def base_footer(
+    contact_email,
+    contact_phone
+  ) : String
     ECR.render "views/base/footer.html"
   end
 end
