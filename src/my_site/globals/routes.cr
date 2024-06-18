@@ -29,7 +29,7 @@ module Vizbor::Globals::Routes
   post "/login" do |env|
     auth = Vizbor::Globals::Auth.user_authenticated? env
     unless auth[:authenticated?]
-      auth = Vizbor::Globals::Auth.user_authentication(
+      Vizbor::Globals::Auth.user_authentication(
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
@@ -44,7 +44,7 @@ module Vizbor::Globals::Routes
     if auth[:authenticated?]
       env.session.destroy
     end
-    env.redirect "/login"
+    env.redirect "/"
   end
 
   error 404 do |env|
