@@ -38,16 +38,13 @@ module Vizbor::Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
-    # Login form data
-    login : String = env.params.json["login"].as(String) # username or email
-    password : String = env.params.json["password"].as(String)
 
     # Check if the user is authenticated?
     unless authenticated?
       auth = Vizbor::Globals::Auth.user_authentication(
         env,
-        login: login,
-        password: password,
+        login: env.params.json["login"].as(String), # username or email
+        password: env.params.json["password"].as(String),
         is_admin?: true,
       )
       authenticated? = auth[:authenticated?]

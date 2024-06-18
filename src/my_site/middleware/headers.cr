@@ -20,7 +20,6 @@ module Vizbor::Middleware
     response.headers.add("Referrer-Policy", !Vizbor::Settings.debug? ? "strict-origin-when-cross-origin" : "unsafe-url")
     response.headers.add(
       "Content-Security-Policy",
-      "Content-Security-Policy" \
       "default-src 'self';" \
       " connect-src 'self' ws: http%{s}:;" \
       " font-src 'self' data: 'unsafe-inline' http%{s}:;" \
