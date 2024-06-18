@@ -10,7 +10,7 @@ module Vizbor::Services::Admin::Routes
   end
 
   # Change current language
-  get "/current-lang/:lang_code" do |env|
+  get "/change-current-lang/:lang_code" do |env|
     lang_code = env.params.url["lang_code"]
     env.session.string("current_lang", lang_code)
   end
