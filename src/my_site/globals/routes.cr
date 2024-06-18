@@ -27,6 +27,13 @@ module Vizbor::Globals::Routes
     env.redirect "/"
   end
 
+  # Change current language
+  get "/change-current-lang/:lang_code" do |env|
+    lang_code = env.params.url["lang_code"]
+    env.session.string("current_lang", lang_code)
+    env.redirect "/"
+  end
+
   error 404 do |env|
     send_file env, "views/404.html"
   end
