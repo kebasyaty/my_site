@@ -22,7 +22,7 @@ module Vizbor::Globals::Routes
   get "/change-current-lang/:lang_code" do |env|
     lang_code = env.params.url["lang_code"]
     env.session.string("current_lang", lang_code)
-    uri = env.request.headers["Referer"]?
+    uri = env.request.headers["referrer"]?
     env.redirect !uri.nil? ? URI.parse(uri.not_nil!).path : "/"
   end
 
