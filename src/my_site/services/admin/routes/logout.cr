@@ -12,4 +12,13 @@ module Vizbor::Services::Admin::Routes
     env.response.content_type = "application/json"
     result
   end
+
+  # Logout
+  post "/logout" do |env|
+    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    if auth[:authenticated?]
+      env.session.destroy
+    end
+    env.redirect "/"
+  end
 end
