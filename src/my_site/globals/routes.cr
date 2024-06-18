@@ -27,33 +27,16 @@ module Vizbor::Globals::Routes
 
   # Login
   post "/login" do |env|
-    lang_code : String = env.session.string("current_lang")
     auth = Vizbor::Globals::Auth.user_authenticated? env
-    authenticated? : Bool = auth[:authenticated?]
-    # Login form data
-    login : String = env.params.json["login"].as(String) # username or email
-    password : String = env.params.json["password"].as(String)
-
-    # Check if the user is authenticated?
-    unless authenticated?
+    unless auth[:authenticated?]
       auth = Vizbor::Globals::Auth.user_authentication(
         env,
-        login: login,
-        password: password,
+        login: env.params.json["login"].as(String), # username or email
+        password: env.params.json["password"].as(String),
         is_admin?: true,
       )
-      authenticated? = auth[:authenticated?]
     end
-
-    result : String? = nil
-    I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
-      }.to_json
-    end
-    env.response.content_type = "application/json"
-    result
+    env.redirect "/"
   end
 
   # Logout
