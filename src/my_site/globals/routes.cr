@@ -18,6 +18,15 @@ module Vizbor::Globals::Routes
     )
   end
 
+  # Logout
+  post "/logout" do |env|
+    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    if auth[:authenticated?]
+      env.session.destroy
+    end
+    env.redirect "/"
+  end
+
   error 404 do |env|
     send_file env, "views/404.html"
   end

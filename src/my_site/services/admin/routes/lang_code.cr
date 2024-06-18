@@ -13,5 +13,6 @@ module Vizbor::Services::Admin::Routes
   get "/change-current-lang/:lang_code" do |env|
     lang_code = env.params.url["lang_code"]
     env.session.string("current_lang", lang_code)
+    env.redirect "/"
   end
 end
