@@ -30,7 +30,7 @@ module Vizbor::Services::Admin::Routes
         end
       end
     end
-    send_file env, "views/admin/index.html"
+    send_file env, "templates/admin/index.html"
   end
 
   # Login
