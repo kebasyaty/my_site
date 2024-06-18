@@ -33,7 +33,6 @@ module Vizbor::Globals::Routes
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
-        is_admin?: true,
       )
     end
     env.redirect "/"
