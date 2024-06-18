@@ -4,10 +4,11 @@ module Vizbor::Globals::Routes
   end
 
   get "/robots.txt" do |env|
-    _host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
-    _scheme = Vizbor::Settings.scheme
     env.response.content_type = "text/plain"
-    render "templates/robots.txt.ecr"
+    Vizbor::Render.robots(
+      host: "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}",
+      scheme: Vizbor::Settings.scheme,
+    )
   end
 
   get "/sitemap.xml" do |env|
