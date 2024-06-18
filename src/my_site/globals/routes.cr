@@ -12,14 +12,10 @@ module Vizbor::Globals::Routes
   end
 
   get "/sitemap.xml" do |env|
-    _items : Array(NamedTuple(
-      loc: String,
-      lastmod: String,
-      changefreq: String,
-      priority: Float64,
-    )) = [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}]
     env.response.content_type = "application/xml"
-    render "templates/sitemap.xml.ecr"
+    Vizbor::Render.sitemap(
+      items: [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}],
+    )
   end
 
   error 404 do |env|
