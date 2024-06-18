@@ -1,8 +1,6 @@
 module Vizbor::Services::Home::Routes
   # Home page
   get "/" do |env|
-    puts env.request.headers["referrer"]
-
     site_params = Vizbor::Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     home_params = Vizbor::Services::Home::Models::HomePageParams.find_one_to_hash.not_nil!
     env.response.content_type = "text/html"
