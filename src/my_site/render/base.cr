@@ -11,24 +11,24 @@ module Vizbor::Render
     styles : Array(String),
     scripts : Array(String)
   ) : String
-    ECR.render "views/base/base.html"
+    ECR.render "templates/base/base.html"
   end
 
   def base_header(
     brand,
     slogan
   ) : String
-    ECR.render "views/base/header.html"
+    ECR.render "templates/base/header.html"
   end
 
   def base_content : String
-    ECR.render "views/base/content.html"
+    ECR.render "templates/base/content.html"
   end
 
   def base_footer(
     contact_email,
     contact_phone
   ) : String
-    ECR.render "views/base/footer.html"
+    ECR.render "templates/base/footer.html"
   end
 end

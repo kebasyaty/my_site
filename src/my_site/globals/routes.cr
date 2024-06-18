@@ -7,7 +7,7 @@ module Vizbor::Globals::Routes
     _host = "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}"
     _scheme = Vizbor::Settings.scheme
     env.response.content_type = "text/plain"
-    render "views/robots.txt.ecr"
+    render "templates/robots.txt.ecr"
   end
 
   get "/sitemap.xml" do |env|
@@ -18,7 +18,7 @@ module Vizbor::Globals::Routes
       priority: Float64,
     )) = [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}]
     env.response.content_type = "application/xml"
-    render "views/sitemap.xml.ecr"
+    render "templates/sitemap.xml.ecr"
   end
 
   error 404 do |env|
