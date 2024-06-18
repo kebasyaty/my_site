@@ -6,7 +6,7 @@ module Vizbor::Globals::Routes
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
     Vizbor::Render.robots(
-      host: "#{Vizbor::Settings.host}:#{Vizbor::Settings.port}",
+      host: Vizbor::Settings.host,
       scheme: Vizbor::Settings.scheme,
     )
   end
