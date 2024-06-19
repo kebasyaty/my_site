@@ -5,7 +5,7 @@ module Vizbor::Services::Home::Routes
     home_params = Vizbor::Services::Home::Models::HomePageParams.find_one_to_hash.not_nil!
     env.response.content_type = "text/html"
     Vizbor::Render.base(
-      lang_code: Vizbor::Settings.default_locale,
+      lang_code: Vizbor::Settings.default_locale, # or env.params.url["lang_code"]
       meta_title: home_params["meta_title"],
       meta_description: home_params["meta_description"],
       header: Vizbor::Render.base_header(
