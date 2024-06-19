@@ -17,13 +17,15 @@ module Vizbor::Services::Admin::Routes
         halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)
         filter = {"_id": BSON::ObjectId.new(doc_hash)}
         if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
-          begin
-            user.update_password(
-              old_password: old_pass,
-              new_password: new_pass,
-            )
-          rescue ex : DynFork::Errors::Password::OldPassNotMatch
-            msg_err = ex.message.to_s
+          I18n.with_locale(lang_code) do
+            begin
+              user.update_password(
+                old_password: old_pass,
+                new_password: new_pass,
+              )
+            rescue ex : DynFork::Errors::Password::OldPassNotMatch
+              msg_err = ex.message.to_s
+            end
           end
         else
           halt env, status_code: 400, response: "User is not found."
