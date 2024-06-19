@@ -50,13 +50,10 @@ module Vizbor::Services::Admin::Routes
       authenticated? = auth[:authenticated?]
     end
 
-    result : String? = nil
-    I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
-      }.to_json
-    end
+    esult = {
+      is_authenticated: authenticated?,
+      msg_err:          authenticated? ? "" : I18n.with_locale(lang_code) { I18n.t(:auth_failed) },
+    }.to_json
     env.response.content_type = "application/json"
     result
   end
