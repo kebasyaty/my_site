@@ -1,5 +1,5 @@
 module Vizbor::Services::Admin::Routes
-  # Update password
+  # Update user password via admin panel.
   post "/admin/update-password" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
@@ -10,7 +10,7 @@ module Vizbor::Services::Admin::Routes
     model_key : String = env.params.json["model_key"].as(String)
     doc_hash : String = env.params.json["doc_hash"].as(String)
 
-    # Update password
+    # Verifying administrator authentication and updating user password.
     if authenticated?
       if model_key == Vizbor::Services::Admin::Models::User.full_model_name
         halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
@@ -32,16 +32,15 @@ module Vizbor::Services::Admin::Routes
         halt env, status_code: 400, response: "The model key does not match."
       end
     else
-      msg_err = I18n.t(:auth_failed)
+      I18n.with_locale(lang_code) do
+        msg_err = I18n.t(:auth_failed)
+      end
     end
 
-    result : String? = nil
-    I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        msg_err:          msg_err,
-      }.to_json
-    end
+    result = {
+      is_authenticated: authenticated?,
+      msg_err:          msg_err,
+    }.to_json
     env.response.content_type = "application/json"
     result
   end
