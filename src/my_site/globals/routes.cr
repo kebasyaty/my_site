@@ -1,4 +1,4 @@
-module Vizbor::Globals::Routes
+module Globals::Routes
   get "/favicon.ico" do |env|
     send_file env, "public/static/favicons/favicon.ico"
   end
@@ -20,9 +20,9 @@ module Vizbor::Globals::Routes
 
   # Login
   post "/login" do |env|
-    auth = Vizbor::Globals::Auth.user_authenticated? env
+    auth = Globals::Auth.user_authenticated? env
     unless auth[:authenticated?]
-      Vizbor::Globals::Auth.user_authentication(
+      Globals::Auth.user_authentication(
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
@@ -33,7 +33,7 @@ module Vizbor::Globals::Routes
 
   # Logout
   post "/logout" do |env|
-    auth = Vizbor::Globals::Auth.user_authenticated? env
+    auth = Globals::Auth.user_authenticated? env
     if auth[:authenticated?]
       env.session.destroy
     end

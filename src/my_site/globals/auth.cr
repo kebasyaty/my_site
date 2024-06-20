@@ -1,5 +1,5 @@
 # Additional tools for Models.
-module Vizbor::Globals::Auth
+module Globals::Auth
   extend self
 
   # User authorization
@@ -7,7 +7,7 @@ module Vizbor::Globals::Auth
     env : HTTP::Server::Context,
     login : String, # username or email
     password : String
-  ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
+  ) : NamedTuple(authenticated?: Bool, user: Services::Admin::Models::User?)
     authenticated? : Bool = false
     filter = Hash(String, BSON::ObjectId | String | Bool).new
     if Valid.email? login
@@ -16,8 +16,8 @@ module Vizbor::Globals::Auth
       filter["username"] = login
     end
     filter["is_active"] = true
-    user : Vizbor::Services::Admin::Models::User? = nil
-    if user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)
+    user : Services::Admin::Models::User? = nil
+    if user = Services::Admin::Models::User.find_one_to_instance(filter)
       # User password verification
       if user.verify_password(password)
         # Update last visit date
@@ -39,14 +39,14 @@ module Vizbor::Globals::Auth
   # Check if the user is authenticated?
   def user_authenticated?(
     env : HTTP::Server::Context
-  ) : NamedTuple(authenticated?: Bool, user: Vizbor::Services::Admin::Models::User?)
-    user : Vizbor::Services::Admin::Models::User? = nil
+  ) : NamedTuple(authenticated?: Bool, user: Services::Admin::Models::User?)
+    user : Services::Admin::Models::User? = nil
     if !(user_hash = env.session.string?("user_hash")).nil?
       filter = {
         _id:       BSON::ObjectId.new(user_hash.as(String)),
         is_active: true,
       }
-      if (user = Vizbor::Services::Admin::Models::User.find_one_to_instance(filter)).nil?
+      if (user = Services::Admin::Models::User.find_one_to_instance(filter)).nil?
         env.session.destroy
       end
     end
