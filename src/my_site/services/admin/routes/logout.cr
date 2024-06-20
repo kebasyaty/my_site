@@ -1,7 +1,8 @@
 module Services::Admin::Routes
   # Logout
   post "/admin/logout" do |env|
-    auth = Globals::Auth.user_authenticated? env
+    lang_code : String = env.session.string("current_lang")
+    auth = Globals::Auth.user_authenticated? env, lang_code
     if auth[:is_authenticated]
       env.session.destroy
     end
