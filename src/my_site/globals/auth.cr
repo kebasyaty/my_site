@@ -14,7 +14,7 @@ module Globals::Auth
     user: Services::Admin::Models::User?,
   )
     authenticated? : Bool = false
-    filter = Hash(String, BSON::ObjectId | String | Bool).new
+    filter = Hash(String, String).new
     if Valid.email? login
       filter["email"] = login
     else
