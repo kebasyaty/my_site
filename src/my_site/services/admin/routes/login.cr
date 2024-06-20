@@ -1,7 +1,8 @@
 module Services::Admin::Routes
   # Login page
   get "/admin/sign-in" do |env|
-    auth = Globals::Auth.user_authenticated? env
+    lang_code : String = env.session.string("current_lang")
+    auth = Globals::Auth.user_authenticated? env, lang_code
     if !auth[:is_authenticated]
       if Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
@@ -40,7 +41,7 @@ module Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Globals::Auth.user_authenticated? env
+    auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
 
     # Check if the user is authenticated?
