@@ -44,13 +44,13 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated]
 
     # Check if the user is authenticated?
-    unless authenticated? && auth[:is_admin]
+    unless authenticated?
       auth = Globals::Auth.user_authentication(
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
       )
-      authenticated? = auth[:is_authenticated]
+      authenticated? = auth[:is_authenticated] && auth[:is_admin] && auth[:is_active]
     end
 
     result = {
