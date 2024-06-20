@@ -35,8 +35,8 @@ module Globals::Auth
           env.session.string("user_hash", user.hash.value)
           return {
             is_authenticated: authenticated?,
-            is_admin:         user.is_admin,
-            is_active:        user.is_active,
+            is_admin:         user.is_admin.value,
+            is_active:        user.is_active.value,
             user:             user,
           }
         end
@@ -48,17 +48,26 @@ module Globals::Auth
   # Check if the user is authenticated?
   def user_authenticated?(
     env : HTTP::Server::Context
-  ) : NamedTuple(authenticated?: Bool, user: Services::Admin::Models::User?)
+  ) : NamedTuple(
+    is_authenticated: Bool,
+    is_admin: Bool,
+    is_active: Bool,
+    user: Services::Admin::Models::User?,
+  )
     user : Services::Admin::Models::User? = nil
     if !(user_hash = env.session.string?("user_hash")).nil?
-      filter = {
-        _id:       BSON::ObjectId.new(user_hash.as(String)),
-        is_active: true,
-      }
-      if (user = Services::Admin::Models::User.find_one_to_instance(filter)).nil?
+      filter = {_id: BSON::ObjectId.new(user_hash.as(String))}
+      if user = Services::Admin::Models::User.find_one_to_instance(filter)
+        return {
+          is_authenticated: user.is_active.value,
+          is_admin:         user.is_admin.value,
+          is_active:        user.is_active.value,
+          user:             user,
+        }
+      else
         env.session.destroy
       end
     end
-    {authenticated?: !user.nil?, user: user}
+    {is_authenticated: false, is_admin: false, is_active: false, user: nil}
   end
 end
