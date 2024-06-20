@@ -6,10 +6,10 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     result = {
-      brand:            site_params["brand"],
-      slogan:           site_params["slogan"],
+      brand:            authenticated? ? site_params["brand"] : "",
+      slogan:           authenticated? ? site_params["slogan"] : "",
       is_authenticated: authenticated?,
-      service_list:     Vizbor::MenuComposition.get,
+      service_list:     authenticated? ? Vizbor::MenuComposition.get : [] of Vizbor::MenuCompositionType,
       msg_err:          authenticated? ? "" : I18n.with_locale(lang_code) { I18n.t(:auth_failed) },
     }.to_json
     env.response.content_type = "application/json"
