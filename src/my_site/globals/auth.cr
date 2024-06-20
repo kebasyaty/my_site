@@ -20,7 +20,6 @@ module Globals::Auth
     else
       filter["username"] = login
     end
-    user : Services::Admin::Models::User? = nil
     if user = Services::Admin::Models::User.find_one_to_instance(filter)
       # User password verification
       if user.verify_password(password)
@@ -54,7 +53,6 @@ module Globals::Auth
     is_active: Bool,
     user: Services::Admin::Models::User?,
   )
-    user : Services::Admin::Models::User? = nil
     if !(user_hash = env.session.string?("user_hash")).nil?
       filter = {_id: BSON::ObjectId.new(user_hash.as(String))}
       if user = Services::Admin::Models::User.find_one_to_instance(filter)
