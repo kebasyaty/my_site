@@ -1,4 +1,4 @@
-module Vizbor::Services::Admin::Models
+module Services::Admin::Models
   # Basic site parameters
   @[DynFork::Meta(
     service_name: "Admin",

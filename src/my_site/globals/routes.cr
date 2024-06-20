@@ -6,8 +6,8 @@ module Globals::Routes
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
     Renders.robots(
-      host: Settings.host,
-      scheme: Settings.scheme,
+      host: Vizbor::Settings.host,
+      scheme: Vizbor::Settings.scheme,
     )
   end
 

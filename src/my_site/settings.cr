@@ -1,5 +1,5 @@
 # Settings for your web application.
-module Settings
+module Vizbor::Settings
   extend self
 
   module Kemal

@@ -1,5 +1,5 @@
 # Service composition for menu structure of admin panel.
-module Vizbor::Services::Admin
+module Services::Admin
   struct Accounts < Vizbor::MenuComposition
     def self.composition : Vizbor::MenuCompositionType?
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
@@ -8,7 +8,7 @@ module Vizbor::Services::Admin
         collections: [
           {
             title:     I18n.t(:users),
-            model_key: Vizbor::Services::Admin::Models::User.full_model_name,
+            model_key: Services::Admin::Models::User.full_model_name,
             fields:    [
               {field: "username", title: I18n.t(:nickname)},
               {field: "avatar", title: I18n.t(:avatar)},
@@ -33,7 +33,7 @@ module Vizbor::Services::Admin
         collections: [
           {
             title:     I18n.t(:params),
-            model_key: Vizbor::Services::Admin::Models::SiteParams.full_model_name,
+            model_key: Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},

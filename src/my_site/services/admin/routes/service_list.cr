@@ -1,10 +1,10 @@
-module Vizbor::Services::Admin::Routes
+module Services::Admin::Routes
   # Get service list
   post "/admin/service-list" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env
     authenticated? : Bool = auth[:authenticated?]
-    site_params = Vizbor::Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
+    site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     result = {
       brand:            site_params["brand"],
       slogan:           site_params["slogan"],

@@ -1,5 +1,5 @@
 # Service composition for menu structure of admin panel.
-module Vizbor::Services::Home
+module Services::Home
   struct HomePageParameters < Vizbor::MenuComposition
     def self.composition : Vizbor::MenuCompositionType?
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
@@ -8,7 +8,7 @@ module Vizbor::Services::Home
         collections: [
           {
             title:     I18n.t(:params),
-            model_key: Vizbor::Services::Home::Models::HomePageParams.full_model_name,
+            model_key: Services::Home::Models::HomePageParams.full_model_name,
             fields:    [
               {field: "meta_title", title: I18n.t(:meta_title)},
               {field: "meta_description", title: I18n.t(:meta_description)},

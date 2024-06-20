@@ -1,8 +1,8 @@
-module Vizbor::Services::Admin::Routes
+module Services::Admin::Routes
   # Update user password via admin panel.
   post "/admin/update-password" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
     msg_err : String = ""
     old_pass : String = env.params.json["old_pass"].as(String)
@@ -12,7 +12,7 @@ module Vizbor::Services::Admin::Routes
 
     # Verifying administrator authentication and updating user password.
     if authenticated?
-      if model_key == Vizbor::Services::Admin::Models::User.full_model_name
+      if model_key == Services::Admin::Models::User.full_model_name
         halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
         halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)
         filter = {"_id": BSON::ObjectId.new(doc_hash)}

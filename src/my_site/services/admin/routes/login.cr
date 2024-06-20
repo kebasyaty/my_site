@@ -1,19 +1,19 @@
 module Services::Admin::Routes
   # Login page
   get "/admin/sign-in" do |env|
-    auth = Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env
     if !auth[:authenticated?]
       if Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
         first_user = Services::Admin::Models::User.new
         first_user.username.value = "admin"
-        first_user.email.value = if !Settings.debug?
-                                   Settings.admin_prod_email
+        first_user.email.value = if !Vizbor::Settings.debug?
+                                   Vizbor::Settings.admin_prod_email
                                  else
                                    "no_reply@email.net"
                                  end
-        first_user.password.value = if !Settings.debug?
-                                      Settings.admin_prod_pass
+        first_user.password.value = if !Vizbor::Settings.debug?
+                                      Vizbor::Settings.admin_prod_pass
                                     else
                                       "12345678"
                                     end
@@ -36,7 +36,7 @@ module Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env
     authenticated? : Bool = auth[:authenticated?]
 
     # Check if the user is authenticated?
@@ -45,7 +45,6 @@ module Services::Admin::Routes
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
-        is_admin?: true,
       )
       authenticated? = auth[:authenticated?]
     end

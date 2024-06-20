@@ -1,4 +1,4 @@
-module Vizbor::Services::Home::Models
+module Services::Home::Models
   # Home page parameters
   @[DynFork::Meta(
     service_name: "Home",
