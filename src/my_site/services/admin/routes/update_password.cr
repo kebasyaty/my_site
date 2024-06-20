@@ -2,7 +2,7 @@ module Services::Admin::Routes
   # Update user password via admin panel.
   post "/admin/update-password" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Globals::Auth.user_authenticated? env
+    auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     msg_err : String = ""
 
