@@ -12,7 +12,6 @@ module Globals::Auth
     is_admin: Bool,
     user: Services::Admin::Models::User?,
   )
-    authenticated? : Bool = false
     filter = Hash(String, String).new
     if Valid.email? login
       filter["email"] = login
@@ -26,17 +25,14 @@ module Globals::Auth
         # Update last visit date
         user.last_login.refrash_val_datetime(Time.utc)
         if user.save
-          authenticated? = true
-        else
-          user.print_err
-        end
-        if authenticated?
           env.session.string("user_hash", user.hash.value)
           return {
-            is_authenticated: authenticated?,
+            is_authenticated: true,
             is_admin:         user.is_admin.value,
             user:             user,
           }
+        else
+          user.print_err
         end
       end
     end
