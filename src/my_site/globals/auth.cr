@@ -59,7 +59,7 @@ module Globals::Auth
       I18n.with_locale(lang_code) do
         if user = Services::Admin::Models::User.find_one_to_instance(filter)
           return {
-            is_authenticated: user.is_active.value,
+            is_authenticated: true,
             is_admin:         user.is_admin.value,
             user:             user,
           }
