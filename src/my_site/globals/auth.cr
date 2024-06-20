@@ -12,7 +12,7 @@ module Globals::Auth
     is_admin: Bool,
     user: Services::Admin::Models::User?,
   )
-    filter = Hash(String, String).new
+    filter = Hash(String, String | Bool).new
     if Valid.email? login
       filter["email"] = login
     else
