@@ -2,7 +2,7 @@ module Services::Admin::Routes
   # Logout
   post "/admin/logout" do |env|
     auth = Globals::Auth.user_authenticated? env
-    if auth[:authenticated?]
+    if auth[:is_authenticated]
       env.session.destroy
     end
     result = {
