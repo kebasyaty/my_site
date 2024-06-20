@@ -9,7 +9,7 @@ module Services::Admin::Routes
       brand:            authenticated? ? site_params["brand"] : "",
       slogan:           authenticated? ? site_params["slogan"] : "",
       is_authenticated: authenticated?,
-      service_list:     authenticated? ? Vizbor::MenuComposition.get : Array(Vizbor::MenuCompositionType).new,
+      service_list:     authenticated? ? Vizbor::MenuComposition.get : [] of Vizbor::MenuCompositionType,
       msg_err:          authenticated? ? "" : I18n.with_locale(lang_code) { I18n.t(:auth_failed) },
     }.to_json
     env.response.content_type = "application/json"
