@@ -7,7 +7,12 @@ module Globals::Auth
     env : HTTP::Server::Context,
     login : String, # username or email
     password : String
-  ) : NamedTuple(authenticated?: Bool, user: Services::Admin::Models::User?)
+  ) : NamedTuple(
+    is_authenticated: Bool,
+    is_admin: Bool,
+    is_active: Bool,
+    user: Services::Admin::Models::User?,
+  )
     authenticated? : Bool = false
     filter = Hash(String, BSON::ObjectId | String | Bool).new
     if Valid.email? login
@@ -15,7 +20,6 @@ module Globals::Auth
     else
       filter["username"] = login
     end
-    filter["is_active"] = true
     user : Services::Admin::Models::User? = nil
     if user = Services::Admin::Models::User.find_one_to_instance(filter)
       # User password verification
@@ -27,13 +31,18 @@ module Globals::Auth
         else
           user.print_err
         end
-        # Add user details to session
         if authenticated?
           env.session.string("user_hash", user.hash.value)
+          return {
+            is_authenticated: authenticated?,
+            is_admin:         user.is_admin,
+            is_active:        user.is_active,
+            user:             user,
+          }
         end
       end
     end
-    {authenticated?: authenticated?, user: user}
+    {is_authenticated: false, is_admin: false, is_active: false, user: nil}
   end
 
   # Check if the user is authenticated?
