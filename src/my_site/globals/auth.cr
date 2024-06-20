@@ -10,7 +10,6 @@ module Globals::Auth
   ) : NamedTuple(
     is_authenticated: Bool,
     is_admin: Bool,
-    is_active: Bool,
     user: Services::Admin::Models::User?,
   )
     authenticated? : Bool = false
@@ -20,6 +19,7 @@ module Globals::Auth
     else
       filter["username"] = login
     end
+    filter["is_active"] = true
     if user = Services::Admin::Models::User.find_one_to_instance(filter)
       # User password verification
       if user.verify_password(password)
@@ -35,13 +35,12 @@ module Globals::Auth
           return {
             is_authenticated: authenticated?,
             is_admin:         user.is_admin.value,
-            is_active:        user.is_active.value,
             user:             user,
           }
         end
       end
     end
-    {is_authenticated: false, is_admin: false, is_active: false, user: nil}
+    {is_authenticated: false, is_admin: false, user: nil}
   end
 
   # Check if the user is authenticated?
@@ -50,7 +49,6 @@ module Globals::Auth
   ) : NamedTuple(
     is_authenticated: Bool,
     is_admin: Bool,
-    is_active: Bool,
     user: Services::Admin::Models::User?,
   )
     if !(user_hash = env.session.string?("user_hash")).nil?
@@ -59,13 +57,12 @@ module Globals::Auth
         return {
           is_authenticated: user.is_active.value,
           is_admin:         user.is_admin.value,
-          is_active:        user.is_active.value,
           user:             user,
         }
       else
         env.session.destroy
       end
     end
-    {is_authenticated: false, is_admin: false, is_active: false, user: nil}
+    {is_authenticated: false, is_admin: false, user: nil}
   end
 end

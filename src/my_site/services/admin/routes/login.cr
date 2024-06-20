@@ -50,16 +50,7 @@ module Services::Admin::Routes
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
       )
-      authenticated? = auth[:is_authenticated] && auth[:is_admin] && auth[:is_active]
-    end
-
-    # If user authentication fails
-    unless authenticated?
-      if !auth[:is_active]
-        I18n.with_locale(lang_code) { I18n.t(:account_is_not_active) }
-      else
-        I18n.with_locale(lang_code) { I18n.t(:auth_failed) }
-      end
+      authenticated? = auth[:is_authenticated] && auth[:is_admin]
     end
 
     result = {
