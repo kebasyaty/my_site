@@ -21,7 +21,7 @@ module Globals::Routes
   # Login
   post "/login" do |env|
     auth = Globals::Auth.user_authenticated? env
-    unless auth[:authenticated?]
+    unless auth[:is_authenticated]
       Globals::Auth.user_authentication(
         env,
         login: env.params.json["login"].as(String), # username or email
@@ -34,7 +34,7 @@ module Globals::Routes
   # Logout
   post "/logout" do |env|
     auth = Globals::Auth.user_authenticated? env
-    if auth[:authenticated?]
+    if auth[:is_authenticated]
       env.session.destroy
     end
     env.redirect "/"
