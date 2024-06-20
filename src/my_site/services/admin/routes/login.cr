@@ -41,7 +41,7 @@ module Services::Admin::Routes
   post "/admin/login" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env
-    authenticated? : Bool = auth[:is_authenticated]
+    authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
 
     # Check if the user is authenticated?
     unless authenticated?
