@@ -3,15 +3,16 @@ module Services::Admin::Routes
   post "/admin/update-password" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env
-    authenticated? : Bool = auth[:authenticated?]
+    authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     msg_err : String = ""
-    old_pass : String = env.params.json["old_pass"].as(String)
-    new_pass : String = env.params.json["new_pass"].as(String)
-    model_key : String = env.params.json["model_key"].as(String)
-    doc_hash : String = env.params.json["doc_hash"].as(String)
 
     # Verifying administrator authentication and updating user password.
     if authenticated?
+      old_pass : String = env.params.json["old_pass"].as(String)
+      new_pass : String = env.params.json["new_pass"].as(String)
+      model_key : String = env.params.json["model_key"].as(String)
+      doc_hash : String = env.params.json["doc_hash"].as(String)
+      #
       if model_key == Services::Admin::Models::User.full_model_name
         halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
         halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)

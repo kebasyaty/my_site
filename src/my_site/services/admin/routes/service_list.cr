@@ -3,7 +3,7 @@ module Services::Admin::Routes
   post "/admin/service-list" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env
-    authenticated? : Bool = auth[:authenticated?]
+    authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     result = {
       brand:            site_params["brand"],
