@@ -108,3 +108,4 @@ ru:
   home_page_params: "Параметры домашней страницы"
   max_size:
     interpolation: "Максимальный размер: %{size}"
+  account_is_not_active: "Ваш аккаунт не активен!"

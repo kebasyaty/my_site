@@ -108,3 +108,4 @@ eo:
   home_page_params: "Hejmpaĝo Parametroj"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
+  account_is_not_active: "Via konto ne estas aktiva!"

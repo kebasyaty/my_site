@@ -108,3 +108,4 @@ en:
   home_page_params: "Home Page Parameters"
   max_size:
     interpolation: "Maximum size: %{size}"
+  account_is_not_active: "Your account is not active!"
