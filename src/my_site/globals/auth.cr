@@ -47,8 +47,11 @@ module Globals::Auth
     is_admin: Bool,
     user: Services::Admin::Models::User?,
   )
-    if !(user_hash = env.session.string?("user_hash")).nil?
-      filter = {_id: BSON::ObjectId.new(user_hash.as(String))}
+    if user_hash = env.session.string?("user_hash")
+      filter = {
+        _id:       BSON::ObjectId.new(user_hash.as(String)),
+        is_active: true,
+      }
       if user = Services::Admin::Models::User.find_one_to_instance(filter)
         return {
           is_authenticated: user.is_active.value,
