@@ -1,19 +1,19 @@
-module Vizbor::Services::Admin::Routes
+module Services::Admin::Routes
   # Login page
   get "/admin/sign-in" do |env|
-    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env, is_admin?: true
     if !auth[:authenticated?]
-      if Vizbor::Services::Admin::Models::User.estimated_document_count == 0
+      if Services::Admin::Models::User.estimated_document_count == 0
         # Create first user (administrator)
-        first_user = Vizbor::Services::Admin::Models::User.new
+        first_user = Services::Admin::Models::User.new
         first_user.username.value = "admin"
-        first_user.email.value = if !Vizbor::Settings.debug?
-                                   Vizbor::Settings.admin_prod_email
+        first_user.email.value = if !Settings.debug?
+                                   Settings.admin_prod_email
                                  else
                                    "no_reply@email.net"
                                  end
-        first_user.password.value = if !Vizbor::Settings.debug?
-                                      Vizbor::Settings.admin_prod_pass
+        first_user.password.value = if !Settings.debug?
+                                      Settings.admin_prod_pass
                                     else
                                       "12345678"
                                     end
@@ -24,7 +24,7 @@ module Vizbor::Services::Admin::Routes
         unless first_user.save
           first_user.print_err
           raise DynFork::Errors::Panic.new(
-            "Model : `Vizbor::Services::Admin::Models::User` => " +
+            "Model : `Services::Admin::Models::User` => " +
             "Error while creating the first user (administrator)."
           )
         end
@@ -36,12 +36,12 @@ module Vizbor::Services::Admin::Routes
   # Login
   post "/admin/login" do |env|
     lang_code : String = env.session.string("current_lang")
-    auth = Vizbor::Globals::Auth.user_authenticated? env, is_admin?: true
+    auth = Globals::Auth.user_authenticated? env, is_admin?: true
     authenticated? : Bool = auth[:authenticated?]
 
     # Check if the user is authenticated?
     unless authenticated?
-      auth = Vizbor::Globals::Auth.user_authentication(
+      auth = Globals::Auth.user_authentication(
         env,
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),

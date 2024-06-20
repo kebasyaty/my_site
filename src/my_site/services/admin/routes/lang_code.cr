@@ -1,4 +1,4 @@
-module Vizbor::Services::Admin::Routes
+module Services::Admin::Routes
   # Get language code
   get "/admin/lang-code" do |env|
     result = {

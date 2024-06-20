@@ -1,8 +1,8 @@
 require "vizbor"
 require "./my_site/settings"
 require "./my_site/globals/**"
-require "./my_site/middleware/**"
-require "./my_site/render/**"
+require "./my_site/middlewares/**"
+require "./my_site/renders/**"
 require "./my_site/services/**"
 
 module MySite

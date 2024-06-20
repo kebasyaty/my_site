@@ -1,4 +1,4 @@
-module Vizbor::Render
+module Renders
   extend self
 
   def sitemap(
