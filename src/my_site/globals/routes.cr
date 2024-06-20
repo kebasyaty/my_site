@@ -44,6 +44,6 @@ module Globals::Routes
   end
 
   error 404 do |env|
-    send_file env, "views/404.html"
+    send_file env, "templates/404.html"
   end
 end
