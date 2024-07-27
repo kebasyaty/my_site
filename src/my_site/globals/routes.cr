@@ -26,8 +26,8 @@ module Globals::Routes
       Globals::Auth.user_authentication(
         env,
         lang_code,
-        login: env.params.json["login"].as(String), # username or email
-        password: env.params.json["password"].as(String),
+        login: env.params.body["login"].as(String), # username or email
+        password: env.params.body["password"].as(String),
       )
     end
     env.redirect "/"
