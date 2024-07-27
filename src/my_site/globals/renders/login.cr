@@ -1,4 +1,4 @@
-module Services::Home::Renders
+module Globals::Renders
   extend self
 
   def login_content : String

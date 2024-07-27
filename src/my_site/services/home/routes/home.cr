@@ -14,7 +14,7 @@ module Services::Home::Routes
         brand: site_params["brand"],
         slogan: site_params["slogan"],
       ),
-      content: auth[:is_authenticated] ? Globals::Renders.base_content : Services::Home::Renders.login_content,
+      content: auth[:is_authenticated] ? Globals::Renders.base_content : Globals::Renders.login_content,
       footer: Globals::Renders.base_footer(
         contact_email: site_params["contact_email"],
         contact_phone: site_params["contact_phone"],
