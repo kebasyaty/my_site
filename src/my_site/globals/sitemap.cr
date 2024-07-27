@@ -1,4 +1,4 @@
 # Sitemap generator.
-module Vizbor::Globals::Sitemap
+module Globals::Sitemap
   # ...
 end

@@ -1,4 +1,4 @@
-module Renders
+module Globals::Renders
   extend self
 
   def robots(
