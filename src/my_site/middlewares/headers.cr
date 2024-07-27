@@ -6,7 +6,7 @@ module Vizbor::Middleware
     # Add CORS
     response.headers.add("Access-Control-Allow-Origin", Vizbor::Settings.app_url)
     response.headers.add("Access-Control-Allow-Methods", "GET")
-    response.headers.add("Access-Control-Allow-Headers", "origin, content-type, accept")
+    response.headers.add("Access-Control-Allow-Headers", "authorization, accept, content-type")
     response.headers.add("Access-Control-Max-Age", !Vizbor::Settings.debug? ? "3600" : "-1")
     # Add Headers
     response.headers.add("Content-Size", filestat.size.to_s)
