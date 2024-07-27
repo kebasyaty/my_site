@@ -10,7 +10,7 @@ module Vizbor::Middleware
     parameter_name: "authenticity_token",
     error: "Forbidden (CSRF)",
     allowed_routes: [] of String,
-    http_only: !Vizbor::Settings.debug?,
+    http_only: false,
     samesite: HTTP::Cookie::SameSite::Lax
   )
 end
