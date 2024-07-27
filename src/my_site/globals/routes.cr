@@ -20,7 +20,7 @@ module Globals::Routes
 
   # Login
   post "/login" do |env|
-    lang_code : String = env.session.string("current_lang")
+    lang_code : String = env.session.string("current_lang") # or env.params.url["lang_code"]
     auth = Globals::Auth.user_authenticated? env, lang_code
     unless auth[:is_authenticated]
       Globals::Auth.user_authentication(
@@ -35,7 +35,7 @@ module Globals::Routes
 
   # Logout
   post "/logout" do |env|
-    lang_code : String = env.session.string("current_lang")
+    lang_code : String = env.session.string("current_lang") # or env.params.url["lang_code"]
     auth = Globals::Auth.user_authenticated? env, lang_code
     if auth[:is_authenticated]
       env.session.destroy
