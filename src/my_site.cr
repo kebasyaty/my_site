@@ -7,5 +7,5 @@ require "./my_site/services/**"
 module MySite
   VERSION = "0.1.0"
 
-  Vizbor::WebServer.run
+  Vizbor::Server.run
 end
