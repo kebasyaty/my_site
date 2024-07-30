@@ -3,8 +3,12 @@ module Services::Admin::Routes
   post "/admin/update-password" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
-    authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
+    authenticated? : Bool = auth[:is_authenticated]
     msg_err : String = ""
+
+    unless auth[:is_admin]
+      halt env, status_code: 403, response: "Forbidden"
+    end
 
     # Verifying administrator authentication and updating user password.
     if authenticated?
