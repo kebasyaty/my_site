@@ -28,7 +28,6 @@ module Vizbor::Middleware
     def call(env)
       if env.session.string?("current_lang").nil?
         env.session.string("current_lang", Vizbor::Settings.default_locale)
-        puts Vizbor::Settings.host
       end
       call_next env
     end
