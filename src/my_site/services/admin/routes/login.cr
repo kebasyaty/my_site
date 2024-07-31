@@ -40,10 +40,6 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated]
 
-    unless auth[:is_admin]
-      halt env, status_code: 403, response: "Forbidden"
-    end
-
     # Check if the user is authenticated?
     unless authenticated?
       auth = Globals::Auth.user_authentication(
@@ -52,7 +48,11 @@ module Services::Admin::Routes
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
       )
-      authenticated? = auth[:is_authenticated] && auth[:is_admin]
+      authenticated? = auth[:is_authenticated]
+    end
+
+    unless auth[:is_admin]
+      halt env, status_code: 403, response: "Forbidden"
     end
 
     result = {
