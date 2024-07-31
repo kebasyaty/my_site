@@ -102,9 +102,8 @@ en:
   for_meta_tag_description: "For meta tag - description"
   enter_meta_title: "Enter meta-title"
   enter_meta_description: "Enter meta-description"
-  params: "Parameters"
   site_params: "Site Parameters"
-  basic_params: "Basic Parameters"
-  home_page_params: "Home Page Parameters"
+  general: "General"
+  home_page: "Home Page"
   max_size:
     interpolation: "Maximum size: %{size}"

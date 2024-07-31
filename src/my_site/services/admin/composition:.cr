@@ -32,11 +32,13 @@ module Services::Admin
         service:     {title: I18n.t(:site_params), icon: "cog"},
         collections: [
           {
-            title:     I18n.t(:params),
+            title:     I18n.t(:general),
             model_key: Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
+              {field: "meta_title", title: I18n.t(:meta_title)},
+              {field: "meta_description", title: I18n.t(:meta_description)},
               {field: "contact_email", title: I18n.t(:email)},
               {field: "contact_phone", title: I18n.t(:phone)},
             ],

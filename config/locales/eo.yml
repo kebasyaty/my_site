@@ -102,9 +102,8 @@ eo:
   for_meta_tag_description: "Por meta-etikedo - description"
   enter_meta_title: "Enigu meta-title"
   enter_meta_description: "Enigu meta-description"
-  params: "Parametroj"
   site_params: "Retejaj Parametroj"
-  basic_params: "Bazaj Parametroj"
-  home_page_params: "Hejmpaĝo Parametroj"
+  general: "Generalo"
+  home_page: "Hejmpaĝo"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
