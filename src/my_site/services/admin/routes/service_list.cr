@@ -9,14 +9,17 @@ module Services::Admin::Routes
       halt env, status_code: 403, response: "Forbidden"
     end
 
-    site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
-    result = {
-      brand:            authenticated? ? site_params["brand"] : "",
-      slogan:           authenticated? ? site_params["slogan"] : "",
-      is_authenticated: authenticated?,
-      service_list:     authenticated? ? Vizbor::MenuComposition.get : [] of Vizbor::MenuCompositionType,
-      msg_err:          authenticated? ? "" : I18n.with_locale(lang_code) { I18n.t(:auth_failed) },
-    }.to_json
+    result : String? = nil
+    I18n.with_locale(lang_code) do
+      site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
+      result = {
+        brand:            authenticated? ? site_params["brand"] : "",
+        slogan:           authenticated? ? site_params["slogan"] : "",
+        is_authenticated: authenticated?,
+        service_list:     authenticated? ? Vizbor::MenuComposition.get : [] of Vizbor::MenuCompositionType,
+        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
+      }.to_json
+    end
     env.response.content_type = "application/json"
     result
   end
