@@ -38,7 +38,7 @@ module Services::Admin::Routes
   post "/admin/login" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
-    authenticated? : Bool = auth[:is_authenticated]
+    authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
 
     # Check if the user is authenticated?
     unless authenticated?
@@ -48,17 +48,16 @@ module Services::Admin::Routes
         login: env.params.json["login"].as(String), # username or email
         password: env.params.json["password"].as(String),
       )
-      authenticated? = auth[:is_authenticated]
+      authenticated? = auth[:is_authenticated] && auth[:is_admin]
     end
 
-    unless auth[:is_admin]
-      halt env, status_code: 403, response: "Forbidden"
+    result : String? = nil
+    I18n.with_locale(lang_code) do
+      result = {
+        is_authenticated: authenticated?,
+        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
+      }.to_json
     end
-
-    result = {
-      is_authenticated: authenticated?,
-      msg_err:          authenticated? ? "" : I18n.with_locale(lang_code) { I18n.t(:auth_failed) },
-    }.to_json
     env.response.content_type = "application/json"
     result
   end
