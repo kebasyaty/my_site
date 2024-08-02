@@ -10,7 +10,6 @@ module Services::Admin::Routes
         brand:        site_params["brand"],
         slogan:       site_params["slogan"],
         service_list: Vizbor::MenuComposition.get,
-        msg_err:      "",
       }.to_json
     end
     env.response.content_type = "application/json"
