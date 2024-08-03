@@ -9,9 +9,9 @@ module Services::Admin::Routes
     I18n.with_locale(lang_code) do
       site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
       result = {
-        is_authenticated: auth[:is_authenticated],
-        brand:            site_params["brand"],
-        slogan:           site_params["slogan"],
+        is_authenticated: authenticated?,
+        brand:            authenticated? ? site_params["brand"] : "",
+        slogan:           authenticated? ? site_params["slogan"] : "",
         service_list:     if authenticated?
           Vizbor::MenuComposition.get
         else
