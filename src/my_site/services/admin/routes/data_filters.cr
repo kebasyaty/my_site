@@ -9,9 +9,9 @@ module Services::Admin::Routes
     msg_err : String = ""
 
     # Get target model
-    model = DynFork::Model.subclasses.select { |model_class|
+    model = DynFork::Model.subclasses.find { |model_class|
       model_class.full_model_name == model_key
-    }.first
+    }
 
     result : String? = nil
     I18n.with_locale(lang_code) do
