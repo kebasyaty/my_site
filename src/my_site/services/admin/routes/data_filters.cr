@@ -6,7 +6,6 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     model_key : String = env.params.json["model_key"].as(String)
     filters : Array(String) = [] of String
-    msg_err : String = ""
 
     # Get target model
     model = DynFork::Model.subclasses.find { |model_class|
@@ -19,7 +18,7 @@ module Services::Admin::Routes
       result = {
         is_authenticated: authenticated?,
         filters:          filters,
-        msg_err:          msg_err,
+        msg_err:          "",
       }.to_json
     end
     env.response.content_type = "application/json"
