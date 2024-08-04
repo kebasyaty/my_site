@@ -8,6 +8,11 @@ module Services::Admin::Routes
     filters : Array(String) = [] of String
     msg_err : String = ""
 
+    # Get target model
+    model = DynFork::Model.subclasses.select { |model_class|
+      model_class.full_model_name == model_key
+    }.first
+
     result : String? = nil
     I18n.with_locale(lang_code) do
       # site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
