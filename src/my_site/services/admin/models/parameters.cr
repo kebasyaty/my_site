@@ -7,6 +7,8 @@ module Services::Admin::Models
     delete_doc?: false,
   )]
   struct SiteParams < DynFork::Model
+    include Globals::Extra::Methods
+
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_your_company_name),

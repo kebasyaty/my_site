@@ -6,11 +6,7 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     model_key : String = env.params.json["model_key"].as(String)
     filters : Array(String) = [] of String
-
-    # Get target model
-    model = DynFork::Model.subclasses.find { |model_class|
-      model_class.full_model_name == model_key
-    }
+    model = Globals::Extra::Tools.target_model(model_key)
 
     result : String? = nil
     I18n.with_locale(lang_code) do
