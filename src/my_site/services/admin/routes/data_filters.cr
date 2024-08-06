@@ -5,8 +5,11 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     model_key : String = env.params.json["model_key"].as(String)
-    model = Globals::Extra::Tools.target_model(model_key)
-    filters = model.data_filters(model)
+    filters = [] of String
+
+    if model = Globals::Extra::Tools.target_model(model_key)
+      filters = model.not_nil!.data_filters
+    end
 
     result : String? = nil
     I18n.with_locale(lang_code) do
