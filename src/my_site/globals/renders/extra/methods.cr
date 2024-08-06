@@ -1,7 +1,7 @@
 # Additional methods for models.
 module Globals::Extra::Methods
   # Get data to filter by category (сategory - selection type fields).
-  def data_filters
+  def data_filters : Globals::Extra::Tools::AdminDataFilters
     # ...
   end
 end

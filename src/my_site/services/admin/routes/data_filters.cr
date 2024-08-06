@@ -5,7 +5,7 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     model_key : String = env.params.json["model_key"].as(String)
-    filters = [] of String
+    filters = Globals::Extra::Tools::AdminDataFilters
 
     if model = Globals::Extra::Tools.target_model(model_key)
       filters = model.not_nil!.data_filters
