@@ -1,4 +1,4 @@
-# Additional external tools for models.
+# Additional external tools for working with models.
 module Globals::Extra::Tools
   extend self
 
