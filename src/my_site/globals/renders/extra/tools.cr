@@ -6,6 +6,6 @@ module Globals::Extra::Tools
   def target_model(model_key : String)
     DynFork::Model.subclasses.find { |model_class|
       model_class.full_model_name == model_key
-    }
+    }.new
   end
 end
