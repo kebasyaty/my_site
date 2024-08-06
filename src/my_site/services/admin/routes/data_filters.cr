@@ -5,16 +5,14 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     model_key : String = env.params.json["model_key"].as(String)
-    filters : Array(String) = [] of String
     model = Globals::Extra::Tools.target_model(model_key)
+    filters = model.data_filters(model)
 
     result : String? = nil
     I18n.with_locale(lang_code) do
-      # site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
       result = {
         is_authenticated: authenticated?,
         filters:          filters,
-        msg_err:          "",
       }.to_json
     end
     env.response.content_type = "application/json"
