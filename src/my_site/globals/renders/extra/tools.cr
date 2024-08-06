@@ -3,7 +3,7 @@ module Globals::Extra::Tools
   extend self
 
   alias AdminDynItems = Array(NamedTuple(
-    value: String | Int64 | Float64,
+    value: DynFork::Globals::DataDynamicTypes,
     title: String,
   ))
 
