@@ -2,17 +2,16 @@
 module Globals::Extra::Tools
   extend self
 
-  alias AdminDynItems = Array(NamedTuple(
-    value: DynFork::Globals::DataDynamicTypes,
-    title: String,
-  ))
-
-  alias AdminDataFilters = Array(NamedTuple(
+  # Filter by categories.
+  alias AdminFilter = Array(NamedTuple(
     label: String,
     field: String,
     negation: Bool,
     multiple: Bool,
-    items: AdminDynItems,
+    items: Array(NamedTuple(
+      value: DynFork::Globals::DataDynamicTypes,
+      title: String,
+    )),
   ))
 
   # Get target model.
