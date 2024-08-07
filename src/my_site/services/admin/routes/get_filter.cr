@@ -8,7 +8,7 @@ module Services::Admin::Routes
     filter = Globals::Extra::Tools::AdminFilter
 
     if model = Globals::Extra::Tools.target_model(model_key)
-      filter = model.not_nil!.admin_filter
+      filter = model.not_nil!.new.admin_filter
     end
 
     result : String? = nil
