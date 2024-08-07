@@ -1,7 +1,7 @@
 # Additional methods for models.
 module Globals::Extra::Methods
-  # Get data to filter by category (сategory - selection type fields).
-  def admin_filters : Globals::Extra::Tools::AdminDataFilters
+  # Generete a filter by categories (сategory - selection type fields).
+  def admin_filter : Globals::Extra::Tools::AdminDataFilters
     filter = [] of Globals::Extra::Tools::AdminDataFilters
     {% for var in @type.instance_vars %}
       if !@{{ var }}.ignored? && @{{ var }}.field_type.includes?("Choice")
