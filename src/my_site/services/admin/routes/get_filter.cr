@@ -9,6 +9,8 @@ module Services::Admin::Routes
 
     if model = Globals::Extra::Tools.target_model(model_key)
       filter = model.not_nil!.new.admin_filter
+    else
+      raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
     end
 
     result : String? = nil
