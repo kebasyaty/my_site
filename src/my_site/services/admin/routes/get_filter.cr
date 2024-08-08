@@ -6,17 +6,13 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     #
     model_key : String = env.params.json["model_key"].as(String)
-    filter = if target_model = Globals::Extra::Tools.target_model(model_key)
-               target_model.not_nil!.new.admin_filter
-             else
-               raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
-             end
+    model = Globals::Extra::Tools.model_instance(model_key)
 
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
-        filter:           filter,
+        filter:           model.admin_filter,
       }.to_json
     end
     env.response.content_type = "application/json"

@@ -6,11 +6,7 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     #
     model_key = env.params.json["model_key"].as(String)
-    model = if target_model = Globals::Extra::Tools.target_model(model_key)
-              target_model.not_nil!.new
-            else
-              raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
-            end
+    model = Globals::Extra::Tools.model_instance(model_key)
 
     if authenticated?
       fields_name = env.params.json["fields_name"].as(Array(String))
