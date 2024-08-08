@@ -1,16 +1,24 @@
 module Services::Admin::Routes
-  # Get filter by categories (сategory - field with parameter `choices`).
-  post "/admin/get-filter" do |env|
+  # Get document list.
+  post "/admin/document-list" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     #
-    model_key : String = env.params.json["model_key"].as(String)
-    filter = Globals::Extra::Tools::AdminFilter.new
+    model_key = env.params.json["model_key"].as(String)
+    fields_name = env.params.json["fields_name"].as(Array(String))
+    page_num = env.params.json["page_num"].as(UInt32)
+    search_query = env.params.json["search_query"].as(String)
+    limit = env.params.json["limit"].as(UInt32)
+    sort = env.params.json["sort"].as(String)
+    direct = env.params.json["direct"].as(String)
+    filter = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
+    #
+    page_count : UInt32 = 1
+    documents = [] of Array(BSON)
 
     if model = Globals::Extra::Tools.target_model(model_key)
       model = model.not_nil!.new
-      filter = model.admin_filter
     else
       raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
     end
@@ -19,7 +27,6 @@ module Services::Admin::Routes
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
-        filter:           filter,
       }.to_json
     end
     env.response.content_type = "application/json"
