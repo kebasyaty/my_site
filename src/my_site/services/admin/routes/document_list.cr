@@ -11,6 +11,7 @@ module Services::Admin::Routes
             else
               raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
             end
+
     if authenticated?
       fields_name = env.params.json["fields_name"].as(Array(String))
       page_num = env.params.json["page_num"].as(UInt32)
