@@ -23,10 +23,10 @@ module Globals::Extra::Tools
 
   # Get target model instance.
   def model_instance(model_key : String)
-    target_model = self.model_class(model_key)
-    if target_model.nil?
+    model = self.model_class(model_key)
+    if model.nil?
       raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
     end
-    target_model
+    model
   end
 end
