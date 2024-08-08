@@ -6,8 +6,8 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     #
     model_key : String = env.params.json["model_key"].as(String)
-    filter = if model = Globals::Extra::Tools.target_model(model_key)
-               model.not_nil!.new.admin_filter
+    filter = if target_model = Globals::Extra::Tools.target_model(model_key)
+               target_model.not_nil!.new.admin_filter
              else
                raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
              end

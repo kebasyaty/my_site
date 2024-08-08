@@ -17,11 +17,11 @@ module Services::Admin::Routes
     page_count : UInt32 = 1
     documents = [] of Array(BSON)
 
-    if model = Globals::Extra::Tools.target_model(model_key)
-      model = model.not_nil!.new
-    else
-      raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
-    end
+    model = if target_model = Globals::Extra::Tools.target_model(model_key)
+              target_model.not_nil!.new
+            else
+              raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
+            end
 
     result : String? = nil
     I18n.with_locale(lang_code) do
