@@ -4,11 +4,11 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
-    #
-    model_key = env.params.json["model_key"].as(String)
-    model = Globals::Extra::Tools.model_instance(model_key)
 
     if authenticated?
+      model_key = env.params.json["model_key"].as(String)
+      model = Globals::Extra::Tools.model_instance(model_key)
+      #
       fields_name = env.params.json["fields_name"].as(Array(String))
       page_num = env.params.json["page_num"].as(UInt32)
       search_query = env.params.json["search_query"].as(String)
