@@ -14,6 +14,8 @@ module Globals::Extra::Tools
     )),
   ))
 
+  class_getter text_fields_regex : Regex = /^(?:ColorField|EmailField|PhoneField|TextField|HashField|URLField|IPField)$/
+
   # Get target model class.
   def model_class(model_key : String) : DynFork::Model.class | Nil
     DynFork::Model.subclasses.find { |model_class|

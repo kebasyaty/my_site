@@ -31,18 +31,20 @@ module Services::Admin::Routes
         page_count : UInt32 = 1
         documents = [] of Array(BSON)
         #
+        field_name_and_type_list.select!(fields_name)
+        #
         search_query_not_empty? : Bool = !search_query.empty?
         categories_not_empty? : Bool = !categories.empty?
 
         if search_query_not_empty? || categories_not_empty?
-          search_pattern : Regex? = search_query_not_empty? ? /^#{search_query}$/i : nil
+          search_pattern : Regex = /^#{search_query}$/i
           tmp_doc_1 = Array(Hash(String, Regex)).new
           tmp_doc_2 = Array(Hash(String, Regex)).new
-          text_fields_regex = /^(?:ColorField|EmailField|PhoneField|TextField|HashField|URLField|IPField)$/
 
           field_name_and_type_list.each do |field_name, type_name|
-            if text_fields_regex.matches?(type_name)
+            if Globals::Extra::Tools.text_fields_regex.matches?(type_name)
               tmp_doc_1 << {field_name => search_pattern}
+              next
             end
             if categories_not_empty?
               # ...
