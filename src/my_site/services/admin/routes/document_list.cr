@@ -72,6 +72,13 @@ module Services::Admin::Routes
               end
             end
           end
+          if search_query_not_empty? && categories_not_empty?
+            filter = {"$or": tmp_doc_1, "$and": tmp_doc_2}
+          elsif search_query_not_empty?
+            filter = {"$or": tmp_doc_1}
+          else
+            filter = {"$and": tmp_doc_2}
+          end
         end
       end
     end
