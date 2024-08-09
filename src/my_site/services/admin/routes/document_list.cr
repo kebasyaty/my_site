@@ -7,7 +7,7 @@ module Services::Admin::Routes
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
-      model = Globals::Extra::Tools.model_class(model_key)
+      model_class = Globals::Extra::Tools.model_class(model_key)
       #
       fields_name = env.params.json["fields_name"].as(Array(String))
       page_num = env.params.json["page_num"].as(UInt32)
@@ -24,6 +24,11 @@ module Services::Admin::Routes
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
+        model_class.meta["field_name_and_type_list"].each do |field_name, type_name|
+          if type_name == "TextField" || type_name == "HashField"
+            tmp_doc << {field_name => object_id.not_nil!}
+          end
+        end
         {"$or" => tmp_doc}
       end
     end
