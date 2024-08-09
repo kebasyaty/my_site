@@ -26,7 +26,7 @@ module Services::Admin::Routes
         limit = env.params.json["limit"].as(UInt32)
         sort = env.params.json["sort"].as(String)
         direct = env.params.json["direct"].as(String)
-        categories = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
+        categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
         #
         page_count : UInt32 = 1
         documents = [] of Array(BSON)
