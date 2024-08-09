@@ -39,7 +39,7 @@ module Services::Admin::Routes
         if search_query_not_empty? || categories_not_empty?
           search_pattern : Regex = /^#{search_query}$/i
           tmp_doc_1 = Array(Hash(String, Regex)).new
-          tmp_doc_2 = Array(Hash(String, Hash(String, String | Int64 | Array(String) | Array(Int64)))).new
+          tmp_doc_2 = Array(Hash(String, Hash(String, String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64)))).new
 
           field_name_and_type_list.each do |field_name, type_name|
             if search_query_not_empty? &&
@@ -60,6 +60,12 @@ module Services::Admin::Routes
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
                   val = value.map { |item| item.to_i64 }
+                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
+                  val = value.to_s.to_f64
+                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
+                  val = value.map { |item| item.to_f64 }
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 end
               end
