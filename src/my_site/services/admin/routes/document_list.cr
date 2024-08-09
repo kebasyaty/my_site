@@ -8,7 +8,7 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
-      db_filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
+      filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
       field_name_and_type_list = model_class.meta["field_name_and_type_list"]
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
@@ -18,7 +18,7 @@ module Services::Admin::Routes
             tmp_doc << {field_name => object_id.not_nil!}
           end
         end
-        db_filter = {"$or" => tmp_doc}
+        filter = {"$or" => tmp_doc}
       else
         fields_name = env.params.json["fields_name"].as(Array(String))
         page_num = env.params.json["page_num"].as(UInt32)
@@ -35,9 +35,10 @@ module Services::Admin::Routes
           search_pattern : Regex? = !search_query.empty? ? /^#{search_query}$/i : nil
           tmp_doc_1 = Array(Hash(String, Regex)).new
           tmp_doc_2 = Array(Hash(String, Regex)).new
+          text_fields_regex = /^(?:ColorField|EmailField|PhoneField|TextField|HashField|URLField|IPField)$/
 
           field_name_and_type_list.each do |field_name, type_name|
-            if /^ColorField$/.matches?(type_name)
+            if text_fields_regex.matches?(type_name)
               # ...
             end
           end
