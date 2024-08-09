@@ -51,7 +51,6 @@ module Services::Admin::Routes
               if category = categories[field_name]?
                 value : String = category["value"]
                 negation : Bool = category["negation"]
-
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
                   tmp_doc_2 << negation ? {field_name => {"$ne" => value}} : {field_name => value}
                 elsif type_name == "ChoiceTextMultField" || type_name == "ChoiceTextMultDynField"
