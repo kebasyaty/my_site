@@ -16,7 +16,7 @@ module Services::Admin::Routes
       sort = env.params.json["sort"].as(String)
       direct = env.params.json["direct"].as(String)
       # filter by categories
-      ctg_filter = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
+      categories = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
       #
       page_count : UInt32 = 1
       documents = [] of Array(BSON)
