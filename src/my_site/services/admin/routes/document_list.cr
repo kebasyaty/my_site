@@ -39,7 +39,7 @@ module Services::Admin::Routes
         if search_query_not_empty? || categories_not_empty?
           search_pattern : Regex = /^#{search_query}$/i
           tmp_doc_1 = Array(Hash(String, Regex)).new
-          tmp_doc_2 = Array(Hash(String, Regex)).new
+          tmp_doc_2 = Array(Hash(String, Hash(String, String))).new
 
           field_name_and_type_list.each do |field_name, type_name|
             if search_query_not_empty? &&
@@ -51,6 +51,10 @@ module Services::Admin::Routes
               if category = categories[field_name]?
                 value : String = category["value"]
                 negation : Bool = category["negation"]
+
+                if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
+                  tmp_doc_2 << negation ? {field_name => {"$ne" => value}} : {field_name => value}
+                end
               end
             end
           end
