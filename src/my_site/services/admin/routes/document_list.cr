@@ -39,7 +39,7 @@ module Services::Admin::Routes
         if search_query_not_empty? || categories_not_empty?
           search_pattern : Regex = /^#{search_query}$/i
           tmp_doc_1 = Array(Hash(String, Regex)).new
-          tmp_doc_2 = Array(Hash(String, Hash(String, String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64)))).new
+          tmp_doc_2 = Array(Hash(String, Hash(String, String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64) | Nil))).new
 
           field_name_and_type_list.each do |field_name, type_name|
             if search_query_not_empty? &&
@@ -51,22 +51,23 @@ module Services::Admin::Routes
               if category = categories[field_name]?
                 value : String = category["value"]
                 negation : Bool = category["negation"]
+                val : String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64) | Nil = nil
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
                   tmp_doc_2 << negation ? {field_name => {"$ne" => value}} : {field_name => value}
                 elsif type_name == "ChoiceTextMultField" || type_name == "ChoiceTextMultDynField"
-                  tmp_doc_2 << negation ? {field_name => {"$not" => value}} : {field_name => {"$all" => value}}
+                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": value}}} : {field_name: {"$all": value}}
                 elsif type_name == "ChoiceI64Field" || type_name == "ChoiceI64DynField"
                   val = value.to_s.to_i64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
                   val = value.map { |item| item.to_i64 }
-                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": val}}} : {field_name: {"$all": val}}
                 elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
                   val = value.to_s.to_f64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
                   val = value.map { |item| item.to_f64 }
-                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": val}}} : {field_name: {"$all": val}}
                 end
               end
             end
