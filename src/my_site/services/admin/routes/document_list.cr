@@ -23,8 +23,7 @@ module Services::Admin::Routes
       db_filter : Hash(String, String | Int64 | Float64 | Nil)? = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
-        tmp_doc = Array(Hash(String, String)).new
-        tmp_doc << {"_id" => object_id.not_nil!}
+        tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
         {"$or" => tmp_doc}
       end
     end
