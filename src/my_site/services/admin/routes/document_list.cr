@@ -8,7 +8,7 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
-      filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
+      filter = nil
       field_name_and_type_list = model_class.meta["field_name_and_type_list"]
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
@@ -55,19 +55,19 @@ module Services::Admin::Routes
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
                   tmp_doc_2 << negation ? {field_name => {"$ne" => value}} : {field_name => value}
                 elsif type_name == "ChoiceTextMultField" || type_name == "ChoiceTextMultDynField"
-                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": value}}} : {field_name: {"$all": value}}
+                  tmp_doc_2 << negation ? {field_name: {"$not" => {"$in" => value}}} : {field_name => {"$all" => value}}
                 elsif type_name == "ChoiceI64Field" || type_name == "ChoiceI64DynField"
                   val = value.to_s.to_i64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
                   val = value.map { |item| item.to_i64 }
-                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": val}}} : {field_name: {"$all": val}}
+                  tmp_doc_2 << negation ? {field_name: {"$not" => {"$in": val}}} : {field_name => {"$all" => val}}
                 elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
                   val = value.to_s.to_f64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
                   val = value.map { |item| item.to_f64 }
-                  tmp_doc_2 << negation ? {field_name: {"$not": {"$in": val}}} : {field_name: {"$all": val}}
+                  tmp_doc_2 << negation ? {field_name: {"$not" => {"$in" => val}}} : {field_name => {"$all" => val}}
                 end
               end
             end
