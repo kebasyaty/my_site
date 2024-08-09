@@ -48,7 +48,10 @@ module Services::Admin::Routes
               next
             end
             if categories_not_empty?
-              # ...
+              if category = categories[field_name]?
+                value : String = category["value"]
+                negation : Bool = category["negation"]
+              end
             end
           end
         end
