@@ -8,18 +8,6 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
-      #
-      fields_name = env.params.json["fields_name"].as(Array(String))
-      page_num = env.params.json["page_num"].as(UInt32)
-      search_query = env.params.json["search_query"].as(String)
-      limit = env.params.json["limit"].as(UInt32)
-      sort = env.params.json["sort"].as(String)
-      direct = env.params.json["direct"].as(String)
-      # filter by categories
-      categories = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
-      #
-      page_count : UInt32 = 1
-      documents = [] of Array(BSON)
       db_filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
@@ -30,6 +18,25 @@ module Services::Admin::Routes
           end
         end
         db_filter = {"$or" => tmp_doc}
+      else
+        fields_name = env.params.json["fields_name"].as(Array(String))
+        page_num = env.params.json["page_num"].as(UInt32)
+        search_query = env.params.json["search_query"].as(String)
+        limit = env.params.json["limit"].as(UInt32)
+        sort = env.params.json["sort"].as(String)
+        direct = env.params.json["direct"].as(String)
+        categories = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
+        #
+        page_count : UInt32 = 1
+        documents = [] of Array(BSON)
+
+        if !search_query.empty? || !categories.empty?
+          search_pattern : Regex? = if !search_query.empty?
+            /^#{search_query}$/i
+          else
+            nil
+          end
+        end
       end
     end
 
