@@ -30,9 +30,12 @@ module Services::Admin::Routes
         #
         page_count : UInt32 = 1
         documents = [] of Array(BSON)
+        #
+        search_query_not_empty? : Bool = !search_query.empty?
+        categories_not_empty? : Bool = !categories.empty?
 
-        if !search_query.empty? || !categories.empty?
-          search_pattern : Regex? = !search_query.empty? ? /^#{search_query}$/i : nil
+        if search_query_not_empty? || categories_not_empty?
+          search_pattern : Regex? = search_query_not_empty? ? /^#{search_query}$/i : nil
           tmp_doc_1 = Array(Hash(String, Regex)).new
           tmp_doc_2 = Array(Hash(String, Regex)).new
           text_fields_regex = /^(?:ColorField|EmailField|PhoneField|TextField|HashField|URLField|IPField)$/
@@ -40,6 +43,9 @@ module Services::Admin::Routes
           field_name_and_type_list.each do |field_name, type_name|
             if text_fields_regex.matches?(type_name)
               tmp_doc_1 << {field_name => search_pattern}
+            end
+            if categories_not_empty?
+              # ...
             end
           end
         end
