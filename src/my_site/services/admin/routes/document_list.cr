@@ -7,7 +7,7 @@ module Services::Admin::Routes
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
-      model = Globals::Extra::Tools.model_instance(model_key)
+      model = Globals::Extra::Tools.model_class(model_key)
       #
       fields_name = env.params.json["fields_name"].as(Array(String))
       page_num = env.params.json["page_num"].as(UInt32)
@@ -15,10 +15,18 @@ module Services::Admin::Routes
       limit = env.params.json["limit"].as(UInt32)
       sort = env.params.json["sort"].as(String)
       direct = env.params.json["direct"].as(String)
-      filter = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
+      # filter by categories
+      ctg_filter = env.params.json["filter"].as(Globals::Extra::Tools::AdminFilter)
       #
       page_count : UInt32 = 1
       documents = [] of Array(BSON)
+      db_filter : Hash(String, String | Int64 | Float64 | Nil)? = nil
+
+      if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
+        tmp_doc = Array(Hash(String, String)).new
+        tmp_doc << {"_id" => object_id.not_nil!}
+        {"$or" => tmp_doc}
+      end
     end
 
     result : String? = nil
