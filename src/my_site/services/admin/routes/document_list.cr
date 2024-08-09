@@ -9,10 +9,11 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
       db_filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
+      field_name_and_type_list = model_class.meta["field_name_and_type_list"]
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
-        model_class.meta["field_name_and_type_list"].each do |field_name, type_name|
+        field_name_and_type_list.each do |field_name, type_name|
           if type_name == "TextField" || type_name == "HashField"
             tmp_doc << {field_name => object_id.not_nil!}
           end
@@ -31,10 +32,14 @@ module Services::Admin::Routes
         documents = [] of Array(BSON)
 
         if !search_query.empty? || !categories.empty?
-          search_pattern : Regex? = if !search_query.empty?
-            /^#{search_query}$/i
-          else
-            nil
+          search_pattern : Regex? = !search_query.empty? ? /^#{search_query}$/i : nil
+          tmp_doc_1 = Array(Hash(String, Regex)).new
+          tmp_doc_2 = Array(Hash(String, Regex)).new
+
+          field_name_and_type_list.each do |field_name, type_name|
+            if /^ColorField$/.matches?(type_name)
+              # ...
+            end
           end
         end
       end
