@@ -20,7 +20,7 @@ module Services::Admin::Routes
       #
       page_count : UInt32 = 1
       documents = [] of Array(BSON)
-      db_filter : Hash(String, String | Int64 | Float64 | Nil)? = nil
+      db_filter : Hash(String, String | Int64 | Float64 | BSON::ObjectId | Nil)? = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
@@ -29,7 +29,7 @@ module Services::Admin::Routes
             tmp_doc << {field_name => object_id.not_nil!}
           end
         end
-        {"$or" => tmp_doc}
+        db_filter = {"$or" => tmp_doc}
       end
     end
 
