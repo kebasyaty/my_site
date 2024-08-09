@@ -39,7 +39,7 @@ module Services::Admin::Routes
 
           field_name_and_type_list.each do |field_name, type_name|
             if text_fields_regex.matches?(type_name)
-              # ...
+              tmp_doc_1 << {field_name => search_pattern}
             end
           end
         end
