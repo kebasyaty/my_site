@@ -6,13 +6,13 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     #
     model_key : String = env.params.json["model_key"].as(String)
-    model = Globals::Extra::Tools.model_instance(model_key)
+    model_instance = Globals::Extra::Tools.model_instance(model_key)
 
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
-        filter:           model.admin_filter,
+        filter:           model_instance.admin_filter,
       }.to_json
     end
     env.response.content_type = "application/json"
