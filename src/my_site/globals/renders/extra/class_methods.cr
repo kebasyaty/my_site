@@ -88,6 +88,7 @@ module Globals::Extra::ClassMethods
     result = Hash(String, DynFork::Globals::FieldValueTypes).new
     result["hash"] = doc_hash["_id"].as(BSON::ObjectId).to_s
     field_type : String = ""
+    img_urls = ["url_xs", "url_sm", "url_md", "url_lg", "url"]
     #
     field_name_params_list_ptr.value.each do |field_name, field_params|
       if !(value = doc_hash[field_name]).nil?
