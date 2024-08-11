@@ -5,6 +5,7 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     documents = nil
+    page_count : Int32 = 1
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
@@ -29,7 +30,6 @@ module Services::Admin::Routes
         categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
         #
         filter = nil
-        page_count : Int32 = 1
         #
         field_name_and_type_list.select!(fields_name)
         #
@@ -97,6 +97,11 @@ module Services::Admin::Routes
           nil
         end,
         projection: projection,
+        skip: limit * (page_num - 1),
+        limit: limit,
+      )
+      page_count = model_class.count_documents(
+        filter,
         skip: limit * (page_num - 1),
         limit: limit,
       )
