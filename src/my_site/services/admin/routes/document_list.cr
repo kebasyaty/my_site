@@ -86,8 +86,9 @@ module Services::Admin::Routes
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
-        documents:        self.admin_document_list(filter),
         is_authenticated: authenticated?,
+        documents:        self.admin_document_list(filter),
+        page_count:       page_count,
       }.to_json
     end
     env.response.content_type = "application/json"
