@@ -2,6 +2,8 @@
 module Globals::Extra::ClassMethods
   extend self
 
+  IMG_URLS = ["url_xs", "url_sm", "url_md", "url_lg", "url"]
+
   # Get document list.
   def admin_document_list(
     filter = BSON.new,
@@ -88,7 +90,6 @@ module Globals::Extra::ClassMethods
     result = Hash(String, DynFork::Globals::FieldValueTypes).new
     result["hash"] = doc_hash["_id"].as(BSON::ObjectId).to_s
     field_type : String = ""
-    img_urls = ["url_xs", "url_sm", "url_md", "url_lg", "url"]
     #
     field_name_params_list_ptr.value.each do |field_name, field_params|
       if !(value = doc_hash[field_name]).nil?
@@ -157,14 +158,16 @@ module Globals::Extra::ClassMethods
           end
         when 4
           # FileField
-          bson = BSON.new
-          value.as(Hash(String, BSON::RecursiveValue)).each { |key, val| bson[key] = val }
-          result[field_name] = DynFork::Globals::FileData.from_bson(bson)
         when 5
           # ImageField
           bson = BSON.new
           value.as(Hash(String, BSON::RecursiveValue)).each { |key, val| bson[key] = val }
-          result[field_name] = DynFork::Globals::ImageData.from_bson(bson)
+          IMG_URLS.each do |key|
+            if url = bson[key]
+              result[field_name] = url.as(String)
+              break
+            end
+          end
         when 6
           # I64Field
           result[field_name] = value.as(Int64)
