@@ -60,13 +60,13 @@ module Services::Admin::Routes
                   val = value.to_s.to_i64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
-                  val = value.map { |item| item.to_i64 }
+                  val = value.map(&.to_i64)
                   tmp_doc_2 << negation ? {field_name: {"$not" => {"$in": val}}} : {field_name => {"$all" => val}}
                 elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
                   val = value.to_s.to_f64
                   tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
                 elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
-                  val = value.map { |item| item.to_f64 }
+                  val = value.map(&.to_f64)
                   tmp_doc_2 << negation ? {field_name: {"$not" => {"$in" => val}}} : {field_name => {"$all" => val}}
                 end
               end
