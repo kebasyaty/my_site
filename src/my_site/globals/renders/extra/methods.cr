@@ -17,7 +17,7 @@ module Globals::Extra::Methods
     filter
   end
 
-  # ???
+  # Get document list.
   def admin_document_list(
     filter = BSON.new,
     *,
