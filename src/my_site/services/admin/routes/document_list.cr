@@ -4,9 +4,7 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
-    #
-    filter = nil
-    page_count : Int32 = 1
+    documents = nil
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
@@ -29,6 +27,9 @@ module Services::Admin::Routes
         sort = env.params.json["sort"].as(String)
         direct = env.params.json["direct"].as(String)
         categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
+        #
+        filter = nil
+        page_count : Int32 = 1
         #
         field_name_and_type_list.select!(fields_name)
         #
@@ -80,14 +81,28 @@ module Services::Admin::Routes
           end
         end
       end
+      documents = self.admin_document_list(
+        filter,
+        sort: if sort == "alphabetical_links"
+          {fields_name[0] => direct}
+        elsif sort == "created"
+          {"created_at" => direct}
+        elsif sort == "updated"
+          {"updated_at": direct}
+        else
+          nil
+        end,
+        skip: limit * (page_num - 1),
+        limit: limit,
+      )
     end
 
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
         is_authenticated: authenticated?,
-        documents:        self.admin_document_list(filter),
         page_count:       page_count,
+        documents:        documents,
       }.to_json
     end
     env.response.content_type = "application/json"
