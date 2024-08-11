@@ -21,14 +21,14 @@ module Services::Admin::Routes
         filter = {"$or" => tmp_doc}
       else
         fields_name = env.params.json["fields_name"].as(Array(String))
-        page_num = env.params.json["page_num"].as(UInt32)
+        page_num = env.params.json["page_num"].as(Int32)
         search_query = env.params.json["search_query"].as(String)
-        limit = env.params.json["limit"].as(UInt32)
+        limit = env.params.json["limit"].as(Int32)
         sort = env.params.json["sort"].as(String)
         direct = env.params.json["direct"].as(String)
         categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
         #
-        page_count : UInt32 = 1
+        page_count : Int32 = 1
         documents = [] of Array(BSON)
         #
         field_name_and_type_list.select!(fields_name)
