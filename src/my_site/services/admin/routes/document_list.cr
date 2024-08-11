@@ -10,7 +10,7 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
-      field_name_and_type_list = model_class.meta["field_name_and_type_list"]
+      field_name_and_type_list = model_class.meta[:field_name_and_type_list]
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}

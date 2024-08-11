@@ -22,18 +22,18 @@ module Globals::Extra::Tools
   ]
 
   # Get target model class.
-  def model_class(model_key : String) : DynFork::Model.class | Nil
-    DynFork::Model.subclasses.find { |model_class|
-      model_class.full_model_name == model_key
-    }
+  def model_class(model_key : String) : DynFork::Model.class
+    if model = DynFork::Model.subclasses.find { |model_class|
+         model_class.full_model_name == model_key
+       }
+      return model.not_nil!
+    end
+    raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
   end
 
   # Get target model instance.
   def model_instance(model_key : String)
     model = self.model_class(model_key)
-    if model.nil?
-      raise Vizbor::Errors::Panic.new("There is no Model for `model_key`.")
-    end
-    model
+    model.new
   end
 end
