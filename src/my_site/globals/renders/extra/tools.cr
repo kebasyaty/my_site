@@ -16,7 +16,7 @@ module Globals::Extra::Tools
 
   alias DataDynamicType = String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64)
 
-  class_getter text_field_list = [
+  class_getter text_field_list : Array(String) = [
     "ColorField", "EmailField", "PhoneField", "TextField", "HashField", "URLField", "IPField",
   ]
 

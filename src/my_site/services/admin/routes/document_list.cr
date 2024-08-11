@@ -43,7 +43,7 @@ module Services::Admin::Routes
 
           field_name_and_type_list.each do |field_name, type_name|
             if search_query_not_empty? &&
-               Globals::Extra::Tools.text_fields_regex.matches?(type_name)
+               Globals::Extra::Tools.text_field_list.includes?(type_name)
               tmp_doc_1 << {field_name => search_pattern}
               next
             end
