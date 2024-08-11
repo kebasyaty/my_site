@@ -11,6 +11,13 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
       field_name_and_type_list = model_class.meta[:field_name_and_type_list]
+      search_query = env.params.json["search_query"].as(String)
+      fields_name = env.params.json["fields_name"].as(Array(String))
+      page_num = env.params.json["page_num"].as(Int32)
+      limit = env.params.json["limit"].as(Int32)
+      sort = env.params.json["sort"].as(String)
+      direct = env.params.json["direct"].as(String)
+      filter = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
@@ -21,18 +28,8 @@ module Services::Admin::Routes
         end
         filter = {"$or" => tmp_doc}
       else
-        fields_name = env.params.json["fields_name"].as(Array(String))
-        page_num = env.params.json["page_num"].as(Int32)
-        search_query = env.params.json["search_query"].as(String)
-        limit = env.params.json["limit"].as(Int32)
-        sort = env.params.json["sort"].as(String)
-        direct = env.params.json["direct"].as(String)
         categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
-        #
-        filter = nil
-        #
         field_name_and_type_list.select!(fields_name)
-        #
         search_query_not_empty? : Bool = !search_query.empty?
         categories_not_empty? : Bool = !categories.empty?
 
