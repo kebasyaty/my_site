@@ -4,12 +4,14 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
+    #
+    filter = nil
+    page_count : Int32 = 1
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
       field_name_and_type_list = model_class.meta["field_name_and_type_list"]
-      filter = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
@@ -27,9 +29,6 @@ module Services::Admin::Routes
         sort = env.params.json["sort"].as(String)
         direct = env.params.json["direct"].as(String)
         categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
-        #
-        page_count : Int32 = 1
-        documents = [] of Array(BSON)
         #
         field_name_and_type_list.select!(fields_name)
         #
