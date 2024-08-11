@@ -97,7 +97,11 @@ module Globals::Extra::ClassMethods
           # ColorField | EmailField | PasswordField | PhoneField
           # | TextField | HashField | URLField | IPField
           if field_type != "PasswordField"
-            result[field_name] = value.as(String)
+            tmp_val = value.as(String)
+            if field_type == "ColorField"
+              tmp_val = %Q(<div class="show-color" style="background-color:#{tmp_val};"></div>)
+            end
+            result[field_name] = tmp_val
           else
             result[field_name] = nil
           end
