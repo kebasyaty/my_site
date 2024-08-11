@@ -163,9 +163,9 @@ module Globals::Extra::ClassMethods
           bson = BSON.new
           value.as(Hash(String, BSON::RecursiveValue)).each { |key, val| bson[key] = val }
           IMG_URLS.each do |key|
-            if url = bson[key]
+            if url = bson[key]?
               result[field_name] =
-                %Q(<img class="rounded-lg mt-1" src="#{url.as(String)}" height="40" alt="Image">)
+                %Q(<img class="rounded-lg mt-1" src="#{url.not_nil!.as(String)}" height="40" alt="Image">)
               break
             end
           end
