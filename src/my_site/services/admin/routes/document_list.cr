@@ -81,6 +81,10 @@ module Services::Admin::Routes
           end
         end
       end
+      projection = {"created_at" => 1, "updated_at" => 1}
+      fields_name.each do |name|
+        projection[name] = 1
+      end
       documents = self.admin_document_list(
         filter,
         sort: if sort == "alphabetical_links"
@@ -92,6 +96,7 @@ module Services::Admin::Routes
         else
           nil
         end,
+        projection: projection,
         skip: limit * (page_num - 1),
         limit: limit,
       )
