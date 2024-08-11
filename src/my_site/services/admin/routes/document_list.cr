@@ -81,12 +81,12 @@ module Services::Admin::Routes
           end
         end
       end
-      # ???
     end
 
     result : String? = nil
     I18n.with_locale(lang_code) do
       result = {
+        documents:        self.admin_document_list(filter),
         is_authenticated: authenticated?,
       }.to_json
     end
