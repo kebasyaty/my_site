@@ -77,7 +77,7 @@ module Globals::Extra::ClassMethods
       hash_list << self.admin_document_to_hash(pointerof(document), field_name_params_list_ptr)
     }
     #
-    return hash_list
+    hash_list
   end
 
   # Get clean data from a document, as a Hash object.
