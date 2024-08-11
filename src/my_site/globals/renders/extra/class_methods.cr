@@ -135,6 +135,7 @@ module Globals::Extra::ClassMethods
                   item
                 end
               }
+              result[field_name] = tmp_arr.join(%Q(<span class="green--text"> | </span>))
             else
               result[field_name] = value.as(String)
             end
