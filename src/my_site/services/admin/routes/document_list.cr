@@ -20,7 +20,7 @@ module Services::Admin::Routes
       filter = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
-        tmp_doc : Array(Hash(String, String)) = {"_id" => object_id.not_nil!}
+        tmp_doc : Array(Hash(String, String | BSON::ObjectId)) = {"_id" => object_id.not_nil!}
         field_name_and_type_list.each do |field_name, type_name|
           if type_name == "TextField" || type_name == "HashField"
             tmp_doc << {field_name => object_id.not_nil!}
