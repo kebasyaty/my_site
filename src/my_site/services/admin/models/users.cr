@@ -4,7 +4,8 @@ module Services::Admin::Models
     delete_doc?: false,
   )]
   struct User < DynFork::Model
-    include Globals::Extra::Methods
+    include Globals::Extra::InstanceMethods
+    extend Globals::Extra::ClassMethods
 
     getter username = DynFork::Fields::TextField.new(
       label: I18n.t(:username),
