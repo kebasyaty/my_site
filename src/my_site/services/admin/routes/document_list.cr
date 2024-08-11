@@ -100,11 +100,7 @@ module Services::Admin::Routes
         skip: limit * (page_num - 1),
         limit: limit,
       )
-      page_count = ((model_class.count_documents(
-        filter,
-        skip: limit * (page_num - 1),
-        limit: limit,
-      ) / limit).ceil).to_i32
+      page_count = ((model_class.count_documents(filter) / limit).ceil).to_i32
     end
 
     result : String? = nil
