@@ -127,8 +127,14 @@ module Globals::Extra::ClassMethods
           # | ChoiceI64MultDynField | ChoiceF64MultDynField
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
-              result[field_name] = value.as(
-                Array(BSON::RecursiveValue)).map(&.as(String))
+              tmp_arr = value.as(Array(BSON::RecursiveValue)).map(&.as(String))
+              tmp_arr.map! { |item|
+                if DynFork::Globals.regex[:color_code].matches?(item)
+                  %Q(<div class="sm-show-color" style="background-color:#{item};"></div>)
+                else
+                  item
+                end
+              }
             else
               result[field_name] = value.as(String)
             end
