@@ -128,21 +128,21 @@ module Globals::Extra::ClassMethods
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
               result[field_name] = value.as(
-                Array(BSON::RecursiveValue)).map { |item| item.as(String) }
+                Array(BSON::RecursiveValue)).map(&.as(String))
             else
               result[field_name] = value.as(String)
             end
           elsif field_type.includes?("I64")
             if field_type.includes?("Mult")
               result[field_name] = value.as(
-                Array(BSON::RecursiveValue)).map { |item| item.as(Int64) }
+                Array(BSON::RecursiveValue)).map(&.as(Int64))
             else
               result[field_name] = value.as(Int64)
             end
           elsif field_type.includes?("F64")
             if field_type.includes?("Mult")
               result[field_name] = value.as(
-                Array(BSON::RecursiveValue)).map { |item| item.as(Float64) }
+                Array(BSON::RecursiveValue)).map(&.as(Float64))
             else
               result[field_name] = value.as(Float64)
             end
