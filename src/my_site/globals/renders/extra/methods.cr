@@ -44,7 +44,7 @@ module Globals::Extra::Methods
     collation : Mongo::Collation? = nil,
     read_preference : Mongo::ReadPreference? = nil,
     session : Mongo::Session::ClientSession? = nil
-  ) : Array(Hash(String, DynFork::Globals::FieldValueTypes))?
+  ) : Array(Hash(String, DynFork::Globals::FieldValueTypes))
     #
     unless @@meta.not_nil![:migrat_model?]
       raise DynFork::Errors::Panic.new(
@@ -87,9 +87,9 @@ module Globals::Extra::Methods
     field_name_params_list = @@meta.not_nil![:field_name_params_list]
     field_name_params_list_ptr = pointerof(field_name_params_list)
     cursor.each { |document|
-      hash_list << self.document_to_hash(pointerof(document), field_name_params_list_ptr)
+      hash_list << self.admin_document_to_hash(pointerof(document), field_name_params_list_ptr)
     }
     #
-    return hash_list unless hash_list.empty?
+    return hash_list
   end
 end
