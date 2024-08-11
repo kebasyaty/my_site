@@ -9,12 +9,16 @@ module Globals::Extra::Tools
     negation: Bool,
     multiple: Bool,
     items: Array(NamedTuple(
-      value: DynFork::Globals::DataDynamicTypes,
+      value: Globals::Extra::Tools::DataDynamicType,
       title: String,
     )),
   ))
 
-  class_getter text_fields_regex : Regex = /^(?:ColorField|EmailField|PhoneField|TextField|HashField|URLField|IPField)$/
+  alias DataDynamicType = String | Int64 | Float64 | Array(String) | Array(Int64) | Array(Float64)
+
+  class_getter text_field_list = [
+    "ColorField", "EmailField", "PhoneField", "TextField", "HashField", "URLField", "IPField",
+  ]
 
   # Get target model class.
   def model_class(model_key : String) : DynFork::Model.class | Nil
