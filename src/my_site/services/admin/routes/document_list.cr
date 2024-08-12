@@ -20,7 +20,8 @@ module Services::Admin::Routes
       direct = env.params.json["direct"].to_s.to_i32
       filter = BSON.new
 
-      if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
+      if BSON::ObjectId.validate(search_query)
+        object_id = BSON::ObjectId.new(search_query)
         tmp_doc : Array(BSON) = [BSON.new({"_id" => object_id})]
         field_name_params_list.each do |field_name, params|
           type_name = params[:type]
