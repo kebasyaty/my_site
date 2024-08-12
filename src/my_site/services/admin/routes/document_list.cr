@@ -29,7 +29,7 @@ module Services::Admin::Routes
         end
         filter = {"$or" => tmp_doc}
       else
-        categories = env.params.json["filter"].as(Hash(String, String | Array(String)))
+        categories = env.params.json["filters"].as(Hash(String, String | Array(String)))
         search_query_not_empty? : Bool = !search_query.empty?
         categories_not_empty? : Bool = !categories.empty?
 
@@ -46,7 +46,7 @@ module Services::Admin::Routes
             end
             if categories_not_empty?
               if category = categories[field_name]?
-                value : String = category["value"]
+                value : String | Array(String) = category["value"]
                 negation : Bool = category["negation"]
                 val : Globals::Extra::Tools::DataDynamicType? = nil
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
