@@ -85,7 +85,7 @@ module Services::Admin::Routes
       fields_name.each do |name|
         projection[name] = 1
       end
-      documents = self.admin_document_list(
+      documents = model_class.admin_document_list(
         filter,
         sort: if sort == "alphabetical_links"
           {fields_name[0] => direct}
