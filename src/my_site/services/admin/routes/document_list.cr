@@ -11,8 +11,8 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
       fields_name = env.params.json["fields_name"].as(Array(String))
-      field_name_and_type_list = model_class.meta[:field_name_and_type_list]
-      field_name_and_type_list.select!(fields_name)
+      field_name_params_list = model_class.meta[:field_name_params_list]
+      field_name_params_list.select!(fields_name)
       search_query = env.params.json["search_query"].as(String)
       page_num = env.params.json["page_num"].as(Int32)
       limit = env.params.json["limit"].as(Int32)
@@ -22,7 +22,8 @@ module Services::Admin::Routes
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(BSON) = [BSON.new({"_id" => object_id})]
-        field_name_and_type_list.each do |field_name, type_name|
+        field_name_and_type_list.each do |field_name, params|
+          type_name = params[:type]
           if type_name == "TextField" || type_name == "HashField"
             tmp_doc << BSON.new({field_name => object_id})
           end
@@ -38,7 +39,8 @@ module Services::Admin::Routes
           tmp_doc_1 = Array(Hash(String, Regex)).new
           tmp_doc_2 = Array(BSON).new
 
-          field_name_and_type_list.each do |field_name, type_name|
+          field_name_params_list.each do |field_name, params|
+            type_name = params[:type]
             if search_query_not_empty? &&
                Globals::Extra::Tools.text_field_list.includes?(type_name)
               tmp_doc_1 << {field_name => search_pattern}
