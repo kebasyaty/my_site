@@ -22,7 +22,7 @@ module Services::Admin::Routes
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
         tmp_doc : Array(BSON) = [BSON.new({"_id" => object_id})]
-        field_name_and_type_list.each do |field_name, params|
+        field_name_params_list.each do |field_name, params|
           type_name = params[:type]
           if type_name == "TextField" || type_name == "HashField"
             tmp_doc << BSON.new({field_name => object_id})
