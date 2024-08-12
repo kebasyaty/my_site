@@ -10,10 +10,10 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
+      fields_name = env.params.json["fields_name"].as(Array(String))
       field_name_and_type_list = model_class.meta[:field_name_and_type_list]
       field_name_and_type_list.select!(fields_name)
       search_query = env.params.json["search_query"].as(String)
-      fields_name = env.params.json["fields_name"].as(Array(String))
       page_num = env.params.json["page_num"].as(Int32)
       limit = env.params.json["limit"].as(Int32)
       sort = env.params.json["sort"].as(String)
@@ -21,8 +21,7 @@ module Services::Admin::Routes
       filter = nil
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
-        tmp_doc = Array(Hash(String, String | BSON::ObjectId)).new
-        tmp_doc << {"_id" => object_id.not_nil!}
+        tmp_doc : Array(Hash(String, BSON::ObjectId)) = [{"_id" => object_id.not_nil!}]
         field_name_and_type_list.each do |field_name, type_name|
           if type_name == "TextField" || type_name == "HashField"
             tmp_doc << {field_name => object_id.not_nil!}
