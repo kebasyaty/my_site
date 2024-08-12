@@ -36,7 +36,7 @@ module Services::Admin::Routes
         if search_query_not_empty? || categories_not_empty?
           search_pattern : Regex = /^#{search_query}$/i
           tmp_doc_1 = Array(Hash(String, Regex)).new
-          tmp_doc_2 = Array(Hash(String, Hash(String, Globals::Extra::Tools::DataDynamicType?))).new
+          tmp_doc_2 = Array(Hash(String, String | Int64 | Float64 | Hash(String, String | Int64 | Float64 | Array(String | Int64 | Float64)))).new
 
           field_name_and_type_list.each do |field_name, type_name|
             if search_query_not_empty? &&
@@ -46,26 +46,26 @@ module Services::Admin::Routes
             end
             if categories_not_empty?
               if category = categories[field_name]?
-                value : String | Array(String) = category["value"].as(String | Array(String))
                 negation : Bool = category["negation"].as(Bool)
                 val : Globals::Extra::Tools::DataDynamicType? = nil
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
-                  val_str = category["value"].as(String)
-                  tmp_doc_2 << (negation ? {field_name => {"$ne" => val_str}} : {field_name => val_str})
+                  val = category["value"].as(String)
+                  tmp_doc_2 << (negation ? {field_name => {"$ne" => val}} : {field_name => val})
                 elsif type_name == "ChoiceTextMultField" || type_name == "ChoiceTextMultDynField"
-                  tmp_doc_2 << negation ? {field_name => {"$not" => {"$in" => value}}} : {field_name => {"$all" => value}}
+                  arr = category["value"].as(Array(String))
+                  tmp_doc_2 << (negation ? {field_name => {"$not" => {"$in" => arr}}} : {field_name => {"$all" => arr}})
                 elsif type_name == "ChoiceI64Field" || type_name == "ChoiceI64DynField"
-                  val = value.to_s.to_i64
-                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                  val = category["value"].as(String).to_i64
+                  tmp_doc_2 << (negation ? {field_name => {"$ne" => val}} : {field_name => val})
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
-                  val = value.map(&.to_i64)
-                  tmp_doc_2 << negation ? {field_name => {"$not" => {"$in" => val}}} : {field_name => {"$all" => val}}
+                  arr = category["value"].as(Array(String)).map(&.to_i64)
+                  tmp_doc_2 << (negation ? {field_name => {"$not" => {"$in" => arr}}} : {field_name => {"$all" => arr}})
                 elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
-                  val = value.to_s.to_f64
-                  tmp_doc_2 << negation ? {field_name => {"$ne" => val}} : {field_name => val}
+                  val = category["value"].as(String).to_f64
+                  tmp_doc_2 << (negation ? {field_name => {"$ne" => val}} : {field_name => val})
                 elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
-                  val = value.map(&.to_f64)
-                  tmp_doc_2 << negation ? {field_name => {"$not" => {"$in" => val}}} : {field_name => {"$all" => val}}
+                  arr = category["value"].as(Array(String)).map(&.to_f64)
+                  tmp_doc_2 << (negation ? {field_name => {"$not" => {"$in" => arr}}} : {field_name => {"$all" => arr}})
                 end
               end
             end
