@@ -29,7 +29,7 @@ module Services::Admin::Routes
         end
         filter = {"$or" => tmp_doc}
       else
-        categories = env.params.json["filters"].as(Hash(String, String | Array(String)))
+        categories = env.params.json["filters"].as(Hash(String, Hash(String, String | Bool | Array(String))))
         search_query_not_empty? : Bool = !search_query.empty?
         categories_not_empty? : Bool = !categories.empty?
 
