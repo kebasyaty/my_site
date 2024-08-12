@@ -89,6 +89,8 @@ module Globals::Extra::ClassMethods
     doc_hash = doc_ptr.value.to_h
     result = Hash(String, DynFork::Globals::FieldValueTypes).new
     result["hash"] = doc_hash["_id"].as(BSON::ObjectId).to_s
+    result["created_at"] = doc_hash["created_at"].as(Time).to_s("%FT%H:%M:%S")
+    result["updated_at"] = doc_hash["updated_at"].as(Time).to_s("%FT%H:%M:%S")
     field_type : String = ""
     #
     field_name_params_list_ptr.value.each do |field_name, field_params|
