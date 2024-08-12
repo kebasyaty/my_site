@@ -17,7 +17,7 @@ module Services::Admin::Routes
       page_num = env.params.json["page_num"].to_s.to_i32
       limit = env.params.json["limit"].to_s.to_i32
       sort = env.params.json["sort"].as(String)
-      direct = env.params.json["direct"].as(String)
+      direct = env.params.json["direct"].to_s.to_i32
       filter = BSON.new
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
