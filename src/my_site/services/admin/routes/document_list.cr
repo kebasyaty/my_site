@@ -18,16 +18,16 @@ module Services::Admin::Routes
       limit = env.params.json["limit"].as(Int32)
       sort = env.params.json["sort"].as(String)
       direct = env.params.json["direct"].as(String)
-      filter = nil
+      filter = BSON.new
 
       if object_id : BSON::ObjectId? = BSON::ObjectId.new(search_query)
-        tmp_doc : Array(Hash(String, BSON::ObjectId)) = [{"_id" => object_id.not_nil!}]
+        tmp_doc : Array(BSON) = [BSON.new({"_id" => object_id})]
         field_name_and_type_list.each do |field_name, type_name|
           if type_name == "TextField" || type_name == "HashField"
-            tmp_doc << {field_name => object_id.not_nil!}
+            tmp_doc << BSON.new({field_name => object_id})
           end
         end
-        filter = {"$or" => tmp_doc}
+        filter.append(BSON.new({"$or" => tmp_doc}))
       else
         categories = env.params.json["filters"].as(Hash(String, Hash(String, String | Bool | Array(String))))
         search_query_not_empty? : Bool = !search_query.empty?
@@ -71,11 +71,11 @@ module Services::Admin::Routes
             end
           end
           if search_query_not_empty? && categories_not_empty?
-            filter = {"$or": tmp_doc_1, "$and": tmp_doc_2}
+            filter.append(BSON.new({"$or": tmp_doc_1, "$and": tmp_doc_2}))
           elsif search_query_not_empty?
-            filter = {"$or": tmp_doc_1}
+            filter.append(BSON.new({"$or": tmp_doc_1}))
           else
-            filter = {"$and": tmp_doc_2}
+            filter.append(BSON.new({"$and": tmp_doc_2}))
           end
         end
       end
@@ -97,6 +97,7 @@ module Services::Admin::Routes
         projection: projection,
         skip: limit * (page_num - 1),
         limit: limit,
+        field_name_params_list: field_name_params_list,
       )
       page_count = ((model_class.count_documents(filter) / limit).ceil).to_i32
     end

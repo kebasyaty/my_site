@@ -30,7 +30,8 @@ module Globals::Extra::ClassMethods
     allow_disk_use : Bool? = nil,
     collation : Mongo::Collation? = nil,
     read_preference : Mongo::ReadPreference? = nil,
-    session : Mongo::Session::ClientSession? = nil
+    session : Mongo::Session::ClientSession? = nil,
+    field_name_params_list : Hash(String, NamedTuple(type: String, group: UInt8)),
   ) : Array(Hash(String, DynFork::Globals::FieldValueTypes))
     #
     unless @@meta.not_nil![:migrat_model?]
@@ -71,7 +72,6 @@ module Globals::Extra::ClassMethods
       session: session,
     )
     #
-    field_name_params_list = @@meta.not_nil![:field_name_params_list]
     field_name_params_list_ptr = pointerof(field_name_params_list)
     cursor.each { |document|
       hash_list << self.admin_document_to_hash(pointerof(document), field_name_params_list_ptr)
