@@ -108,3 +108,4 @@ ru:
   max_size:
     interpolation: "Максимальный размер: %{size}"
   dark_theme: "Темная тема?"
+  theme_admin_panel: "Тема для панели администратора."

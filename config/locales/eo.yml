@@ -108,3 +108,4 @@ eo:
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
   dark_theme: "Malhela temo?"
+  theme_admin_panel: "La temo por la Administra Panelo."

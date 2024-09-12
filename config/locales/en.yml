@@ -108,3 +108,4 @@ en:
   max_size:
     interpolation: "Maximum size: %{size}"
   dark_theme: "Dark theme?"
+  theme_admin_panel: "The theme for the administrator panel."
