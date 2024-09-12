@@ -109,3 +109,5 @@ eo:
     interpolation: "Maksimuma grandeco: %{size}"
   dark_theme: "Malhela temo?"
   theme_admin_panel: "La temo por la Administra Panelo."
+  light_color_primary: "Malpeza primara"
+  primary_color_for_light_theme: "Primara koloro por hela temo."

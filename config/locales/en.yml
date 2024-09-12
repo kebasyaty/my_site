@@ -109,3 +109,5 @@ en:
     interpolation: "Maximum size: %{size}"
   dark_theme: "Dark theme?"
   theme_admin_panel: "The theme for the administrator panel."
+  light_color_primary: "Lighty primary"
+  primary_color_for_light_theme: "Primary color for a light theme."

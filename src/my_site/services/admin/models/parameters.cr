@@ -45,9 +45,9 @@ module Services::Admin::Models
       hint: I18n.t(:theme_admin_panel),
     )
     getter light_color_primary = DynFork::Fields::ColorField.new(
-      label: I18n.t(:dark_theme),
+      label: I18n.t(:light_color_primary),
       default: "#ff0000",
-      hint: I18n.t(:is_this_an_active_account),
+      hint: I18n.t(:primary_color_for_light_theme),
     )
   end
 end
