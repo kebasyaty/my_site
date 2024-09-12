@@ -107,3 +107,4 @@ eo:
   home_page: "Hejmpaĝo"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
+  dark_theme: "Malhela temo?"

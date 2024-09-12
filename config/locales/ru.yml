@@ -107,3 +107,4 @@ ru:
   home_page: "Домашняя страница"
   max_size:
     interpolation: "Максимальный размер: %{size}"
+  dark_theme: "Темная тема?"

@@ -39,5 +39,10 @@ module Services::Admin::Models
       label: I18n.t(:phone_for_feedback),
       placeholder: I18n.t(:enter_phone_number),
     )
+    getter dark_theme = DynFork::Fields::BoolField.new(
+      label: I18n.t(:dark_theme),
+      default: false,
+      hint: I18n.t(:is_this_an_active_account),
+    )
   end
 end

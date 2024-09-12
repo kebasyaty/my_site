@@ -107,3 +107,4 @@ en:
   home_page: "Home Page"
   max_size:
     interpolation: "Maximum size: %{size}"
+  dark_theme: "Dark theme?"
