@@ -1,5 +1,5 @@
 module Services::Admin::Routes
-  # Get a list of services for menu items.
+  # Get a list of services for menu items, for admin panal.
   post "/admin/service-list" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
