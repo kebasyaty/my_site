@@ -16,7 +16,6 @@ module Services::Admin::Routes
         dark_color_primary:  site_params["dark_color_primary"],
         brand:               site_params["brand"],
         slogan:              site_params["slogan"],
-        msg_err:             "",
       }.to_json
     end
     env.response.content_type = "application/json"
