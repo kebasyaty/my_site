@@ -65,7 +65,7 @@ module Vizbor::Settings
     if !@@debug
       "www.your-site-name.net"
     else
-      "0.0.0.0" + ":" + port.to_s
+      "localhost" + ":" + port.to_s
     end
   end
 
