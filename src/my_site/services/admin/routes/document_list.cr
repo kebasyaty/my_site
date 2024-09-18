@@ -26,7 +26,7 @@ module Services::Admin::Routes
         field_name_params_list.each do |field_name, params|
           type_name = params[:type]
           if type_name == "TextField" || type_name == "HashField"
-            tmp_doc << BSON.new({field_name => object_id})
+            tmp_doc << BSON.new({field_name => search_query})
           end
         end
         filter.append(BSON.new({"$or" => tmp_doc}))
