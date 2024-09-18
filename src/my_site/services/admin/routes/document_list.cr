@@ -110,14 +110,11 @@ module Services::Admin::Routes
       page_count = ((model_class.count_documents(filter) / limit).ceil).to_i32
     end
 
-    result : String? = nil
-    I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        page_count:       page_count,
-        documents:        documents,
-      }.to_json
-    end
+    result = {
+      is_authenticated: authenticated?,
+      page_count:       page_count,
+      documents:        documents,
+    }.to_json
     env.response.content_type = "application/json"
     result
   end
