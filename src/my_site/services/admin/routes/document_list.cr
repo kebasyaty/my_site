@@ -31,7 +31,6 @@ module Services::Admin::Routes
         end
         filter.append(BSON.new({"$or" => tmp_doc}))
       else
-        # Hash(String, String | Bool | Array(String))
         categories = Hash(String, Hash(String, String | Bool | Array(String))).new
         env.params.json["filters"].as(Hash(String, JSON::Any)).each do |key, value|
           categories[key] = Hash(String, String | Bool | Array(String)).from_json(value.to_s)
