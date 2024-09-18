@@ -29,7 +29,7 @@ module Services::Admin::Routes
             tmp_doc << BSON.new({field_name => search_query})
           end
         end
-        filter.append(BSON.new({"$or" => tmp_doc}))
+        filter["$or"] = tmp_doc
       else
         categories = Hash(String, Hash(String, String | Bool | Array(String))).new
         env.params.json["filters"].as(Hash(String, JSON::Any)).each do |key, value|
@@ -40,8 +40,8 @@ module Services::Admin::Routes
 
         if search_query_not_empty? || categories_not_empty?
           search_pattern : Regex = /^#{search_query}$/i
-          tmp_doc_1 = Array(Hash(String, Regex)).new
-          tmp_doc_2 = Array(BSON).new
+          tmp_doc_1 : Array(Hash(String, Regex)) = [] of Hash(String, Regex)
+          tmp_doc_2 : Array(BSON) = [] of BSON
 
           field_name_params_list.each do |field_name, params|
             type_name = params[:type]
