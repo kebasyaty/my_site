@@ -111,8 +111,8 @@ module Services::Admin::Routes
 
     result = {
       is_authenticated: authenticated?,
-      page_count:       page_count,
       documents:        documents,
+      page_count:       page_count,
     }.to_json
     env.response.content_type = "application/json"
     result
