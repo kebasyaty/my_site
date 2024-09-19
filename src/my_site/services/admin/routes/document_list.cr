@@ -78,11 +78,12 @@ module Services::Admin::Routes
             end
           end
           if search_query_not_empty? && categories_not_empty?
-            filter.append(BSON.new({"$or": tmp_doc_1, "$and": tmp_doc_2}))
+            filter["$or"] = tmp_doc_1
+            filter["$and"] = tmp_doc_2
           elsif search_query_not_empty?
-            filter.append(BSON.new({"$or": tmp_doc_1}))
+            filter["$or"] = tmp_doc_1
           else
-            filter.append(BSON.new({"$and": tmp_doc_2}))
+            filter["$and"] = tmp_doc_2
           end
         end
       end
