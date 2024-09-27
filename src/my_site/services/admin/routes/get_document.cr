@@ -14,7 +14,7 @@ module Services::Admin::Routes
         model_class = Globals::Extra::Tools.model_class(model_key)
         document = model_class.find_one_to_json({_id: id})
       else
-        msg_err = ""
+        msg_err = I18n.t(:invalid_doc_id)
       end
     end
 

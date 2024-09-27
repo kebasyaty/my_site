@@ -118,3 +118,4 @@ en:
   primary_color_for_light_theme: "Primary color for a light theme."
   dark_color_primary: "Dark primary"
   primary_color_for_dark_theme: "Primary color for a dark theme."
+  invalid_doc_id: "Invalid document identifier."

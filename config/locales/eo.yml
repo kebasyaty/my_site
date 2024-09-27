@@ -118,3 +118,4 @@ eo:
   primary_color_for_light_theme: "Primara koloro por hela temo."
   dark_color_primary: "Malhela primara"
   primary_color_for_dark_theme: "Primara koloro por malhela temo."
+  invalid_doc_id: "Nevalida dokumentidentigilo."
