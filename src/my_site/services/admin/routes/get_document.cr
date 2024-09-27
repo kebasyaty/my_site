@@ -14,7 +14,8 @@ module Services::Admin::Routes
       I18n.with_locale(lang_code) do
         if doc_hash.empty?
           document = model_class.new.to_json
-        elsif id : BSON::ObjectId? = BSON::ObjectId.new(doc_hash)
+        elsif BSON::ObjectId.validate(doc_hash)
+          id = BSON::ObjectId.new(doc_hash)
           if (document = model_class.find_one_to_json({_id: id})).nil?
             msg_err = I18n.t(:doc_is_missing)
           end
