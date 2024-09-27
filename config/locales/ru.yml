@@ -1,7 +1,6 @@
 # Russian
 #
 ru:
-  # DynFork
   invalid_color_code: "Неправильный цветовой код."
   allowed_chars:
     interpolation: "Допустимые символы: %{chars}"
@@ -51,9 +50,15 @@ ru:
   size_exceeds_max: "Размер файла превышает максимальное значение."
   invalid_file_type:
     interpolation: "%{type} - Неверный тип файла."
-  forbidden_saving: "Запрещено сохранять!"
-  forbidden_updating: "Запрещено обновлять!"
-  forbidden_deleting: "Запрещено удалять!"
+  forbidden_creating_docs: "Запрещено создавать новые документы!"
+  forbidden_updating_docs: "Запрещено обновлять документы!"
+  forbidden_deleting_docs: "Запрещено удалять документы!"
+  hash_doc_id: "Hash - Идентификатор документа"
+  enter_doc_id: "Введите идентификатор документа"
+  created_at: "Создано в"
+  updated_at: "Обновлено в"
+  doc_was_created: "Когда был создан документ."
+  doc_was_updated: "Когда документ был обновлен."
   # Vizbor
   auth_failed: "Аутентификация не удалась."
   username: "Имя пользователя"

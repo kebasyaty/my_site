@@ -1,7 +1,6 @@
 # English
 #
 en:
-  # DynFork
   invalid_color_code: "Invalid Color code."
   allowed_chars:
     interpolation: "Allowed chars: %{chars}"
@@ -51,9 +50,15 @@ en:
   size_exceeds_max: "File size exceeds the maximum value."
   invalid_file_type:
     interpolation: "%{type} - Invalid file type."
-  forbidden_saving: "It is forbidden to save!"
-  forbidden_updating: "Updating is prohibited!"
-  forbidden_deleting: "It is forbidden to delete!"
+  forbidden_creating_docs: "It is forbidden to create new documents!"
+  forbidden_updating_docs: "It is forbidden to update documents!"
+  forbidden_deleting_docs: "It is forbidden to delete documents!"
+  hash_doc_id: "Hash - Document ID"
+  enter_doc_id: "Enter document ID"
+  created_at: "Created at"
+  updated_at: "Updated at"
+  doc_was_created: "When the document was created."
+  doc_was_updated: "When the document was updated."
   # Vizbor
   auth_failed: "Authentication failed."
   username: "Username"
