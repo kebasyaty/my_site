@@ -4,12 +4,18 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
-    document : String = ""
+    document : String? = nil
     msg_err : String = ""
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       doc_hash = env.params.json["doc_hash"].as(String)
+      if id : BSON::ObjectId? = BSON::ObjectId.new(doc_hash)
+        model_class = Globals::Extra::Tools.model_class(model_key)
+        document = model_class.find_one_to_json({_id: id})
+      else
+        msg_err = ""
+      end
     end
 
     result = {
