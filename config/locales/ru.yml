@@ -119,3 +119,4 @@ ru:
   dark_color_primary: "Темный первичный"
   primary_color_for_dark_theme: "Первичный цвет для темной темы."
   invalid_doc_id: "Неверный идентификатор документа."
+  doc_is_missing: "Документ отсутствует."

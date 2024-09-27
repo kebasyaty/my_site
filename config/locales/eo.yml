@@ -119,3 +119,4 @@ eo:
   dark_color_primary: "Malhela primara"
   primary_color_for_dark_theme: "Primara koloro por malhela temo."
   invalid_doc_id: "Nevalida dokumentidentigilo."
+  doc_is_missing: "La dokumento mankas."

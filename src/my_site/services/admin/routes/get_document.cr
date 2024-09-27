@@ -12,7 +12,9 @@ module Services::Admin::Routes
       doc_hash = env.params.json["doc_hash"].as(String)
       if id : BSON::ObjectId? = BSON::ObjectId.new(doc_hash)
         model_class = Globals::Extra::Tools.model_class(model_key)
-        document = model_class.find_one_to_json({_id: id})
+        if (document = model_class.find_one_to_json({_id: id})).nil?
+          msg_err = I18n.t(:doc_is_missing)
+        end
       else
         msg_err = I18n.t(:invalid_doc_id)
       end
