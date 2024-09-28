@@ -86,6 +86,7 @@ module Services::Admin::Models
     getter slug = DynFork::Fields::SlugField.new(
       label: I18n.t(:slug),
       slug_sources: ["username"],
+      disabled: true,
     )
 
     # Additional validation (starts automatically)
