@@ -82,11 +82,13 @@ module Services::Admin::Models
       label: I18n.t(:last_login),
       disabled: true,
       hint: I18n.t(:datetime_of_user_last_login),
+      hide: true,
     )
     getter slug = DynFork::Fields::SlugField.new(
       label: I18n.t(:slug),
       slug_sources: ["username"],
       disabled: true,
+      hide: true,
     )
 
     # Additional validation (starts automatically)
