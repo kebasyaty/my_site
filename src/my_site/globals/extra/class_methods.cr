@@ -139,21 +139,21 @@ module Globals::Extra::ClassMethods
                   item
                 end
               }
-              result[field_name] = tmp_arr.join(%Q(<span class="green--text"> | </span>))
+              result[field_name] = tmp_arr.join(%Q(<span class="primary--text"> | </span>))
             else
               result[field_name] = value.as(String)
             end
           elsif field_type.includes?("I64")
             if field_type.includes?("Mult")
               tmp_arr = value.as(Array(BSON::RecursiveValue)).map(&.as(Int64))
-              result[field_name] = tmp_arr.join(%Q(<span class="green--text"> | </span>))
+              result[field_name] = tmp_arr.join(%Q(<span class="primary--text"> | </span>))
             else
               result[field_name] = value.as(Int64)
             end
           elsif field_type.includes?("F64")
             if field_type.includes?("Mult")
               tmp_arr = value.as(Array(BSON::RecursiveValue)).map(&.as(Float64))
-              result[field_name] = tmp_arr.join(%Q(<span class="green--text"> | </span>))
+              result[field_name] = tmp_arr.join(%Q(<span class="primary--text"> | </span>))
             else
               result[field_name] = value.as(Float64)
             end
