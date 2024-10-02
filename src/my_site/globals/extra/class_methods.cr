@@ -197,7 +197,6 @@ module Globals::Extra::ClassMethods
         result[field_name] = nil
       end
     end
-    #
     result
   end
 end
