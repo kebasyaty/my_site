@@ -71,12 +71,10 @@ module Globals::Extra::ClassMethods
       read_preference: read_preference,
       session: session,
     )
-    #
     field_name_params_list_ptr = pointerof(field_name_params_list)
     cursor.each { |document|
       hash_list << self.admin_document_to_hash(pointerof(document), field_name_params_list_ptr)
     }
-    #
     hash_list
   end
 
