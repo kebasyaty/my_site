@@ -56,6 +56,12 @@ module Globals::Extra::InstanceMethods
           end
         elsif input_type == "checkbox"
           @{{ field }}.value = Bool.from_json(data_form[name])
+        elsif field_type.includes?("File")
+          # ???
+        elsif field_type.includes?("File")
+          # ???
+        else
+          @{{ field }}.value = data_form[name]
         end
       end
     {% end %}
