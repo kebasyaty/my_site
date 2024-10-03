@@ -7,8 +7,8 @@ module Globals::Extra::Tools
 
   # Data for file types.
   alias AdminFileData = NamedTuple(
-    name: String,
-    base64: String,
+    name: String?,
+    base64: String?,
     delete: Bool,
   )
 
