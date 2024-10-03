@@ -7,9 +7,8 @@ module Services::Admin::Routes
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
-      model_class = Globals::Extra::Tools.model_class(model_key)
-      data_form = env.params.json["data_form"].as(Hash(String, DynFork::Globals::FieldValueTypes))
-      instance = model_class.from_json(data_form)
+      instance = Globals::Extra::Tools.model_instance(model_key)
+      data_form = env.params.json["data_form"].as(Hash(String, String))
       instance.save
     end
 
