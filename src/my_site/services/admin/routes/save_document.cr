@@ -4,11 +4,12 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
+    instance = nil
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
-      instance = Globals::Extra::Tools.model_instance(model_key)
       data_form = Hash(String, String).from_json(env.params.json["data_form"].as(String))
+      instance = Globals::Extra::Tools.model_instance(model_key)
       instance.admin_refrash_fields(data_form)
       instance.save
     end
