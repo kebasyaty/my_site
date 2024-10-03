@@ -21,6 +21,7 @@ module Globals::Extra::InstanceMethods
   def admin_refrash_fields(data_form : Hash(String, String)) : Nil
     name : String = ""
     field_type : String = ""
+    number_types = ["number", "range"]
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
       field_type = @{{ field }}.field_type
@@ -45,6 +46,8 @@ module Globals::Extra::InstanceMethods
               @{{ field }}.value = data_form[name].to_f64
             end
           end
+        elsif number_types.includes?(@{{ field }}.input_type)
+          # ???
         end
       end
     {% end %}
