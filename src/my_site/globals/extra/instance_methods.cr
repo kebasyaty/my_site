@@ -58,7 +58,7 @@ module Globals::Extra::InstanceMethods
           @{{ field }}.value = Bool.from_json(data_form[name])
         elsif field_type.includes?("File")
           # ???
-        elsif field_type.includes?("File")
+        elsif field_type.includes?("Image")
           # ???
         else
           @{{ field }}.value = data_form[name]
