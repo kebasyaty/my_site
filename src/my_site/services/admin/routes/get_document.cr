@@ -5,6 +5,7 @@ module Services::Admin::Routes
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     document = nil
+    msg_err : String = ""
 
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
@@ -27,6 +28,7 @@ module Services::Admin::Routes
     result = {
       is_authenticated: authenticated?,
       document:         document,
+      msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"
     result
