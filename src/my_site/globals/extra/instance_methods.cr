@@ -21,9 +21,11 @@ module Globals::Extra::InstanceMethods
   def admin_refrash_fields(data_form : Hash(String, String)) : Nil
     name : String = ""
     field_type : String = ""
+    input_type : String = ""
     number_types = ["number", "range"]
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
+      input_type = @{{ field }}.input_type
       field_type = @{{ field }}.field_type
       if !@{{ field }}.ignored? && data_form[name] != "null"
         if field_type.includes?("Choice")
@@ -46,12 +48,14 @@ module Globals::Extra::InstanceMethods
               @{{ field }}.value = data_form[name].to_f64
             end
           end
-        elsif number_types.includes?(@{{ field }}.input_type)
+        elsif number_types.includes?(input_type)
           if field_type.includes?("I64")
             @{{ field }}.value = data_form[name].to_i64
           elsif field_type.includes?("F64")
             @{{ field }}.value = data_form[name].to_f64
           end
+        elsif input_type == "checkbox"
+          @{{ field }}.value = Bool.from_json(data_form[name])
         end
       end
     {% end %}
