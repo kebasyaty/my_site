@@ -19,7 +19,12 @@ module Globals::Extra::InstanceMethods
 
   # Update state of  Model, from web form of  document of administrator panel.
   def admin_refrash_fields(data_form : Hash(String, String)) : Nil
+    name : String = ""
     {% for field in @type.instance_vars %}
+      name = @{{ field }}.name
+      if !@{{ field }}.ignored? && data_form[name] != "null" {
+        # ???
+      }
     {% end %}
   end
 end
