@@ -56,10 +56,13 @@ module Globals::Extra::InstanceMethods
           end
         elsif input_type == "checkbox"
           @{{ field }}.value = Bool.from_json(data_form[name])
-        elsif field_type.includes?("File")
+        elsif input_type == "file"
           file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
-        elsif field_type.includes?("Image")
-          file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
+          @{{ field }}.from_base64(
+            base64: file_data.base64,
+            filename: file_data.name,
+            delete: file_data.delete,
+          )
         else
           @{{ field }}.value = data_form[name]
         end
