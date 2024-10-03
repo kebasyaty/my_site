@@ -8,7 +8,8 @@ module Services::Admin::Routes
     if authenticated?
       model_key = env.params.json["model_key"].as(String)
       instance = Globals::Extra::Tools.model_instance(model_key)
-      data_form = env.params.json["data_form"].as(Hash(String, String))
+      data_form = Hash(String, String).from_json(env.params.json["data_form"].as(String))
+      instance.admin_refrash_fields(data_form)
       instance.save
     end
 
