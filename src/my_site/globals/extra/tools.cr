@@ -2,6 +2,9 @@
 module Globals::Extra::Tools
   extend self
 
+  # Types of input for numerical data.
+  NUMBER_TYPES = ["number", "range"]
+
   # Filter by categories.
   alias AdminFilter = Array(NamedTuple(
     label: String,
