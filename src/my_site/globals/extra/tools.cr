@@ -5,6 +5,13 @@ module Globals::Extra::Tools
   # Types of input for numerical data.
   NUMBER_TYPES = ["number", "range"]
 
+  # Data for file types.
+  alias AdminFileData = NamedTuple(
+    name: String,
+    base64: String,
+    delete: Bool,
+  )
+
   # Filter by categories.
   alias AdminFilter = Array(NamedTuple(
     label: String,

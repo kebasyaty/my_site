@@ -22,7 +22,7 @@ module Globals::Extra::InstanceMethods
     name : String = ""
     field_type : String = ""
     input_type : String = ""
-    file_data : NamedTuple(name: String, base64: String, delete: Bool)? = nil
+    file_data : Globals::Extra::Tools::AdminFileData? = nil
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
       input_type = @{{ field }}.input_type
@@ -57,9 +57,9 @@ module Globals::Extra::InstanceMethods
         elsif input_type == "checkbox"
           @{{ field }}.value = Bool.from_json(data_form[name])
         elsif field_type.includes?("File")
-          # ???
+          file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
         elsif field_type.includes?("Image")
-          # ???
+          file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
         else
           @{{ field }}.value = data_form[name]
         end
