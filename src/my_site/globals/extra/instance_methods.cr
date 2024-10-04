@@ -53,9 +53,9 @@ module Globals::Extra::InstanceMethods
           end
         elsif Globals::Extra::Tools::NUMBER_INPUT_TYPES.includes?(input_type)
           if field_type.includes?("I64")
-            @{{ field }}.value = data_form[name].to_i64
+            @{{ field }}.refrash_val_i64(data_form[name].to_i64)
           elsif field_type.includes?("F64")
-            @{{ field }}.value = data_form[name].to_f64
+            @{{ field }}.refrash_val_f64(data_form[name].to_f64)
           end
         elsif input_type == "checkbox"
           @{{ field }}.value = Bool.from_json(data_form[name])
