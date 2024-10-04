@@ -38,15 +38,17 @@ module Globals::Extra::InstanceMethods
             end
           elsif field_type.includes?("I64")
             if field_type.includes?("Mult")
-              @{{ field }}.refrash_val_arr_i64(Array(Int64).from_json(data_form[name]))
+              @{{ field }}.refrash_val_arr_i64(
+                Array(Int64).from_json(data_form[name]))
             else
               @{{ field }}.refrash_val_i64(data_form[name].to_i64)
             end
           elsif field_type.includes?("F64")
             if field_type.includes?("Mult")
-              @{{ field }}.value = Array(Float64).from_json(data_form[name])
+              @{{ field }}.refrash_val_arr_f64(
+                Array(Float64).from_json(data_form[name]))
             else
-              @{{ field }}.value = data_form[name].to_f64
+              @{{ field }}.refrash_val_f64(data_form[name].to_f64)
             end
           end
         elsif Globals::Extra::Tools::NUMBER_INPUT_TYPES.includes?(input_type)
