@@ -31,15 +31,16 @@ module Globals::Extra::InstanceMethods
         if field_type.includes?("Choice")
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
-              @{{ field }}.value = Array(String).from_json(data_form[name])
+              @{{ field }}.refrash_val_arr_str(
+                Array(String).from_json(data_form[name]))
             else
-              @{{ field }}.value = data_form[name]
+              @{{ field }}.refrash_val_str(data_form[name])
             end
           elsif field_type.includes?("I64")
             if field_type.includes?("Mult")
-              @{{ field }}.value = Array(Int64).from_json(data_form[name])
+              @{{ field }}.refrash_val_arr_i64(Array(Int64).from_json(data_form[name]))
             else
-              @{{ field }}.value = data_form[name].to_i64
+              @{{ field }}.refrash_val_i64(data_form[name].to_i64)
             end
           elsif field_type.includes?("F64")
             if field_type.includes?("Mult")
@@ -60,11 +61,11 @@ module Globals::Extra::InstanceMethods
           file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
           @{{ field }}.from_base64(
             base64: file_data.base64,
-            filename: file_data.name,
+            filename: file_data.filename,
             delete: file_data.delete,
           )
         else
-          @{{ field }}.value = data_form[name]
+          @{{ field }}.refrash_val_str(data_form[name])
         end
       end
     {% end %}

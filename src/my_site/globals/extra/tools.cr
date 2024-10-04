@@ -7,7 +7,7 @@ module Globals::Extra::Tools
 
   # Data for file types - FileField, ImageField.
   alias AdminFileData = NamedTuple(
-    name: String?,
+    filename: String?,
     base64: String?,
     delete: Bool,
   )
