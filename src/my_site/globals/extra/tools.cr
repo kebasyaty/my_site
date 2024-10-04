@@ -3,7 +3,7 @@ module Globals::Extra::Tools
   extend self
 
   # Types of input for numerical data - I64Field, F64Field.
-  NUMBER_TYPES = ["number", "range"]
+  NUMBER_INPUT_TYPES = ["number", "range"]
 
   # Data for file types - FileField, ImageField.
   alias AdminFileData = NamedTuple(

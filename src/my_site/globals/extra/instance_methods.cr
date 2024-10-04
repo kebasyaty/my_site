@@ -48,7 +48,7 @@ module Globals::Extra::InstanceMethods
               @{{ field }}.value = data_form[name].to_f64
             end
           end
-        elsif Globals::Extra::Tools::NUMBER_TYPES.includes?(input_type)
+        elsif Globals::Extra::Tools::NUMBER_INPUT_TYPES.includes?(input_type)
           if field_type.includes?("I64")
             @{{ field }}.value = data_form[name].to_i64
           elsif field_type.includes?("F64")
