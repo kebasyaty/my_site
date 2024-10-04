@@ -58,7 +58,8 @@ module Globals::Extra::InstanceMethods
             @{{ field }}.refrash_val_f64(data_form[name].to_f64)
           end
         elsif input_type == "checkbox"
-          @{{ field }}.value = Bool.from_json(data_form[name])
+          @{{ field }}.refrash_val_bool(
+            Bool.from_json(data_form[name]))
         elsif input_type == "file"
           file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
           @{{ field }}.from_base64(
