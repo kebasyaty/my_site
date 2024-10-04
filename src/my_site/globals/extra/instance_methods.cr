@@ -63,9 +63,9 @@ module Globals::Extra::InstanceMethods
         elsif input_type == "file"
           file_data = Globals::Extra::Tools::AdminFileData.from_json(data_form[name])
           @{{ field }}.from_base64(
-            base64: file_data.base64,
-            filename: file_data.filename,
-            delete: file_data.delete,
+            base64: file_data[:base64],
+            filename: file_data[:filename],
+            delete: file_data[:delete],
           )
         else
           @{{ field }}.refrash_val_str(data_form[name])
