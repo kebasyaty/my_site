@@ -27,7 +27,7 @@ module Globals::Extra::InstanceMethods
       name = @{{ field }}.name
       input_type = @{{ field }}.input_type
       field_type = @{{ field }}.field_type
-      if !@{{ field }}.ignored? && data_form[name] != "null"
+      if data_form[name] != "null"
         if field_type.includes?("Choice")
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
