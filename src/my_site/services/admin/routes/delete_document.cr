@@ -10,13 +10,17 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       doc_hash = env.params.json["doc_hash"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
-      if BSON::ObjectId.validate(doc_hash)
-        id = BSON::ObjectId.new(doc_hash)
-        if (delete_result = model_class.delete_one({_id: id})).nil?
-          msg_err = I18n.t(:doc_was_not_delete)
+      I18n.with_locale(lang_code) do
+        if !model_class.meta[:delete_doc?]
+          msg_err = I18n.t(:forbidden_deleting_docs)
+        elsif BSON::ObjectId.validate(doc_hash)
+          id = BSON::ObjectId.new(doc_hash)
+          if model_class.delete_one({_id: id}).nil?
+            msg_err = I18n.t(:doc_was_not_delete)
+          end
+        else
+          msg_err = I18n.t(:invalid_doc_id)
         end
-      else
-        msg_err = I18n.t(:invalid_doc_id)
       end
     end
 
