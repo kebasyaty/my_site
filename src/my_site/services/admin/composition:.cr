@@ -1,7 +1,7 @@
 # Service composition for menu structure of admin panel.
 module Services::Admin
   struct Accounts < Vizbor::MenuComposition
-    def self.composition : Vizbor::MenuCompositionType?
+    def self.composition : Vizbor::MenuCompositionResult?
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
         service:     {title: I18n.t(:accounts), icon: "account-multiple"},
@@ -26,7 +26,7 @@ module Services::Admin
   end
 
   struct SiteParameters < Vizbor::MenuComposition
-    def self.composition : Vizbor::MenuCompositionType?
+    def self.composition : Vizbor::MenuCompositionResult?
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
         service:     {title: I18n.t(:site_params), icon: "cog"},
@@ -37,8 +37,6 @@ module Services::Admin
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
-              {field: "meta_title", title: I18n.t(:meta_title)},
-              {field: "meta_description", title: I18n.t(:meta_description)},
               {field: "contact_email", title: I18n.t(:email)},
               {field: "contact_phone", title: I18n.t(:phone)},
             ],
