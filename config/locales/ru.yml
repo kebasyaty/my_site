@@ -58,7 +58,7 @@ ru:
   created_at: "Создано в"
   updated_at: "Обновлено в"
   doc_was_created: "Когда был создан документ."
-  doc_was_updated: "Когда документ был обновлен."
+  doc_was_updated: "Когда был обновлен документ."
   # Vizbor
   auth_failed: "Аутентификация не удалась!"
   username: "Имя пользователя"
