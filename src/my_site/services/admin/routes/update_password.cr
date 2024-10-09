@@ -18,9 +18,9 @@ module Services::Admin::Routes
       doc_hash : String = env.params.json["doc_hash"].as(String)
       #
       if model_key == Services::Admin::Models::User.full_model_name
-        halt env, status_code: 400, response: "Missing document hash." if doc_hash.empty?
-        halt env, status_code: 400, response: "Invalid document hash." unless Valid.mongo_id?(doc_hash)
-        filter = {"_id": BSON::ObjectId.new(doc_hash)}
+        halt env, status_code: 400, response: "Missing document ID." if doc_hash.empty?
+        halt env, status_code: 400, response: "Invalid document ID." unless Valid.mongo_id?(doc_hash)
+        filter = {_id: BSON::ObjectId.new(doc_hash)}
         if user = Services::Admin::Models::User.find_one_to_instance(filter)
           I18n.with_locale(lang_code) do
             begin
@@ -33,10 +33,10 @@ module Services::Admin::Routes
             end
           end
         else
-          halt env, status_code: 400, response: "User is not found."
+          halt env, status_code: 400, response: "User is not found!"
         end
       else
-        halt env, status_code: 400, response: "The model key does not match."
+        halt env, status_code: 400, response: "The model key does not match!"
       end
     else
       I18n.with_locale(lang_code) do
