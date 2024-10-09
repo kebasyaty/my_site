@@ -24,7 +24,7 @@ ru:
     interpolation: "Пример: %{sample}"
   examples:
     interpolation: "Примеры: %{samples}"
-  not_unique: "Не является уникальным."
+  not_unique: "Не является уникальным!"
   required_field: "Обязательное поле."
   not_match_choices: "Значение не соответствует возможному выбору."
   incorrect_date: "Неправильная дата."

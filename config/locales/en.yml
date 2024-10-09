@@ -24,7 +24,7 @@ en:
     interpolation: "Example: %{sample}"
   examples:
     interpolation: "Examples: %{samples}"
-  not_unique: "Is not unique."
+  not_unique: "Is not unique!"
   required_field: "Required field."
   not_match_choices: "Value does not match possible choices."
   incorrect_date: "Incorrect date."

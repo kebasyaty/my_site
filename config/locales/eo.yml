@@ -24,7 +24,7 @@ eo:
     interpolation: "Ekzemplo: %{sample}"
   examples:
     interpolation: "Ekzemploj: %{samples}"
-  not_unique: "Ne estas unika."
+  not_unique: "Ne estas unika!"
   required_field: "Bezonata kampo."
   not_match_choices: "Valoro ne kongruas kun eblaj elektoj."
   incorrect_date: "Malĝusta dato."
