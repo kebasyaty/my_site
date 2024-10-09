@@ -16,10 +16,10 @@ module Services::Admin::Routes
         elsif BSON::ObjectId.validate(doc_hash)
           id = BSON::ObjectId.new(doc_hash)
           if model_class.delete_one({_id: id}).nil?
-            msg_err = I18n.t(:doc_was_not_delete)
+            msg_err = "ID: #{doc_hash}<br/>#{I18n.t(:doc_was_not_delete)}"
           end
         else
-          msg_err = I18n.t(:invalid_doc_id)
+          msg_err = "ID: #{doc_hash}<br/>#{I18n.t(:invalid_doc_id)}"
         end
       end
     end
