@@ -1,5 +1,5 @@
 module Services::Admin::Routes
-  # Add or delete dynamic element.
+  # Add or delete dynamic element (Unit).
   # NOTE: Management for `choices` parameter in dynamic field types.
   post "/admin/update-dyn-field" do |env|
     lang_code : String = env.session.string("current_lang")
@@ -11,9 +11,7 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       unit = DynFork::Globals::Unit.from_json(env.params.json["unit"].as(String))
       model_class = Globals::Extra::Tools.model_class(model_key)
-      I18n.with_locale(lang_code) do
-        model_class.unit_manager unit
-      end
+      model_class.unit_manager unit
     end
 
     result = {
