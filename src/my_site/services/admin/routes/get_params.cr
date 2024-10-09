@@ -8,7 +8,6 @@ module Services::Admin::Routes
     result : String? = nil
     I18n.with_locale(lang_code) do
       site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
-      pp site_params
       result = {
         is_authenticated:    authenticated?,
         lang_code:           lang_code,
