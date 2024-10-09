@@ -120,3 +120,4 @@ en:
   primary_color_for_dark_theme: "Primary color for a dark theme."
   invalid_doc_id: "Invalid document identifier."
   doc_is_missing: "The document is missing."
+  doc_was_not_delete: "The document was not deleted."

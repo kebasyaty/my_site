@@ -120,3 +120,4 @@ eo:
   primary_color_for_dark_theme: "Primara koloro por malhela temo."
   invalid_doc_id: "Nevalida dokumentidentigilo."
   doc_is_missing: "La dokumento mankas."
+  doc_was_not_delete: "La dokumento ne estis forigita."
