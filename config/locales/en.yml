@@ -60,7 +60,7 @@ en:
   doc_was_created: "When the document was created."
   doc_was_updated: "When the document was updated."
   # Vizbor
-  auth_failed: "Authentication failed."
+  auth_failed: "Authentication failed!"
   username: "Username"
   enter_your_username: "Enter your username"
   avatar: "Avatar"
@@ -118,6 +118,6 @@ en:
   primary_color_for_light_theme: "Primary color for a light theme."
   dark_color_primary: "Dark primary"
   primary_color_for_dark_theme: "Primary color for a dark theme."
-  invalid_doc_id: "Invalid document identifier."
-  doc_is_missing: "The document is missing."
-  doc_was_not_delete: "The document was not deleted."
+  invalid_doc_id: "Invalid document identifier!"
+  doc_is_missing: "The document is missing!"
+  doc_was_not_delete: "The document was not deleted!"

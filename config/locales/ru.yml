@@ -60,7 +60,7 @@ ru:
   doc_was_created: "Когда был создан документ."
   doc_was_updated: "Когда документ был обновлен."
   # Vizbor
-  auth_failed: "Аутентификация не удалась."
+  auth_failed: "Аутентификация не удалась!"
   username: "Имя пользователя"
   enter_your_username: "Введите имя пользователя"
   avatar: "Аватар"
@@ -118,6 +118,6 @@ ru:
   primary_color_for_light_theme: "Первичный цвет для светлой темы."
   dark_color_primary: "Темный первичный"
   primary_color_for_dark_theme: "Первичный цвет для темной темы."
-  invalid_doc_id: "Неверный идентификатор документа."
-  doc_is_missing: "Документ отсутствует."
-  doc_was_not_delete: "Документ не был удален."
+  invalid_doc_id: "Неверный идентификатор документа!"
+  doc_is_missing: "Документ отсутствует!"
+  doc_was_not_delete: "Документ не был удален!"

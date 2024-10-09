@@ -60,7 +60,7 @@ eo:
   doc_was_created: "Kiam la dokumento estis kreita."
   doc_was_updated: "Kiam la dokumento estis ĝisdatigita."
   # Vizbor
-  auth_failed: "Aŭtentigo malsukcesis."
+  auth_failed: "Aŭtentigo malsukcesis!"
   username: "Uzantnomo"
   enter_your_username: "Enigu vian uzantnomon"
   avatar: "Avataro"
@@ -118,6 +118,6 @@ eo:
   primary_color_for_light_theme: "Primara koloro por hela temo."
   dark_color_primary: "Malhela primara"
   primary_color_for_dark_theme: "Primara koloro por malhela temo."
-  invalid_doc_id: "Nevalida dokumentidentigilo."
-  doc_is_missing: "La dokumento mankas."
-  doc_was_not_delete: "La dokumento ne estis forigita."
+  invalid_doc_id: "Nevalida dokumentidentigilo!"
+  doc_is_missing: "La dokumento mankas!"
+  doc_was_not_delete: "La dokumento ne estis forigita!"
