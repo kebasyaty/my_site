@@ -12,7 +12,7 @@ module Services::Admin::Routes
         service_list:     if authenticated?
           Vizbor::MenuComposition.get
         else
-          [] of Vizbor::MenuCompositionType
+          [] of Vizbor::MenuCompositionResult
         end,
       }.to_json
     end
