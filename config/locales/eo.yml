@@ -1,21 +1,21 @@
 # Esperanto
 #
 eo:
-  invalid_color_code: "Nevalida Kolorkodo."
+  invalid_color_code: "Nevalida Kolorkodo!"
   allowed_chars:
     interpolation: "Permesitaj signoj: %{chars}"
   max_chars:
     interpolation: "Maksimumo %{count} signoj."
   min_chars:
     interpolation: "Minimume %{count} signoj."
-  invalid_phone: "Nevalida Telefonnumero."
-  invalid_email: "Nevalida Retpoŝtadreso."
-  invalid_url: "Nevalida URL."
-  invalid_ip: "Nevalida IP-adreso."
-  invalid_ipv4: "Nevalida IPv4-adreso."
-  invalid_ipv6: "Nevalida IPv6-adreso."
-  invalid_date: "Nevalida dato."
-  invalid_datetime: "Nevalida dato kaj horo."
+  invalid_phone: "Nevalida Telefonnumero!"
+  invalid_email: "Nevalida Retpoŝtadreso!"
+  invalid_url: "Nevalida URL!"
+  invalid_ip: "Nevalida IP-adreso!"
+  invalid_ipv4: "Nevalida IPv4-adreso!"
+  invalid_ipv6: "Nevalida IPv6-adreso!"
+  invalid_date: "Nevalida dato!"
+  invalid_datetime: "Nevalida dato kaj horo!"
   format:
     interpolation: "Formato: %{sample}"
   formats:

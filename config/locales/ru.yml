@@ -1,21 +1,21 @@
 # Russian
 #
 ru:
-  invalid_color_code: "Неправильный цветовой код."
+  invalid_color_code: "Неправильный цветовой код!"
   allowed_chars:
     interpolation: "Допустимые символы: %{chars}"
   max_chars:
     interpolation: "Максимум %{count} символов."
   min_chars:
     interpolation: "Минимум %{count} символов."
-  invalid_phone: "Неправильный номер телефона."
-  invalid_email: "Неправильный адрес электронной почты."
-  invalid_url: "Неправильный URL-адрес."
-  invalid_ip: "Неправильный IP-адрес"
-  invalid_ipv4: "Неправильный IPv4-адрес."
-  invalid_ipv6: "Неправильный IPv6-адрес."
-  invalid_date: "Некорректная дата."
-  invalid_datetime: "Некорректная дата и время."
+  invalid_phone: "Неправильный номер телефона!"
+  invalid_email: "Неправильный адрес электронной почты!"
+  invalid_url: "Неправильный URL-адрес!"
+  invalid_ip: "Неправильный IP-адрес!"
+  invalid_ipv4: "Неправильный IPv4-адрес!"
+  invalid_ipv6: "Неправильный IPv6-адрес!"
+  invalid_date: "Некорректная дата!"
+  invalid_datetime: "Некорректная дата и время!"
   format:
     interpolation: "Формат: %{sample}"
   formats:

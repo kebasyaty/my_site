@@ -1,21 +1,21 @@
 # English
 #
 en:
-  invalid_color_code: "Invalid Color code."
+  invalid_color_code: "Invalid Color code!"
   allowed_chars:
     interpolation: "Allowed chars: %{chars}"
   max_chars:
     interpolation: "Maximum %{count} characters."
   min_chars:
     interpolation: "Minimum %{count} characters."
-  invalid_phone: "Invalid Phone number."
-  invalid_email: "Invalid Email address."
-  invalid_url: "Invalid Url."
-  invalid_ip: "Invalid IP address."
-  invalid_ipv4: "Invalid IPv4 address."
-  invalid_ipv6: "Invalid IPv6 address."
-  invalid_date: "Invalid date."
-  invalid_datetime: "Invalid date and time."
+  invalid_phone: "Invalid Phone number!"
+  invalid_email: "Invalid Email address!"
+  invalid_url: "Invalid Url!"
+  invalid_ip: "Invalid IP address!"
+  invalid_ipv4: "Invalid IPv4 address!"
+  invalid_ipv6: "Invalid IPv6 address!"
+  invalid_date: "Invalid date!"
+  invalid_datetime: "Invalid date and time!"
   format:
     interpolation: "Format: %{sample}"
   formats:
