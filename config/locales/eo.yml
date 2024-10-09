@@ -49,7 +49,7 @@ eo:
   value_does_not_match: "Via elekto ne kongruas kun la ofertitaj opcioj!"
   size_exceeds_max: "Dosiera grandeco superas la maksimuman valoron!"
   invalid_file_type:
-    interpolation: "%{type} - Nevalida dosiertipo."
+    interpolation: "%{type} - Nevalida dosiertipo!"
   forbidden_creating_docs: "Estas malpermesite krei novajn dokumentojn!"
   forbidden_updating_docs: "Estas malpermesite ĝisdatigi dokumentojn!"
   forbidden_deleting_docs: "Estas malpermesite forigi dokumentojn!"

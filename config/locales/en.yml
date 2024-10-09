@@ -49,7 +49,7 @@ en:
   value_does_not_match: "Your choice does not match the options offered!"
   size_exceeds_max: "File size exceeds the maximum value!"
   invalid_file_type:
-    interpolation: "%{type} - Invalid file type."
+    interpolation: "%{type} - Invalid file type!"
   forbidden_creating_docs: "It is forbidden to create new documents!"
   forbidden_updating_docs: "It is forbidden to update documents!"
   forbidden_deleting_docs: "It is forbidden to delete documents!"
