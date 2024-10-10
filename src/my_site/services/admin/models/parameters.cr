@@ -1,5 +1,6 @@
 module Services::Admin::Models
-  # Basic site parameters
+  # Basic site parameters.
+  # WARNING: Use config/fixtures/SiteParams.yml
   @[DynFork::Meta(
     service_name: "Admin",
     fixture_name: "SiteParams",
@@ -14,7 +15,7 @@ module Services::Admin::Models
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
-      default: "public/media/default/no_avatar.png",
+      default: "public/media/default/no_logo.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 0.5 MB
