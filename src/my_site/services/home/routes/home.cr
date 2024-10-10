@@ -1,7 +1,7 @@
 module Services::Home::Routes
   # Home page
   get "/" do |env|
-    site_params : Hash(String, DynFork::Globals::FieldValueTypes) = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
+    site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     env.response.content_type = "text/html"
     # WARNING: If necessary, create a custom render in Services::Home::Renders
     Globals::Renders.base(
