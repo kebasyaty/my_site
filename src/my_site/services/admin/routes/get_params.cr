@@ -6,7 +6,6 @@ module Services::Admin::Routes
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
 
     site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
-    pp site_params
     logo = site_params["logo"].not_nil!.as(DynFork::Globals::Types::ImageData)
     result = {
       is_authenticated:    authenticated?,
