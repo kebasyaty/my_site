@@ -33,7 +33,7 @@ module Services::Admin::Models
       maxsize: 524288, # 0.5 MB
       hint: I18n.t(
       "max_size.interpolation",
-      size: "1 MB"
+      size: "0.5 MB"
     ),
     )
     getter first_name = DynFork::Fields::TextField.new(
