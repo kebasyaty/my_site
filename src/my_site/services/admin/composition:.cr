@@ -10,6 +10,7 @@ module Services::Admin
             title:     I18n.t(:users),
             model_key: Services::Admin::Models::User.full_model_name,
             fields:    [
+              # The first field is necessarily textual related to the name of the document.
               {field: "username", title: I18n.t(:nickname)},
               {field: "avatar", title: I18n.t(:avatar)},
               {field: "first_name", title: I18n.t(:first_name)},
@@ -35,6 +36,7 @@ module Services::Admin
             title:     I18n.t(:general),
             model_key: Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
+              # The first field is necessarily textual related to the name of the document.
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
               {field: "logo", title: I18n.t(:logo)},
