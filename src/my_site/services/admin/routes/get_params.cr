@@ -13,7 +13,7 @@ module Services::Admin::Routes
         lang_code:           lang_code,
         brand:               site_params["brand"],
         slogan:              site_params["slogan"],
-        logo:                site_params["logo"],
+        logo:                site_params["logo"].not_nil!.url_md,
         light_color_primary: site_params["light_color_primary"],
         dark_color_primary:  site_params["dark_color_primary"],
       }.to_json
