@@ -1,9 +1,9 @@
 module Services::Home::Routes
   # Home page
   get "/" do |env|
-    site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
+    site_params : Hash(String, DynFork::Globals::FieldValueTypes) = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     env.response.content_type = "text/html"
-    # NOTE: If necessary, create a custom render in Services::Home::Renders
+    # WARNING: If necessary, create a custom render in Services::Home::Renders
     Globals::Renders.base(
       lang_code: Vizbor::Settings.default_locale, # or env.params.url["lang_code"]
       meta_title: site_params["meta_title"],
