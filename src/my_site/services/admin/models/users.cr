@@ -28,7 +28,7 @@ module Services::Admin::Models
       placeholder: I18n.t(:upload_your_photo),
       target_dir: "users/avatars",
       default: "public/media/default/no_avatar.png",
-      thumbnails: [{"xs", 32}, {"sm", 64}, {"md", 128}, {"lg", 256}],
+      thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 1048576, # 1 MB
       hint: I18n.t(
