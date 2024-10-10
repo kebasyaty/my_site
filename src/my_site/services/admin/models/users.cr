@@ -30,7 +30,7 @@ module Services::Admin::Models
       default: "public/media/default/no_avatar.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
-      maxsize: 1048576, # 1 MB
+      maxsize: 524288, # 0.5 MB
       hint: I18n.t(
       "max_size.interpolation",
       size: "1 MB"
