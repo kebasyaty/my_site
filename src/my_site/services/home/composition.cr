@@ -11,7 +11,7 @@ module Services::Home
       #       title:     "???",
       #       model_key: "???", # Vizbor::Services::<ServiceName>::Models::<ModelName>.full_model_name,
       #       fields:    [
-      #         # The first field is necessarily textual related to the name of the document.
+      #         # WARNING: The first field is necessarily textual related to the name of the document.
       #         {field: "???", title: "???"},
       #       ],
       #     },
