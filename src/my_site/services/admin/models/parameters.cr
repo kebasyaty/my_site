@@ -12,7 +12,7 @@ module Services::Admin::Models
 
     getter logo = DynFork::Fields::ImageField.new(
       label: I18n.t(:logo),
-      placeholder: I18n.t(:upload_your_photo),
+      placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
       default: "public/media/default/no_avatar.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
