@@ -37,6 +37,7 @@ module Services::Admin
             fields:    [
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
+              {field: "logo", title: I18n.t(:logo)},
               {field: "contact_email", title: I18n.t(:email)},
               {field: "contact_phone", title: I18n.t(:phone)},
             ],
