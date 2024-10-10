@@ -15,6 +15,7 @@ module Globals::Renders
   end
 
   def base_header(
+    logo,
     brand,
     slogan
   ) : String
