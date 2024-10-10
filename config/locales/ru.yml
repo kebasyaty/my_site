@@ -112,8 +112,6 @@ ru:
   home_page: "Домашняя страница"
   max_size:
     interpolation: "Максимальный размер: %{size}"
-  dark_theme: "Темная тема?"
-  theme_admin_panel: "Тема для панели администратора."
   light_color_primary: "Светлый первичный"
   primary_color_for_light_theme: "Первичный цвет для светлой темы."
   dark_color_primary: "Темный первичный"
@@ -121,3 +119,4 @@ ru:
   invalid_doc_id: "Неверный идентификатор документа !"
   doc_is_missing: "Документ отсутствует !"
   doc_was_not_delete: "Документ не был удален !"
+  logo: "Логотип"

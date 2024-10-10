@@ -10,6 +10,19 @@ module Services::Admin::Models
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
+    getter logo = DynFork::Fields::ImageField.new(
+      label: I18n.t(:logo),
+      placeholder: I18n.t(:upload_your_photo),
+      target_dir: "site_params/logos",
+      default: "public/media/default/no_avatar.png",
+      thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
+      # NOTE: 1 MB = 1048576 Bytes (in binary).
+      maxsize: 524288, # 0.5 MB
+      hint: I18n.t(
+      "max_size.interpolation",
+      size: "0.5 MB"
+    ),
+    )
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_your_company_name),

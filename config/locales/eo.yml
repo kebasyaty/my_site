@@ -112,8 +112,6 @@ eo:
   home_page: "Hejmpaĝo"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
-  dark_theme: "Malhela temo?"
-  theme_admin_panel: "La temo por la Administra Panelo."
   light_color_primary: "Malpeza primara"
   primary_color_for_light_theme: "Primara koloro por hela temo."
   dark_color_primary: "Malhela primara"
@@ -121,3 +119,4 @@ eo:
   invalid_doc_id: "Nevalida dokumentidentigilo !"
   doc_is_missing: "La dokumento mankas !"
   doc_was_not_delete: "La dokumento ne estis forigita !"
+  logo: "Logo"

@@ -112,8 +112,6 @@ en:
   home_page: "Home Page"
   max_size:
     interpolation: "Maximum size: %{size}"
-  dark_theme: "Dark theme?"
-  theme_admin_panel: "The theme for the administrator panel."
   light_color_primary: "Light primary"
   primary_color_for_light_theme: "Primary color for a light theme."
   dark_color_primary: "Dark primary"
@@ -121,3 +119,4 @@ en:
   invalid_doc_id: "Invalid document identifier !"
   doc_is_missing: "The document is missing !"
   doc_was_not_delete: "The document was not deleted !"
+  logo: "Logo"
