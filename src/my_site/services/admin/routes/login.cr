@@ -39,6 +39,7 @@ module Services::Admin::Routes
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
+    msg_err : String = ""
 
     # Check if the user is authenticated?
     unless authenticated?
@@ -51,13 +52,14 @@ module Services::Admin::Routes
       authenticated? = auth[:is_authenticated] && auth[:is_admin]
     end
 
-    result : String? = nil
     I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        msg_err:          authenticated? ? "" : I18n.t(:auth_failed),
-      }.to_json
+      msg_err = I18n.t(:auth_failed) unless authenticated?
     end
+
+    result = {
+      is_authenticated: authenticated?,
+      msg_err:          msg_err,
+    }.to_json
     env.response.content_type = "application/json"
     result
   end
