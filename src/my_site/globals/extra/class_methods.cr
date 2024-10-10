@@ -2,7 +2,7 @@
 module Globals::Extra::ClassMethods
   extend self
 
-  IMG_URLS = ["url_xs", "url_sm", "url_md", "url_lg", "url"]
+  THUMBNAIL_URLS = ["url_xs", "url_sm", "url_md", "url_lg", "url"]
 
   # Get document list.
   def admin_document_list(
@@ -162,7 +162,7 @@ module Globals::Extra::ClassMethods
           # ImageField
           bson = BSON.new
           value.as(Hash(String, BSON::RecursiveValue)).each { |key, val| bson[key] = val }
-          IMG_URLS.each do |key|
+          THUMBNAIL_URLS.each do |key|
             if url = bson[key]?
               result[field_name] =
                 %Q(<img class="rounded-lg mt-1" src="#{url.not_nil!.as(String)}" height="40" alt="Image">)
