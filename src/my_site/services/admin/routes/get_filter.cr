@@ -7,14 +7,16 @@ module Services::Admin::Routes
     #
     model_key : String = env.params.json["model_key"].as(String)
     model_instance = Globals::Extra::Tools.model_instance(model_key)
+    filter = nil
 
-    result : String? = nil
     I18n.with_locale(lang_code) do
-      result = {
-        is_authenticated: authenticated?,
-        filter:           model_instance.admin_filter,
-      }.to_json
+      filter = model_instance.admin_filter
     end
+
+    result = {
+      is_authenticated: authenticated?,
+      filter:           filter,
+    }.to_json
     env.response.content_type = "application/json"
     result
   end
