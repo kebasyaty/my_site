@@ -11,8 +11,7 @@ module Services::Admin::Routes
       model_key = env.params.json["model_key"].as(String)
       model_class = Globals::Extra::Tools.model_class(model_key)
       fields_name = env.params.json["fields_name"].as(Array(JSON::Any)).map(&.to_s)
-      field_name_params_list = model_class.meta[:field_name_params_list]
-      field_name_params_list.select!(fields_name)
+      field_name_params_list = model_class.meta[:field_name_params_list].select(fields_name)
       search_query = env.params.json["search_query"].as(String)
       page_num = env.params.json["page_num"].to_s.to_i32
       limit = env.params.json["limit"].to_s.to_i32
