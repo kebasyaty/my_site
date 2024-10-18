@@ -8,13 +8,11 @@ module Services::Admin::Routes
     site_params = Services::Admin::Models::SiteParams.find_one_to_hash.not_nil!
     logo = site_params["logo"].not_nil!.as(DynFork::Globals::Types::ImageData)
     result = {
-      is_authenticated:    authenticated?,
-      lang_code:           lang_code,
-      brand:               site_params["brand"],
-      slogan:              site_params["slogan"],
-      logo:                logo.url_md,
-      light_color_primary: site_params["light_color_primary"],
-      dark_color_primary:  site_params["dark_color_primary"],
+      is_authenticated: authenticated?,
+      lang_code:        lang_code,
+      brand:            site_params["brand"],
+      slogan:           site_params["slogan"],
+      logo:             logo.url_md,
     }.to_json
     env.response.content_type = "application/json"
     result

@@ -53,15 +53,5 @@ module Services::Admin::Models
       label: I18n.t(:phone_for_feedback),
       placeholder: I18n.t(:enter_phone_number),
     )
-    getter light_color_primary = DynFork::Fields::ColorField.new(
-      label: I18n.t(:light_color_primary),
-      default: "#1976D2",
-      hint: I18n.t(:primary_color_for_light_theme),
-    )
-    getter dark_color_primary = DynFork::Fields::ColorField.new(
-      label: I18n.t(:dark_color_primary),
-      default: "#3f51b5",
-      hint: I18n.t(:primary_color_for_dark_theme),
-    )
   end
 end
