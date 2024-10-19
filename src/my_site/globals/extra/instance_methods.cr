@@ -1,6 +1,6 @@
 # Additional methods for instance model.
 module Globals::Extra::InstanceMethods
-  # Generete a filter by categories (сategory - selection type fields).
+  # Generete a filter by categories (сategory - selection type field).
   def admin_filter : Globals::Extra::Tools::AdminFilter
     filter = Globals::Extra::Tools::AdminFilter.new
     {% for var in @type.instance_vars %}
@@ -17,7 +17,7 @@ module Globals::Extra::InstanceMethods
     filter
   end
 
-  # Update state of  Model, from web form of  document of administrator panel.
+  # Update state of  Model, from web form of administrator panel.
   def admin_refrash_fields(data_form : Hash(String, String)) : Nil
     name : String = ""
     field_type : String = ""
@@ -25,9 +25,9 @@ module Globals::Extra::InstanceMethods
     file_data : Globals::Extra::Tools::AdminFileData? = nil
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
-      input_type = @{{ field }}.input_type
-      field_type = @{{ field }}.field_type
       if data_form[name] != "null"
+        field_type = @{{ field }}.field_type
+        input_type = @{{ field }}.input_type
         if field_type.includes?("Choice")
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
