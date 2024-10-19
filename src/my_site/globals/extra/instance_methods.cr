@@ -25,9 +25,9 @@ module Globals::Extra::InstanceMethods
     file_data : Globals::Extra::Tools::AdminFileData? = nil
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
-      input_type = @{{ field }}.input_type
-      field_type = @{{ field }}.field_type
       if data_form[name] != "null"
+        field_type = @{{ field }}.field_type
+        input_type = @{{ field }}.input_type
         if field_type.includes?("Choice")
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
