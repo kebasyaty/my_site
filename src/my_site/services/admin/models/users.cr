@@ -78,16 +78,16 @@ module Services::Admin::Models
       default: false,
       hint: I18n.t(:is_this_an_active_account),
     )
-    getter last_login = DynFork::Fields::DateTimeField.new(
-      label: I18n.t(:last_login),
-      disabled: true,
-      hint: I18n.t(:datetime_of_user_last_login),
-      hide: true,
-    )
     getter slug = DynFork::Fields::SlugField.new(
       label: I18n.t(:slug),
       slug_sources: ["username"],
       disabled: true,
+      hide: true,
+    )
+    getter last_login = DynFork::Fields::DateTimeField.new(
+      label: I18n.t(:last_login),
+      disabled: true,
+      hint: I18n.t(:datetime_of_user_last_login),
       hide: true,
     )
 
