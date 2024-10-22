@@ -179,7 +179,7 @@ module Globals::Extra::ClassMethods
           # BoolField
           val = if value.as(Bool)
                   # {icon_name, color_name}
-                  {"checkbox-marked-outline", "txtGrey"}
+                  {"checkbox-marked-outline", "btnLime"}
                 else
                   {"checkbox-blank-outline", "txtGrey"}
                 end
