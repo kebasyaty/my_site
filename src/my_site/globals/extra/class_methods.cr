@@ -177,13 +177,12 @@ module Globals::Extra::ClassMethods
           result[field_name] = value.as(Float64)
         when 8
           # BoolField
-          val = if value.as(Bool)
-                  # {icon_name, color_name}
-                  {"checkbox-marked-outline", "btnLime"}
-                else
-                  {"checkbox-blank-outline", "txtGrey"}
-                end
-          result[field_name] = %Q(<span class="mdi mdi-24px mdi-#{val[0]} #{val[1]}--text"></span>)
+          icon = if value.as(Bool)
+                   "checkbox-marked-outline"
+                 else
+                   "checkbox-blank-outline"
+                 end
+          result[field_name] = %Q(<span class="mdi mdi-24px mdi-#{icon} iconCheckBox--text"></span>)
         when 9
           # SlugField
           result[field_name] = value.as(String)
