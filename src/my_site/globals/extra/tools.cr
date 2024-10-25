@@ -19,7 +19,13 @@ module Globals::Extra::Tools
     negation: Bool,
     multiple: Bool,
     items: Array(NamedTuple(
-      value: String | Int64 | Float64,
+      value: String,
+      title: String,
+    )) | Array(NamedTuple(
+      value: Int64,
+      title: String,
+    )) | Array(NamedTuple(
+      value: Float64,
       title: String,
     )),
   ))
