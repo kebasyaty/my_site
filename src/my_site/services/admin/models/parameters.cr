@@ -19,32 +19,34 @@ module Services::Admin::Models
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 0.5 MB
-      hint: I18n.t(
-      "max_size.interpolation",
-      size: "0.5 MB"
-    ),
+      hint: [
+      I18n.t(
+        "max_size.interpolation",
+        size: "0.5 MB"),
+      I18n.t(:apply_change_after_saving),
+    ],
     )
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_your_company_name),
-      hint: I18n.t(:apply_change_after_saving),
+      hint: [I18n.t(:apply_change_after_saving)],
     )
     getter slogan = DynFork::Fields::TextField.new(
       label: I18n.t(:slogan),
       placeholder: I18n.t(:enter_your_company_slogan),
-      hint: I18n.t(:apply_change_after_saving),
+      hint: [I18n.t(:apply_change_after_saving)],
     )
     getter meta_title = DynFork::Fields::TextField.new(
       label: I18n.t(:meta_title),
       placeholder: I18n.t(:enter_meta_title),
       maxlength: 60,
-      hint: I18n.t(:for_meta_tag_title),
+      hint: [I18n.t(:for_meta_tag_title)],
     )
     getter meta_description = DynFork::Fields::TextField.new(
       label: I18n.t(:meta_description),
       placeholder: I18n.t(:enter_meta_description),
       maxlength: 300,
-      hint: I18n.t(:for_meta_tag_description),
+      hint: [I18n.t(:for_meta_tag_description)],
     )
     getter contact_email = DynFork::Fields::EmailField.new(
       label: I18n.t(:email_for_feedback),
@@ -63,7 +65,7 @@ module Services::Admin::Models
         {3_i64, I18n.t(:pink)}, {4_i64, I18n.t(:green)}, {5_i64, I18n.t(:purple)},
         {6_i64, I18n.t(:orange)}, {7_i64, I18n.t(:brown)},
       ],
-      hint: I18n.t(:apply_change_after_saving),
+      hint: [I18n.t(:apply_change_after_saving)],
     )
   end
 end

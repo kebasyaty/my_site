@@ -21,13 +21,13 @@ module Globals::Extra::InstanceMethods
   def admin_refrash_fields(data_form : Hash(String, String)) : Nil
     name : String = ""
     field_type : String = ""
-    input_type : String = ""
+    input_type : String? = nil
     file_data : Globals::Extra::Tools::AdminFileData? = nil
     {% for field in @type.instance_vars %}
       name = @{{ field }}.name
       if data_form[name] != "null"
         field_type = @{{ field }}.field_type
-        input_type = @{{ field }}.input_type
+        input_type = @{{ field }}.input_type?
         if field_type.includes?("Choice")
           if field_type.includes?("Text")
             if field_type.includes?("Mult")
@@ -41,21 +41,21 @@ module Globals::Extra::InstanceMethods
               @{{ field }}.refrash_val_arr_i64(
                 Array(Int64).from_json(data_form[name]))
             else
-              @{{ field }}.refrash_val_i64(data_form[name].to_i64)
+              @{{ field }}.refrash_val_i64(Int64.from_json(data_form[name]))
             end
           elsif field_type.includes?("F64")
             if field_type.includes?("Mult")
               @{{ field }}.refrash_val_arr_f64(
                 Array(Float64).from_json(data_form[name]))
             else
-              @{{ field }}.refrash_val_f64(data_form[name].to_f64)
+              @{{ field }}.refrash_val_f64(Float64.from_json(data_form[name]))
             end
           end
         elsif Globals::Extra::Tools::NUMBER_INPUT_TYPES.includes?(input_type)
           if field_type.includes?("I64")
-            @{{ field }}.refrash_val_i64(data_form[name].to_i64)
+            @{{ field }}.refrash_val_i64(Int64.from_json(data_form[name]))
           elsif field_type.includes?("F64")
-            @{{ field }}.refrash_val_f64(data_form[name].to_f64)
+            @{{ field }}.refrash_val_f64(Float64.from_json(data_form[name]))
           end
         elsif input_type == "checkbox"
           @{{ field }}.refrash_val_bool(
