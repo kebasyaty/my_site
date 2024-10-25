@@ -13,6 +13,7 @@ module Services::Admin::Routes
       brand:            site_params["brand"],
       slogan:           site_params["slogan"],
       logo:             logo.url_md,
+      color_theme:      site_params["color_theme"],
     }.to_json
     env.response.content_type = "application/json"
     result

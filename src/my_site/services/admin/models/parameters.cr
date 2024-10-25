@@ -53,5 +53,8 @@ module Services::Admin::Models
       label: I18n.t(:phone_for_feedback),
       placeholder: I18n.t(:enter_phone_number),
     )
+    getter color_theme = DynFork::Fields::ChoiceI64Field.new(
+      label: I18n.t(:color_theme),
+    )
   end
 end

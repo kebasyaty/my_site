@@ -112,12 +112,9 @@ eo:
   home_page: "Hejmpaĝo"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
-  light_color_primary: "Malpeza primara"
-  primary_color_for_light_theme: "Primara koloro por hela temo."
-  dark_color_primary: "Malhela primara"
-  primary_color_for_dark_theme: "Primara koloro por malhela temo."
   invalid_doc_id: "Nevalida dokumentidentigilo !"
   doc_is_missing: "La dokumento mankas !"
   doc_was_not_delete: "La dokumento ne estis forigita !"
   logo: "Logo"
   upload_logo: "Alŝutu logo"
+  color_theme: "Kolora temo"
