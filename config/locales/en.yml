@@ -126,3 +126,4 @@ en:
   purple: "Purple"
   orange: "Orange"
   brown: "Brown"
+  apply_change_after_saving: "To apply the change, after saving, restart the browser tab."

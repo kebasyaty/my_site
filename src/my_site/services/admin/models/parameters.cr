@@ -61,6 +61,7 @@ module Services::Admin::Models
         {3_i64, I18n.t(:pink)}, {4_i64, I18n.t(:green)}, {5_i64, I18n.t(:purple)},
         {6_i64, I18n.t(:orange)}, {7_i64, I18n.t(:brown)},
       ],
+      hint: I18n.t(:apply_change_after_saving),
     )
   end
 end
