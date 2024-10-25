@@ -19,7 +19,7 @@ module Globals::Extra::Tools
     negation: Bool,
     multiple: Bool,
     items: Array(NamedTuple(
-      value: Globals::Extra::Tools::DataDynamicType,
+      value: String | Int64 | Float64,
       title: String,
     )),
   ))
