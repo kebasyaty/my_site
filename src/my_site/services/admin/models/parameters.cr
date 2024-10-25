@@ -55,6 +55,12 @@ module Services::Admin::Models
     )
     getter color_theme = DynFork::Fields::ChoiceI64Field.new(
       label: I18n.t(:color_theme),
+      default: 0_i64,
+      choices: [
+        {0_i64, I18n.t(:grey)}, {1_i64, I18n.t(:blue)}, {2_i64, I18n.t(:teal)},
+        {3_i64, I18n.t(:pink)}, {4_i64, I18n.t(:green)}, {5_i64, I18n.t(:purple)},
+        {6_i64, I18n.t(:orange)}, {7_i64, I18n.t(:brown)},
+      ],
     )
   end
 end
