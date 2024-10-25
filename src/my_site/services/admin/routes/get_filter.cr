@@ -7,11 +7,7 @@ module Services::Admin::Routes
     #
     model_key : String = env.params.json["model_key"].as(String)
     model_instance = Globals::Extra::Tools.model_instance(model_key)
-    filter = nil
-
-    I18n.with_locale(lang_code) do
-      filter = model_instance.admin_filter
-    end
+    filter = model_instance.admin_filter
 
     result = {
       is_authenticated: authenticated?,

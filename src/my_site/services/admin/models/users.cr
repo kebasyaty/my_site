@@ -16,10 +16,10 @@ module Services::Admin::Models
       "allowed_chars.interpolation",
       chars: "a-z A-Z 0-9 _"
     ),
-      hint: I18n.t(
+      hint: [I18n.t(
         "allowed_chars.interpolation",
         chars: "a-z A-Z 0-9 _"
-      ),
+      )],
       required: true,
       unique: true
     )
@@ -31,10 +31,10 @@ module Services::Admin::Models
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 0.5 MB
-      hint: I18n.t(
+      hint: [I18n.t(
       "max_size.interpolation",
       size: "0.5 MB"
-    ),
+    )],
     )
     getter first_name = DynFork::Fields::TextField.new(
       label: I18n.t(:first_name),
@@ -71,12 +71,12 @@ module Services::Admin::Models
     getter is_admin = DynFork::Fields::BoolField.new(
       label: I18n.t(:is_admin),
       default: false,
-      hint: I18n.t(:can_this_user_access_admin_panel),
+      hint: [I18n.t(:can_this_user_access_admin_panel)],
     )
     getter is_active = DynFork::Fields::BoolField.new(
       label: I18n.t(:is_active),
       default: false,
-      hint: I18n.t(:is_this_an_active_account),
+      hint: [I18n.t(:is_this_an_active_account)],
     )
     getter slug = DynFork::Fields::SlugField.new(
       label: I18n.t(:slug),
@@ -87,7 +87,7 @@ module Services::Admin::Models
     getter last_login = DynFork::Fields::DateTimeField.new(
       label: I18n.t(:last_login),
       disabled: true,
-      hint: I18n.t(:datetime_of_user_last_login),
+      hint: [I18n.t(:datetime_of_user_last_login)],
       hide: true,
     )
 
