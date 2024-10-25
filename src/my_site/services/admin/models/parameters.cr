@@ -27,10 +27,12 @@ module Services::Admin::Models
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
       placeholder: I18n.t(:enter_your_company_name),
+      hint: I18n.t(:apply_change_after_saving),
     )
     getter slogan = DynFork::Fields::TextField.new(
       label: I18n.t(:slogan),
       placeholder: I18n.t(:enter_your_company_slogan),
+      hint: I18n.t(:apply_change_after_saving),
     )
     getter meta_title = DynFork::Fields::TextField.new(
       label: I18n.t(:meta_title),
