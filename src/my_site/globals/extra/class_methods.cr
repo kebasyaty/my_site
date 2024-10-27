@@ -71,27 +71,26 @@ module Globals::Extra::ClassMethods
       read_preference: read_preference,
       session: session,
     )
-    field_name_params_list_ptr = pointerof(field_name_params_list)
     cursor.each { |document|
-      hash_list << self.admin_document_to_hash(pointerof(document), field_name_params_list_ptr)
+      hash_list << self.admin_document_to_hash(document, field_name_params_list)
     }
     hash_list
   end
 
   # Get clean data from a document, as a Hash object.
   def admin_document_to_hash(
-    doc_ptr : Pointer(BSON),
-    field_name_params_list_ptr : Pointer(Hash(String, NamedTuple(type: String, group: UInt8)))
+    doc : BSON,
+    field_name_params_list : Hash(String, NamedTuple(type: String, group: UInt8))
   ) : Hash(String, DynFork::Globals::FieldValueTypes)
     #
-    doc_hash = doc_ptr.value.to_h
+    doc_hash = doc.to_h
     result = Hash(String, DynFork::Globals::FieldValueTypes).new
     result["hash"] = doc_hash["_id"].as(BSON::ObjectId).to_s
     result["created_at"] = doc_hash["created_at"].as(Time).to_s("%FT%H:%M:%S")
     result["updated_at"] = doc_hash["updated_at"].as(Time).to_s("%FT%H:%M:%S")
     field_type : String = ""
     #
-    field_name_params_list_ptr.value.each do |field_name, field_params|
+    field_name_params_list.each do |field_name, field_params|
       if !(value = doc_hash[field_name]).nil?
         field_type = field_params[:type]
         case field_params[:group]
