@@ -30,8 +30,11 @@ module Services::Admin::Routes
         end
         filter["$or"] = tmp_doc
       else
-        categories = Hash(String, NamedTuple(value: String, negation: Bool))
-          .from_json(env.params.json["filter"].as(String))
+        categories = Hash(String, NamedTuple(value: String, negation: Bool)).new
+        unless (df = env.params.json["filter"].as(String)).empty?
+          categories = Hash(String, NamedTuple(value: String, negation: Bool))
+            .from_json(df)
+        end
         search_query_not_empty? : Bool = !search_query.empty?
         categories_not_empty? : Bool = !categories.empty?
 
