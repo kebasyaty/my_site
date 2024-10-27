@@ -10,8 +10,8 @@ module Services::Admin::Routes
     result = {
       is_authenticated: authenticated?,
       lang_code:        lang_code,
-      brand:            site_params["brand"],
-      slogan:           site_params["slogan"],
+      brand:            site_params["brand"] || "",
+      slogan:           site_params["slogan"] || "",
       logo:             logo.url_md,
       color_theme:      site_params["color_theme"],
     }.to_json
