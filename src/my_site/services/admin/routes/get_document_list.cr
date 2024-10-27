@@ -58,22 +58,46 @@ module Services::Admin::Routes
                 val : Globals::Extra::Tools::DataDynamicType? = nil
                 if type_name == "ChoiceTextField" || type_name == "ChoiceTextDynField"
                   val = category[:value]
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$ne" => val}}) : BSON.new({field_name => val}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$ne" => val}})
+                  else
+                    BSON.new({field_name => val})
+                  end
                 elsif type_name == "ChoiceTextMultField" || type_name == "ChoiceTextMultDynField"
                   arr = Array(String).from_json(category[:value])
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$not" => {"$in" => arr}}}) : BSON.new({field_name => {"$all" => arr}}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$not" => {"$in" => arr}}})
+                  else
+                    BSON.new({field_name => {"$all" => arr}})
+                  end
                 elsif type_name == "ChoiceI64Field" || type_name == "ChoiceI64DynField"
                   val = Int64.from_json(category[:value])
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$ne" => val}}) : BSON.new({field_name => val}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$ne" => val}})
+                  else
+                    BSON.new({field_name => val})
+                  end
                 elsif type_name == "ChoiceI64MultField" || type_name == "ChoiceI64MultDynField"
                   arr = Array(Int64).from_json(category[:value])
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$not" => {"$in" => arr}}}) : BSON.new({field_name => {"$all" => arr}}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$not" => {"$in" => arr}}})
+                  else
+                    BSON.new({field_name => {"$all" => arr}})
+                  end
                 elsif type_name == "ChoiceF64Field" || type_name == "ChoiceF64DynField"
                   val = Float64.from_json(category[:value])
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$ne" => val}}) : BSON.new({field_name => val}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$ne" => val}})
+                  else
+                    BSON.new({field_name => val})
+                  end
                 elsif type_name == "ChoiceF64MultField" || type_name == "ChoiceF64MultDynField"
                   arr = Array(Float64).from_json(category[:value])
-                  tmp_doc_2 << (negation ? BSON.new({field_name => {"$not" => {"$in" => arr}}}) : BSON.new({field_name => {"$all" => arr}}))
+                  tmp_doc_2 << if negation
+                    BSON.new({field_name => {"$not" => {"$in" => arr}}})
+                  else
+                    BSON.new({field_name => {"$all" => arr}})
+                  end
                 end
               end
             end
