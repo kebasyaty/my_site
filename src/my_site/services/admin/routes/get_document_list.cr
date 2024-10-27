@@ -51,7 +51,6 @@ module Services::Admin::Routes
               tmp_doc_1 << {field_name => search_pattern}
               next
             end
-
             if categories_not_empty?
               if category = categories[field_name]?
                 negation : Bool = category[:negation]
