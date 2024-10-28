@@ -1,6 +1,6 @@
 module Services::Admin::Routes
   # Get filter by categories (сategory - field with parameter `choices`).
-  post "/admin/get-filter" do |env|
+  post "/admin/get-filters" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
