@@ -30,7 +30,7 @@ module Services::Admin::Routes
         end
         filter["$or"] = tmp_doc
       else
-        categories = if !(df = env.params.json["filter"].as(String)).empty?
+        categories = if (df = env.params.json["filter_2"].as(String)) != "{}"
                        Hash(String, NamedTuple(value: String, negation: Bool))
                          .from_json(df)
                      else
