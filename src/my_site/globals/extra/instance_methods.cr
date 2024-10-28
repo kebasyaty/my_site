@@ -1,7 +1,7 @@
 # Additional methods for instance model.
 module Globals::Extra::InstanceMethods
   # Generete a filter by categories (сategory - selection type field).
-  def admin_filter : Globals::Extra::Tools::AdminFilter
+  def admin_filter_2 : Globals::Extra::Tools::AdminFilter
     filter = Globals::Extra::Tools::AdminFilter.new
     {% for var in @type.instance_vars %}
       if !@{{ var }}.ignored? && @{{ var }}.field_type.includes?("Choice")
