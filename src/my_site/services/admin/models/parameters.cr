@@ -57,13 +57,18 @@ module Services::Admin::Models
       label: I18n.t(:phone_for_feedback),
       placeholder: I18n.t(:enter_phone_number),
     )
-    getter color_theme = DynFork::Fields::ChoiceI64Field.new(
+    getter color_theme = DynFork::Fields::ChoiceTextField.new(
       label: I18n.t(:color_theme),
-      default: 0_i64,
+      default: "grey",
       choices: [
-        {0_i64, I18n.t(:grey)}, {1_i64, I18n.t(:blue)}, {2_i64, I18n.t(:teal)},
-        {3_i64, I18n.t(:pink)}, {4_i64, I18n.t(:green)}, {5_i64, I18n.t(:purple)},
-        {6_i64, I18n.t(:orange)}, {7_i64, I18n.t(:brown)},
+        {"grey", I18n.t(:grey)},
+        {"blue", I18n.t(:blue)},
+        {"teal", I18n.t(:teal)},
+        {"pink", I18n.t(:pink)},
+        {"green", I18n.t(:green)},
+        {"purple", I18n.t(:purple)},
+        {"orange", I18n.t(:orange)},
+        {"brown", I18n.t(:brown)},
       ],
       warning: [I18n.t(:apply_change_after_saving)],
     )
