@@ -6,4 +6,4 @@ meta_description: "We have everything you need - slippers, beds, bathrobes"
 contact_email: "brand_name@noreaply.net"
 contact_phone: "+000000000000"
 # grey | blue | teal | pink | green | purple | orange | brown
-idx_color_theme: "grey"
+color_theme: "grey"
