@@ -61,9 +61,14 @@ module Services::Admin::Models
       label: I18n.t(:color_theme),
       default: "grey",
       choices: [
-        {"grey", I18n.t(:grey)}, {"blue", I18n.t(:blue)}, {"teal", I18n.t(:teal)},
-        {"pink", I18n.t(:pink)}, {"green", I18n.t(:green)}, {"purple", I18n.t(:purple)},
-        {"orange", I18n.t(:orange)}, {"brown", I18n.t(:brown)},
+        {"grey", I18n.t(:grey)},
+        {"blue", I18n.t(:blue)},
+        {"teal", I18n.t(:teal)},
+        {"pink", I18n.t(:pink)},
+        {"green", I18n.t(:green)},
+        {"purple", I18n.t(:purple)},
+        {"orange", I18n.t(:orange)},
+        {"brown", I18n.t(:brown)},
       ],
       warning: [I18n.t(:apply_change_after_saving)],
     )
