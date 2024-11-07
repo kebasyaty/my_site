@@ -1,6 +1,6 @@
 module Services::Admin::Routes
   # Change current language
-  get "/admin/change-current-lang" do |env|
+  post "/admin/change-lang" do |env|
     lang_code = env.params.json["lang_code"].as(String)
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
