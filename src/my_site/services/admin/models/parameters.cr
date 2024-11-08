@@ -18,13 +18,11 @@ module Services::Admin::Models
       default: "public/media/default/no_logo.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
-      maxsize: 524288, # 0.5 MB
-      warning: [
-      I18n.t(
-        "max_size.interpolation",
-        size: "0.5 MB"),
-      I18n.t(:apply_change_after_saving),
-    ],
+      maxsize: 524288, # 0.5 MB or 500 KB
+      warning: [I18n.t(
+      "max_size.interpolation",
+      size: "500 KB"
+    )],
     )
     getter brand = DynFork::Fields::TextField.new(
       label: I18n.t(:brand),
