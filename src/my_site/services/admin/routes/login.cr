@@ -36,7 +36,8 @@ module Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
-    lang_code : String = env.session.string("current_lang")
+    lang_code = env.params.json["lang_code"].as(String)
+    env.session.string("current_lang", lang_code)
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
     msg_err : String = ""
