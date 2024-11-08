@@ -108,7 +108,7 @@ eo:
   enter_meta_title: "Enigu meta-title"
   enter_meta_description: "Enigu meta-description"
   site_params: "Retejaj Parametroj"
-  main_site_params: "Ĉefaj"
+  main_params_site: "Ĉefaj"
   home_page: "Hejmpaĝo"
   max_size:
     interpolation: "Maksimuma grandeco: %{size}"
