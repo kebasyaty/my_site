@@ -41,7 +41,7 @@ ru:
   old_pass_not_match: "Старый пароль не совпадает !"
   pass_does_not_match: "Подтверждение пароля не совпадает !"
   allowed_files:
-    interpolation: "Разрешены только файлы %{types} !"
+    interpolation: "Разрешены только файлы: %{types}"
   data_not_greater_max:
     interpolation: "Дата %{curr_date} не должна быть больше max=%{max_date} !"
   data_not_less_min:
@@ -55,14 +55,14 @@ ru:
   forbidden_deleting_docs: "Запрещено удалять документы !"
   hash_doc_id: "Hash - Идентификатор документа"
   enter_doc_id: "Введите идентификатор документа"
-  created_at: "Создано в"
-  updated_at: "Обновлено в"
+  created_at: "Создан"
+  updated_at: "Обновлен"
   doc_was_created: "Когда был создан документ."
   doc_was_updated: "Когда был обновлен документ."
   # Vizbor
   auth_failed: "Аутентификация не удалась !"
-  username: "Имя пользователя"
-  enter_your_username: "Введите имя пользователя"
+  username: "Псевдоним"
+  enter_your_username: "Введите псевдоним пользователя"
   avatar: "Аватар"
   upload_your_photo: "Загрузите свою фотографию"
   first_name: "Имя"
@@ -108,7 +108,7 @@ ru:
   enter_meta_title: "Введите meta-title"
   enter_meta_description: "Введите meta-description"
   site_params: "Параметры сайта"
-  general: "Общие"
+  main_params_site: "Основные"
   home_page: "Домашняя страница"
   max_size:
     interpolation: "Максимальный размер: %{size}"

@@ -41,7 +41,7 @@ en:
   old_pass_not_match: "The old password does not match !"
   pass_does_not_match: "Password confirmation does not match !"
   allowed_files:
-    interpolation: "Only %{types} files are allowed !"
+    interpolation: "Only files allowed: %{types}"
   data_not_greater_max:
     interpolation: "The date %{curr_date} must not be greater than max=%{max_date} !"
   data_not_less_min:
@@ -108,7 +108,7 @@ en:
   enter_meta_title: "Enter meta-title"
   enter_meta_description: "Enter meta-description"
   site_params: "Site Parameters"
-  general: "General"
+  main_params_site: "Main"
   home_page: "Home Page"
   max_size:
     interpolation: "Maximum size: %{size}"

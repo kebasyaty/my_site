@@ -33,7 +33,7 @@ module Services::Admin
         service:     {title: I18n.t(:site_params), icon: "cog"},
         collections: [
           {
-            title:     I18n.t(:general),
+            title:     I18n.t(:main_params_site),
             model_key: Services::Admin::Models::SiteParams.full_model_name,
             fields:    [
               # WARNING: The first field is necessarily textual related to the name of the document.
