@@ -108,7 +108,7 @@ ru:
   enter_meta_title: "Введите meta-title"
   enter_meta_description: "Введите meta-description"
   site_params: "Параметры сайта"
-  general: "Общие"
+  main_site_params: "Основные"
   home_page: "Домашняя страница"
   max_size:
     interpolation: "Максимальный размер: %{size}"
