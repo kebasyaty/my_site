@@ -41,10 +41,13 @@ module Vizbor::Settings
   # Administrator production email.
   # WARNING: Maximum 320 characters.
   class_getter admin_prod_email = "???"
-  # Administrator production password.
-  # WARNING: Default number of characters: max = 256, min = 8
+  # The default administrator password, for production.
+  # WARNING: Number of characters: max = 256, min = 8.
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
   class_getter admin_prod_pass = "???"
+  # The default administrator password, for development.
+  # WARNING: Number of characters: max = 256, min = 8.
+  class_getter admin_dev_pass = "12345678"
 
   # URI Scheme
   def scheme : String
