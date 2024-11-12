@@ -69,7 +69,7 @@ module Vizbor::Settings
   # URI Host - Domain name
   def host : String
     if !@@debug
-      "www.your-site-name.net"
+      "www.your-domain-name.net" # <----------- Replace with your production URI
     else
       "localhost" + ":" + port.to_s
     end
