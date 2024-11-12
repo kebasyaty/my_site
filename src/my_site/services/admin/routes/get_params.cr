@@ -10,9 +10,10 @@ module Services::Admin::Routes
     result = {
       is_authenticated: authenticated?,
       lang_code:        lang_code,
+      logo:             logo.url_md,
       brand:            site_params["brand"] || "",
       slogan:           site_params["slogan"] || "",
-      logo:             logo.url_md,
+      dark_theme:       site_params["dark_theme"],
       color_theme:      site_params["color_theme"],
     }.to_json
     env.response.content_type = "application/json"

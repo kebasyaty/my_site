@@ -5,5 +5,6 @@ meta_title: "Brand Name - Best brand in the world"
 meta_description: "We have everything you need - slippers, beds, bathrobes"
 contact_email: "brand_name@noreaply.net"
 contact_phone: "+000000000000"
+dark_theme: true
 # grey | blue | teal | pink | green | purple | orange | brown
 color_theme: "grey"

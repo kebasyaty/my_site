@@ -6,18 +6,14 @@ module Services::Admin::Routes
       first_user = Services::Admin::Models::User.new
       first_user.username.value = "admin"
       first_user.email.value = if !Vizbor::Settings.debug?
-                                 # by default for prod
                                  Vizbor::Settings.admin_prod_email
                                else
-                                 # by default for dev
-                                 "no_reply@email.net"
+                                 Vizbor::Settings.admin_dev_email
                                end
       first_user.password.value = if !Vizbor::Settings.debug?
-                                    # by default for prod
                                     Vizbor::Settings.admin_prod_pass
                                   else
-                                    # by default for dev
-                                    "12345678"
+                                    Vizbor::Settings.admin_dev_pass
                                   end
       first_user.confirm_password.value = first_user.password.value
       first_user.is_admin.value = true
