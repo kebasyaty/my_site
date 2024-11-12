@@ -13,10 +13,10 @@ module Services::Admin::Routes
                                  "no_reply@email.net"
                                end
       first_user.password.value = if !Vizbor::Settings.debug?
-                                    # by default for prod
+                                    # by default for prod, maximum 256 characters
                                     Vizbor::Settings.admin_prod_pass
                                   else
-                                    # by default for dev
+                                    # by default for dev, minimum 8 characters
                                     "12345678"
                                   end
       first_user.confirm_password.value = first_user.password.value
