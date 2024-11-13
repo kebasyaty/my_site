@@ -78,6 +78,7 @@ module Services::Admin::Models
     getter bg_opacity = DynFork::Fields::F64Field.new(
       label: I18n.t(:level_transparency),
       input_type: "range",
+      default: 0.9,
       step: 0.1,
       max: 1.0,
       min: 0,
