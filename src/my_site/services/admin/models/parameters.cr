@@ -78,6 +78,11 @@ module Services::Admin::Models
     getter bg_opacity = DynFork::Fields::F64Field.new(
       label: I18n.t(:level_transparency),
       input_type: "range",
+      step: 0.1,
+      max: 1.0,
+      min: 0,
+      warning: [I18n.t(:level_transparency_bg_img_admin_panel),
+                I18n.t(:apply_change_after_saving)],
     )
   end
 end
