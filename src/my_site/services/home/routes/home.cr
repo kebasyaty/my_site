@@ -7,8 +7,8 @@ module Services::Home::Routes
     # WARNING: If necessary, create a custom render in Services::Home::Renders
     Globals::Renders.base(
       lang_code: Vizbor::Settings.default_locale, # or env.params.url["lang_code"]
-      meta_title: site_params["meta_title"],
-      meta_description: site_params["meta_description"],
+      meta_title: site_params["meta_title"]?,
+      meta_description: site_params["meta_description"]?,
       header: Globals::Renders.base_header(
         logo: logo.url_md,
         brand: site_params["brand"],
