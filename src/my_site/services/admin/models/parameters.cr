@@ -63,5 +63,16 @@ module Services::Admin::Models
       ],
       warning: [I18n.t(:apply_change_after_saving)],
     )
+    getter bg_image = DynFork::Fields::ImageField.new(
+      label: I18n.t(:background_image),
+      placeholder: I18n.t(:upload_image),
+      target_dir: "site_params/background",
+      # NOTE: 1 MB = 1048576 Bytes (in binary).
+      maxsize: 1048576, # 1024 KB
+      warning: [I18n.t(
+      "max_size.interpolation",
+      size: "1 MB"
+    )],
+    )
   end
 end

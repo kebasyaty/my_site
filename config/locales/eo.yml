@@ -129,3 +129,5 @@ eo:
   apply_change_after_saving: "Por apliki la ŝanĝon, post ŝparado, rekomencu la retumilon langeto."
   dark_theme: "Malhela temo ?"
   dark_or_light_theme: "Malhela aŭ hela temo."
+  background_image: "Fona Bildo"
+  upload_image: "Alŝutu bildon"
