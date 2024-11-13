@@ -13,6 +13,8 @@ module Services::Admin::Routes
       logo:             logo.url_md,
       brand:            site_params["brand"] || "",
       slogan:           site_params["slogan"] || "",
+      bg_image:         site_params["bg_image"] || "",
+      bg_opacity:       site_params["bg_opacity"],
       dark_theme:       site_params["dark_theme"],
       color_theme:      site_params["color_theme"],
     }.to_json
