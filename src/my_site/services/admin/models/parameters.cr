@@ -75,5 +75,9 @@ module Services::Admin::Models
                   size: "1 MB"
                 )],
     )
+    getter bg_opacity = DynFork::Fields::F64Field.new(
+      label: I18n.t(:level_transparency),
+      input_type: "range",
+    )
   end
 end
