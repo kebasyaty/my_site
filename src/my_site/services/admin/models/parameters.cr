@@ -69,10 +69,11 @@ module Services::Admin::Models
       target_dir: "site_params/background",
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 1048576, # 1024 KB
-      warning: [I18n.t(
-      "max_size.interpolation",
-      size: "1 MB"
-    )],
+      warning: [I18n.t(:bg_img_admin_panel),
+                I18n.t(
+                  "max_size.interpolation",
+                  size: "1 MB"
+                )],
     )
   end
 end
