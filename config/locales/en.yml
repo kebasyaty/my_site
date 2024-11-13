@@ -132,5 +132,5 @@ en:
   background_image: "Background image"
   upload_image: "Upload image"
   bg_img_admin_panel: "Background image for the administrator panel."
-  level_transparency: "Level of transparency."
+  level_transparency: "Level of transparency"
   level_transparency_bg_img_admin_panel: "The level of transparency of the background image for the administrator panel."
