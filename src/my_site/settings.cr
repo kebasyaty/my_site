@@ -28,7 +28,7 @@ module Vizbor::Settings
   class_getter app_name : String = "MySite"
   # WARNING: Match regular expression: /^[a-zA-Z0-9]{16}$/
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter unique_app_key : String = "NGajI17Vi6B6B6f4"
+  class_getter unique_app_key : String = "l4619if2576pRo1u"
   # WARNING: Maximum 60 characters.
   # WARNING: If the line is empty, the name will be generated automatically.
   class_getter database_name : String = ""
@@ -40,14 +40,14 @@ module Vizbor::Settings
 
   # The default administrator e -mail, for production.
   # WARNING: Maximum 320 characters.
-  class_getter admin_prod_email = "???" # <----------- Replace with your production email
+  class_getter admin_prod_email = "???" # <----------------------------- replace
   # The default administrator e -mail, for development.
   # WARNING: Maximum 320 characters.
   class_getter admin_dev_email = "no_reply@email.net"
   # The default administrator password, for production.
   # WARNING: Number of characters: max=256, min=8.
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter admin_prod_pass = "???" # <----------- Replace with your production password
+  class_getter admin_prod_pass = "???" # <------------------------------ replace
   # The default administrator password, for development.
   # WARNING: Number of characters: max=256, min=8.
   class_getter admin_dev_pass = "12345678"
@@ -69,7 +69,7 @@ module Vizbor::Settings
   # URI Host - Domain name
   def host : String
     if !@@debug
-      "www.your-domain-name.net" # <----------- Replace with your production URI
+      "www.your-domain-name.net" # <------------------------------------ replace
     else
       "localhost" + ":" + port.to_s
     end

@@ -129,3 +129,8 @@ en:
   apply_change_after_saving: "To apply the change, after saving, restart the browser tab."
   dark_theme: "Dark theme ?"
   dark_or_light_theme: "Dark or Light theme."
+  background_image: "Background image"
+  upload_image: "Upload image"
+  bg_img_admin_panel: "Background image for the administrator panel."
+  level_transparency: "Level of transparency"
+  level_transparency_bg_img_admin_panel: "The level of transparency of the background image for the administrator panel."

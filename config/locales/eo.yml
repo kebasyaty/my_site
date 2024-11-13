@@ -129,3 +129,8 @@ eo:
   apply_change_after_saving: "Por apliki la ŝanĝon, post ŝparado, rekomencu la retumilon langeto."
   dark_theme: "Malhela temo ?"
   dark_or_light_theme: "Malhela aŭ hela temo."
+  background_image: "Fona Bildo"
+  upload_image: "Alŝutu bildon"
+  bg_img_admin_panel: "Fonbildo por la Administra Panelo."
+  level_transparency: "Nivelo de travidebleco"
+  level_transparency_bg_img_admin_panel: "La nivelo de travidebleco de la fonbildo por la Administra Panelo."

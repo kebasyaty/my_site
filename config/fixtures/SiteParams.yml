@@ -1,8 +1,8 @@
 logo:
 brand: "Brand Name"
 slogan: "Our cool slogan!"
-meta_title: "Brand Name - Best brand in the world"
-meta_description: "We have everything you need - slippers, beds, bathrobes"
+bg_image:
+bg_opacity:
 contact_email: "brand_name@noreaply.net"
 contact_phone: "+000000000000"
 dark_theme: true
