@@ -24,7 +24,7 @@ module Services::Admin::Models
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
-      default: "public/media/default/vizbor.png",
+      default: "public/media/default/bw_vizbor.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 512 KB
