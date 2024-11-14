@@ -1,13 +1,13 @@
 module Services::Home::Models
   # Home page parameters.
-  # WARNING: Use config/fixtures/HomePageParams.yml
+  # WARNING: Use config/fixtures/HomePage.yml
   @[DynFork::Meta(
     service_name: "Home",
-    fixture_name: "HomePageParams",
+    fixture_name: "HomePage",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct HomePageParams < DynFork::Model
+  struct HomePage < DynFork::Model
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 

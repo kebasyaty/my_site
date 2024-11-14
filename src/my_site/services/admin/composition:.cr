@@ -47,7 +47,7 @@ module Services::Admin
           },
           {
             title:     I18n.t(:home_page),
-            model_key: Services::Home::Models::HomePageParams.full_model_name,
+            model_key: Services::Home::Models::HomePage.full_model_name,
             fields:    [
               # WARNING: The first field is necessarily textual related to the name of the document.
               {field: "title", title: I18n.t(:title)},
