@@ -108,7 +108,7 @@ en:
   enter_meta_title: "Enter meta-title"
   enter_meta_description: "Enter meta-description"
   site_params: "Site Parameters"
-  main_params_site: "Main"
+  main_params: "Main"
   home_page: "Home Page"
   max_size:
     interpolation: "Maximum size: %{size}"
