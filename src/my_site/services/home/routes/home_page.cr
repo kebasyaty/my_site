@@ -7,12 +7,12 @@ module Services::Home::Routes
     # WARNING: If necessary, create a custom render in Services::Home::Renders
     Globals::Renders.base(
       lang_code: Vizbor::Settings.default_locale, # or env.params.url["lang_code"]
-      meta_title: home_page.meta_title.value,
-      meta_description: home_page.meta_description.value,
+      meta_title: home_page.meta_title.value? || "",
+      meta_description: home_page.meta_description.value? || "",
       header: Globals::Renders.base_header(
         logo: main_params.logo.value.url_md,
-        brand: main_params.brand.value,
-        slogan: main_params.slogan.value,
+        brand: main_params.brand.value? || "",
+        slogan: main_params.slogan.value? || "",
       ),
       content: Services::Home::Renders.home_content,
       footer: Globals::Renders.base_footer(
