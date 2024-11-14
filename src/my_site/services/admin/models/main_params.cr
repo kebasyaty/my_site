@@ -1,21 +1,30 @@
 module Services::Admin::Models
-  # Basic site parameters.
-  # WARNING: Use config/fixtures/SiteParams.yml
+  # Main site parameters.
+  # WARNING: Use config/fixtures/MainParams.yml
   @[DynFork::Meta(
     service_name: "Admin",
-    fixture_name: "SiteParams",
+    fixture_name: "MainParams",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct SiteParams < DynFork::Model
+  struct MainParams < DynFork::Model
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
+    getter title = DynFork::Fields::TextField.new(
+      label: I18n.t(:title),
+      placeholder: I18n.t(:enter_title),
+      maxlength: 60,
+      readonly: true,
+      required: true,
+      unique: true,
+      warning: [I18n.t(:recommended_not_change_title)],
+    )
     getter logo = DynFork::Fields::ImageField.new(
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
-      default: "public/media/default/no_logo.png",
+      default: "public/media/default/bw_vizbor.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 512 KB
@@ -35,12 +44,12 @@ module Services::Admin::Models
       warning: [I18n.t(:apply_change_after_saving)],
     )
     getter contact_email = DynFork::Fields::EmailField.new(
-      label: I18n.t(:email_for_feedback),
+      label: I18n.t(:feedback_email),
       placeholder: I18n.t(:enter_email),
       maxlength: 320,
     )
     getter contact_phone = DynFork::Fields::PhoneField.new(
-      label: I18n.t(:phone_for_feedback),
+      label: I18n.t(:feedback_phone),
       placeholder: I18n.t(:enter_phone_number),
     )
     getter dark_theme = DynFork::Fields::BoolField.new(
@@ -67,6 +76,7 @@ module Services::Admin::Models
       label: I18n.t(:background_image),
       placeholder: I18n.t(:upload_image),
       target_dir: "site_params/background",
+      default: "public/media/default/building_site.jpg",
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 1048576, # 1024 KB
       warning: [I18n.t(:bg_img_admin_panel),
@@ -81,7 +91,7 @@ module Services::Admin::Models
       input_type: "range",
       default: 0.8,
       step: 0.1,
-      max: 1.0,
+      max: 0.9,
       min: 0,
       warning: [I18n.t(:level_transparency_bg_img_admin_panel),
                 I18n.t(:apply_change_after_saving)],
