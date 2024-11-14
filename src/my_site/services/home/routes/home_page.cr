@@ -10,14 +10,14 @@ module Services::Home::Routes
       meta_title: home_page.meta_title.value? || "",
       meta_description: home_page.meta_description.value? || "",
       header: Globals::Renders.base_header(
-        logo: main_params.logo.value.url_md,
+        logo: (value.url_md if value = main_params.logo.value?) || "",
         brand: main_params.brand.value? || "",
         slogan: main_params.slogan.value? || "",
       ),
       content: Services::Home::Renders.home_content,
       footer: Globals::Renders.base_footer(
-        contact_email: main_params.contact_email.value,
-        contact_phone: main_params.contact_phone.value,
+        contact_email: main_params.contact_email.value? || "",
+        contact_phone: main_params.contact_phone.value? || "",
       ),
       styles: Array(String).new,
       scripts: Array(String).new,
