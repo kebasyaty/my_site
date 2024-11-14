@@ -43,12 +43,12 @@ module Services::Admin::Models
       warning: [I18n.t(:apply_change_after_saving)],
     )
     getter contact_email = DynFork::Fields::EmailField.new(
-      label: I18n.t(:email_for_feedback),
+      label: I18n.t(:feedback_email),
       placeholder: I18n.t(:enter_email),
       maxlength: 320,
     )
     getter contact_phone = DynFork::Fields::PhoneField.new(
-      label: I18n.t(:phone_for_feedback),
+      label: I18n.t(:feedback_phone),
       placeholder: I18n.t(:enter_phone_number),
     )
     getter dark_theme = DynFork::Fields::BoolField.new(
