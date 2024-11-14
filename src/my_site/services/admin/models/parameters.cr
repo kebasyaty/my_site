@@ -1,13 +1,13 @@
 module Services::Admin::Models
-  # Basic site parameters.
+  # Main site parameters.
   # WARNING: Use config/fixtures/SiteParams.yml
   @[DynFork::Meta(
     service_name: "Admin",
-    fixture_name: "SiteParams",
+    fixture_name: "MainParams",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct SiteParams < DynFork::Model
+  struct MainParams < DynFork::Model
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 

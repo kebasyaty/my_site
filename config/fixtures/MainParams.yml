@@ -2,7 +2,7 @@ logo:
 brand: "Brand Name"
 slogan: "Our cool slogan!"
 bg_image:
-bg_opacity:
+bg_opacity: 0.8
 contact_email: "brand_name@noreaply.net"
 contact_phone: "+000000000000"
 dark_theme: true

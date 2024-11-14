@@ -1,4 +1,4 @@
-# Service composition for menu structure of admin panel.
+# Service composition for menu structure for admin panel.
 module Services::Admin
   struct Accounts < Vizbor::MenuComposition
     def self.composition : Vizbor::MenuCompositionResult?
@@ -34,7 +34,7 @@ module Services::Admin
         collections: [
           {
             title:     I18n.t(:main_params_site),
-            model_key: Services::Admin::Models::SiteParams.full_model_name,
+            model_key: Services::Admin::Models::MainParams.full_model_name,
             fields:    [
               # WARNING: The first field is necessarily textual related to the name of the document.
               {field: "brand", title: I18n.t(:brand)},
