@@ -10,7 +10,7 @@ module Services::Home::Routes
       meta_title: home_page.meta_title.value? || "",
       meta_description: home_page.meta_description.value? || "",
       header: Globals::Renders.base_header(
-        logo: (value.url_md if value = main_params.logo.value?) || "",
+        logo: main_params.logo.value,
         brand: main_params.brand.value? || "",
         slogan: main_params.slogan.value? || "",
       ),
