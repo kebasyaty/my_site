@@ -1,8 +1,8 @@
 title: "Main parameters" # It is recommended not to change this title.
-logo: # nil
+logo:
 brand: "Brand Name"
 slogan: "Our cool slogan!"
-bg_image: # nil
+bg_image:
 bg_opacity: 0.8
 contact_email: "brand_name@noreaply.net"
 contact_phone: "+000000000000"
