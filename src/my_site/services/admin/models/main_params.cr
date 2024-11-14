@@ -11,6 +11,12 @@ module Services::Admin::Models
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
+    getter title = DynFork::Fields::TextField.new(
+      label: I18n.t(:title),
+      placeholder: I18n.t(:enter_title),
+      maxlength: 60,
+      warning: [I18n.t(:recommended_not_change_title)],
+    )
     getter logo = DynFork::Fields::ImageField.new(
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),

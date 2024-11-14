@@ -101,6 +101,8 @@ en:
   enter_your_company_name: "Enter your company name"
   slogan: "Slogan"
   enter_your_company_slogan: "Enter your company slogan"
+  title: "Title"
+  recommended_not_change_title: "It is recommended not to change this title."
   meta_title: "Meta Title"
   meta_description: "Meta Description"
   for_meta_tag_title: "For meta tag - title"

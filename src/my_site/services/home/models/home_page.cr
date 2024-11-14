@@ -11,6 +11,13 @@ module Services::Home::Models
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
+    getter title = DynFork::Fields::TextField.new(
+      label: I18n.t(:title),
+      placeholder: I18n.t(:enter_title),
+      maxlength: 60,
+      warning: [I18n.t(:recommended_not_change_title)],
+    )
+
     getter meta_title = DynFork::Fields::TextField.new(
       label: I18n.t(:meta_title),
       placeholder: I18n.t(:enter_meta_title),

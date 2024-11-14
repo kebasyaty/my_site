@@ -101,6 +101,8 @@ ru:
   enter_your_company_name: "Введите название вашей компании"
   slogan: "Слоган копании"
   enter_your_company_slogan: "Введите слоган вашей компании"
+  title: "Название"
+  recommended_not_change_title: "Рекомендуется не менять это название."
   meta_title: "Мета-заголовок"
   meta_description: "Мета-описание"
   for_meta_tag_title: "Для метатега - title"
