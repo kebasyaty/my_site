@@ -15,6 +15,7 @@ module Services::Home::Models
       label: I18n.t(:title),
       placeholder: I18n.t(:enter_title),
       maxlength: 60,
+      readonly: true,
       required: true,
       unique: true,
       warning: [I18n.t(:recommended_not_change_title)],
