@@ -37,11 +37,21 @@ module Services::Admin
             model_key: Services::Admin::Models::MainParams.full_model_name,
             fields:    [
               # WARNING: The first field is necessarily textual related to the name of the document.
+              {field: "title", title: I18n.t(:title)},
               {field: "brand", title: I18n.t(:brand)},
               {field: "slogan", title: I18n.t(:slogan)},
               {field: "logo", title: I18n.t(:logo)},
               {field: "contact_email", title: I18n.t(:email)},
               {field: "contact_phone", title: I18n.t(:phone)},
+            ],
+          },
+          {
+            title:     I18n.t(:home_page),
+            model_key: Services::Home::Models::HomePageParams.full_model_name,
+            fields:    [
+              # WARNING: The first field is necessarily textual related to the name of the document.
+              {field: "title", title: I18n.t(:title)},
+              {field: "meta_title", title: I18n.t(:meta_title)},
             ],
           },
         ],
