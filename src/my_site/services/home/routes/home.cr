@@ -15,7 +15,7 @@ module Services::Home::Routes
       ),
       content: Services::Home::Renders.home_content,
       footer: Globals::Renders.base_footer(
-        contact_email: main_paramscontact_email.value,
+        contact_email: main_params.contact_email.value,
         contact_phone: main_params.contact_phone.value,
       ),
       styles: Array(String).new,
