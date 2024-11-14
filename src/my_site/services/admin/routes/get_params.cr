@@ -8,9 +8,9 @@ module Services::Admin::Routes
     result = {
       is_authenticated: authenticated?,
       lang_code:        lang_code,
-      logo:             main_params.logo.value.url_md,
-      brand:            main_params.brand.value || "",
-      slogan:           main_params.slogan.value || "",
+      logo:             (value.url_md if value = main_params.logo.value?) || "",
+      brand:            main_params.brand.value? || "",
+      slogan:           main_params.slogan.value? || "",
       bg_image:         if !(value = main_params.bg_image.value?).nil?
         value.url
       else
