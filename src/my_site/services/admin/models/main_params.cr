@@ -23,7 +23,7 @@ module Services::Admin::Models
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
-      default: "public/media/default/no_logo.png",
+      default: "public/media/default/vizbor.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 512 KB
@@ -75,6 +75,7 @@ module Services::Admin::Models
       label: I18n.t(:background_image),
       placeholder: I18n.t(:upload_image),
       target_dir: "site_params/background",
+      default: "public/media/default/building_site.jpg",
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 1048576, # 1024 KB
       warning: [I18n.t(:bg_img_admin_panel),
