@@ -1,6 +1,9 @@
 module Services::Admin::Routes
   # Get filter by categories (сategory - field with parameter `choices`).
   post "/admin/get-filters" do |env|
+    if env.session.string("csrf") != env.params.json["authenticity_token"].as(String)
+      halt env, status_code: 403, response: "Forbidden"
+    end
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]

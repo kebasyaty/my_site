@@ -46,4 +46,8 @@ module Globals::Routes
   error 404 do |env|
     send_file env, "templates/404.html"
   end
+
+  error 500 do |env|
+    send_file env, "templates/500.html"
+  end
 end
