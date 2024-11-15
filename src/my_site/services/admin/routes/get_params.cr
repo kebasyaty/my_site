@@ -8,7 +8,7 @@ module Services::Admin::Routes
     img_val : DynFork::Globals::ImageData?
     result = {
       is_authenticated: authenticated?,
-      csrf:             authenticated? ? env.session.string("csrf") : "",
+      csrf:             env.session.string("csrf"),
       lang_code:        lang_code,
       logo:             (img_val.url_md if img_val = main_params.logo.value?) || "",
       brand:            main_params.brand.value? || "",
