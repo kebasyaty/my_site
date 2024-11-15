@@ -43,6 +43,10 @@ module Globals::Routes
     env.redirect "/"
   end
 
+  error 403 do |env|
+    send_file env, "templates/403.html"
+  end
+
   error 404 do |env|
     send_file env, "templates/404.html"
   end
