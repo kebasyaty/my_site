@@ -32,6 +32,9 @@ module Services::Admin::Routes
 
   # Login
   post "/admin/login" do |env|
+    if env.session.string("csrf") != env.params.json["authenticity_token"].as(String)
+      halt env, status_code: 403, response: "Forbidden"
+    end
     lang_code = env.params.json["lang_code"].as(String)
     env.session.string("current_lang", lang_code)
     auth = Globals::Auth.user_authenticated? env, lang_code
@@ -55,7 +58,6 @@ module Services::Admin::Routes
 
     result = {
       is_authenticated: authenticated?,
-      csrf:             authenticated? ? env.session.string("csrf") : "",
       msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"
