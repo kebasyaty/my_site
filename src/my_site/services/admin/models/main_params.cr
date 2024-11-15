@@ -91,7 +91,7 @@ module Services::Admin::Models
       input_type: "range",
       default: 0.8,
       step: 0.1,
-      max: 0.9,
+      max: 1.0,
       min: 0,
       warning: [I18n.t(:level_transparency_bg_img_admin_panel),
                 I18n.t(:apply_change_after_saving)],
