@@ -55,6 +55,7 @@ module Services::Admin::Routes
 
     result = {
       is_authenticated: authenticated?,
+      csrf:             authenticated? ? env.session.string("csrf") : "",
       msg_err:          msg_err,
     }.to_json
     env.response.content_type = "application/json"

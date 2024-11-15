@@ -7,7 +7,6 @@ module Services::Admin::Routes
     main_params = Services::Admin::Models::MainParams.find_one_to_instance.not_nil!
     result = {
       is_authenticated: authenticated?,
-      csrf: env.session.string("csrf"),
       lang_code:        lang_code,
       logo:             main_params.logo.value.url_md,
       brand:            main_params.brand.value? || "",
