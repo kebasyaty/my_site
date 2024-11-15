@@ -4,13 +4,14 @@ module Services::Home::Routes
     main_params = Services::Admin::Models::MainParams.find_one_to_instance.not_nil!
     home_page = Services::Home::Models::HomePage.find_one_to_instance.not_nil!
     env.response.content_type = "text/html"
+    img_val : DynFork::Globals::ImageData?
     # WARNING: If necessary, create a custom render in Services::Home::Renders
     Globals::Renders.base(
       lang_code: Vizbor::Settings.default_locale, # or env.params.url["lang_code"]
       meta_title: home_page.meta_title.value? || "",
       meta_description: home_page.meta_description.value? || "",
       header: Globals::Renders.base_header(
-        logo: main_params.logo.value.url_md,
+        logo: (img_val.url_md if img_val = main_params.logo.value?) || "",
         brand: main_params.brand.value? || "",
         slogan: main_params.slogan.value? || "",
       ),
