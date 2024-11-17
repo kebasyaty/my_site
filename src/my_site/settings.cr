@@ -51,9 +51,9 @@ module Vizbor::Settings
 
   # URI Scheme
   def scheme : String
-    scheme : String = "http"
-    scheme += "s" if !@@debug
-    scheme
+    protocol : String = "http"
+    protocol += "s" if !@@debug
+    protocol
   end
 
   # URI Port
@@ -61,7 +61,7 @@ module Vizbor::Settings
     3000
   end
 
-  # URI Host - Domain name
+  # URI Host
   def host : String
     if !@@debug
       "www.your-domain-name.net" # <------------------------------------ replace
