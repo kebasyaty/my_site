@@ -5,10 +5,10 @@ authors:
   - kebasyaty <kebasyaty@gmail.com>
 
 targets:
-  my_site:
-    main: src/my_site.cr
+  app:
+    main: src/app.cr
 
-crystal: ">= 1.12.1, < 2.0"
+crystal: ">= 1.14.0, < 2.0"
 
 license: MIT
 
@@ -21,6 +21,5 @@ development_dependencies:
     github: crystal-ameba/ameba
   spec-kemal:
     github: kemalcr/spec-kemal
-    version: ~> 1.0.0
   vcli:
     github: kebasyaty/vcli
