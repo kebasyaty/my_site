@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe MySite do
+describe App do
   it "works" do
     # client : Mongo::Client = Mongo::Client.new
     # database_name = "test_pcSenRPaSdaU6IjZ"
