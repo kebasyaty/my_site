@@ -51,11 +51,9 @@ module Vizbor::Settings
 
   # URI Scheme
   def scheme : String
-    if !@@debug
-      "https"
-    else
-      "http"
-    end
+    scheme : String = "http"
+    scheme += "s" if !@@debug
+    scheme
   end
 
   # URI Port
