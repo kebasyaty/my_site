@@ -24,14 +24,11 @@ module Vizbor::Settings
   # an exception page is rendered when an exception is raised which provides a
   # lot of useful information for debugging.
   class_getter? debug : Bool = true
-  # WARNING: Maximum 44 characters.
-  class_getter app_name : String = "MySite"
-  # WARNING: Match regular expression: /^[a-zA-Z0-9]{16}$/
-  # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter unique_app_key : String = "2e2i9r17653921t0"
   # WARNING: Maximum 60 characters.
-  # WARNING: If the line is empty, the name will be generated automatically.
-  class_getter database_name : String = ""
+  # WARNING: Match regular expression: /^[a-zA-Z][-_a-zA-Z0-9]{0,59}$/
+  # NOTE: Format for development and tests: test_<key>
+  # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
+  class_getter database_name : String = "test_2e2i9r17653921t0"
   # NOTE: https://github.com/crystal-i18n/i18n
   class_getter default_locale : String = "en"
   # Security
