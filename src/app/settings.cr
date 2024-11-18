@@ -51,9 +51,7 @@ module Vizbor::Settings
 
   # URI Scheme
   def scheme : String
-    protocol : String = "http"
-    protocol += "s" if !@@debug
-    protocol
+    "http%{s}" % {s: !@@debug ? "s" : ""}
   end
 
   # URI Port
