@@ -28,7 +28,7 @@ module Vizbor::Settings
   # WARNING: Match regular expression: /^[a-zA-Z][-_a-zA-Z0-9]{0,59}$/
   # NOTE: Format for development and tests: test_<key>
   # NOTE: To generate a key (This is not an advertisement): https://randompasswordgen.com/
-  class_getter database_name : String = "test_iO5h5dJV61vWGtNA"
+  class_getter database_name : String = "test_78iaQbe35yCK45NA1QG38L09W57Zf1RU10O38SJh4nm60z574tSbDW9"
   # NOTE: https://github.com/crystal-i18n/i18n
   class_getter default_locale : String = "en"
   # Security
@@ -67,6 +67,6 @@ module Vizbor::Settings
 
   # Application URL
   def app_url : String
-    "%{s}://%{h}%{p}" % {s: scheme, h: host, p: !@@debug ? "" : ":" + port}
+    "%{s}://%{h}" % {s: scheme, h: host}
   end
 end
