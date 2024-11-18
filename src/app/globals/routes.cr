@@ -5,7 +5,7 @@ module Globals::Routes
 
   get "/robots.txt" do |env|
     env.response.content_type = "text/plain"
-    Renders.robots(
+    Globals::Renders.robots(
       host: Vizbor::Settings.host,
       scheme: Vizbor::Settings.scheme,
     )
@@ -13,7 +13,7 @@ module Globals::Routes
 
   get "/sitemap.xml" do |env|
     env.response.content_type = "application/xml"
-    Renders.sitemap(
+    Globals::Renders.sitemap(
       items: [{loc: "test_loc", lastmod: "test_lastmod", changefreq: "test_changefreq", priority: 0.5}],
     )
   end
@@ -35,7 +35,7 @@ module Globals::Routes
 
   # Logout
   post "/logout" do |env|
-    lang_code : String = env.session.string("current_lang") # or env.params.url["lang_code"]
+    lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     if auth[:is_authenticated]
       env.session.destroy
