@@ -60,7 +60,7 @@ eo:
   doc_was_created: "Kiam la dokumento estis kreita."
   doc_was_updated: "Kiam la dokumento estis ĝisdatigita."
   # Vizbor
-  auth_failed: "Aŭtentigo malsukcesis !"
+  access_denied: "Aliro malakceptita"
   username: "Uzantnomo"
   enter_your_username: "Enigu vian uzantnomon"
   avatar: "Avataro"

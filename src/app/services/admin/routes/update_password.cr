@@ -43,7 +43,7 @@ module Services::Admin::Routes
       end
     else
       I18n.with_locale(lang_code) do
-        msg_err = I18n.t(:auth_failed)
+        msg_err = I18n.t(:access_denied)
       end
     end
 
