@@ -53,7 +53,7 @@ module Services::Admin::Routes
     end
 
     I18n.with_locale(lang_code) do
-      msg_err = I18n.t(:auth_failed) unless authenticated?
+      msg_err = I18n.t(:access_denied) unless authenticated?
     end
 
     result = {

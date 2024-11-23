@@ -60,7 +60,7 @@ en:
   doc_was_created: "When the document was created."
   doc_was_updated: "When the document was updated."
   # Vizbor
-  auth_failed: "Authentication failed !"
+  access_denied: "Access denied"
   username: "Username"
   enter_your_username: "Enter your username"
   avatar: "Avatar"

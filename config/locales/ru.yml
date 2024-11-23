@@ -60,7 +60,7 @@ ru:
   doc_was_created: "Когда был создан документ."
   doc_was_updated: "Когда был обновлен документ."
   # Vizbor
-  auth_failed: "Аутентификация не удалась !"
+  access_denied: "В доступе отказано"
   username: "Псевдоним"
   enter_your_username: "Введите псевдоним пользователя"
   avatar: "Аватар"
