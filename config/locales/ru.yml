@@ -110,8 +110,8 @@ ru:
   for_meta_tag_description: "Для метатега - description"
   enter_meta_title: "Введите meta-title"
   enter_meta_description: "Введите meta-description"
-  site_params: "Параметры сайта"
-  main_params: "Основные"
+  settings: "Настройки"
+  general: "Общие"
   home_page: "Домашняя страница"
   max_size:
     interpolation: "Максимальный размер: %{size}"

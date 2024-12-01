@@ -3,11 +3,11 @@ module Services::Admin::Models
   # WARNING: Use config/fixtures/MainParams.yml
   @[DynFork::Meta(
     service_name: "Admin",
-    fixture_name: "MainParams",
+    fixture_name: "GeneralParameters",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct MainParams < DynFork::Model
+  struct GeneralParameters < DynFork::Model
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
