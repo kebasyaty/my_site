@@ -1,6 +1,6 @@
 module Services::Admin::Models
-  # Main site parameters.
-  # WARNING: Use config/fixtures/MainParams.yml
+  # General site parameters.
+  # WARNING: Use config/fixtures/GeneralParameters.yml
   @[DynFork::Meta(
     service_name: "Admin",
     fixture_name: "GeneralParameters",
