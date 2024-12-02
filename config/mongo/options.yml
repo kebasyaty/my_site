@@ -4,6 +4,7 @@
 # https://elbywan.github.io/cryomongo/Mongo/Client.html
 # https://elbywan.github.io/cryomongo/Mongo/Options.html
 ---
+# mongodb://localhost:27017
 uri: mongodb+srv://kebasyaty:0s6otKbvSddY93ts@cluster0.fc2sa1h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 options:
   appname:
