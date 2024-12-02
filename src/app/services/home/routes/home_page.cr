@@ -1,7 +1,7 @@
 module Services::Home::Routes
   # Home page
   get "/" do |env|
-    main_params = Services::Admin::Models::MainParams.find_one_to_instance.not_nil!
+    main_params = Services::Admin::Models::GeneralParameters.find_one_to_instance.not_nil!
     home_page = Services::Home::Models::HomePage.find_one_to_instance.not_nil!
     env.response.content_type = "text/html"
     img_val : DynFork::Globals::ImageData?

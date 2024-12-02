@@ -26,15 +26,15 @@ module Services::Admin
     end
   end
 
-  struct SiteParameters < Vizbor::MenuComposition
+  struct Settings < Vizbor::MenuComposition
     def self.composition : Vizbor::MenuCompositionResult?
       # WARNING: Get icon name (for service) - https://materialdesignicons.com/
       {
-        service:     {title: I18n.t(:site_params), icon: "cog"},
+        service:     {title: I18n.t(:settings), icon: "cog"},
         collections: [
           {
-            title:     I18n.t(:main_params),
-            model_key: Services::Admin::Models::MainParams.full_model_name,
+            title:     I18n.t(:general),
+            model_key: Services::Admin::Models::GeneralParameters.full_model_name,
             fields:    [
               # WARNING: The first field is necessarily textual related to the name of the document.
               {field: "title", title: I18n.t(:title)},

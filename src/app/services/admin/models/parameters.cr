@@ -1,13 +1,13 @@
 module Services::Admin::Models
-  # Main site parameters.
-  # WARNING: Use config/fixtures/MainParams.yml
+  # General site parameters.
+  # WARNING: Use config/fixtures/GeneralParameters.yml
   @[DynFork::Meta(
     service_name: "Admin",
-    fixture_name: "MainParams",
+    fixture_name: "GeneralParameters",
     create_doc?: false,
     delete_doc?: false,
   )]
-  struct MainParams < DynFork::Model
+  struct GeneralParameters < DynFork::Model
     include Globals::Extra::InstanceMethods
     extend Globals::Extra::ClassMethods
 
@@ -24,7 +24,7 @@ module Services::Admin::Models
       label: I18n.t(:logo),
       placeholder: I18n.t(:upload_logo),
       target_dir: "site_params/logos",
-      default: "public/media/default/bw_vizbor.png",
+      default: "public/media/default/vizbor.png",
       thumbnails: [{"xs", 64}, {"sm", 128}, {"md", 256}, {"lg", 512}],
       # NOTE: 1 MB = 1048576 Bytes (in binary).
       maxsize: 524288, # 512 KB

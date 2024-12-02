@@ -1,10 +1,10 @@
 module Services::Admin::Routes
-  # Get language code and main parameters for admin panal.
+  # Get language code and general parameters for admin panal and site.
   post "/admin/get-parameters" do |env|
     lang_code : String = env.session.string("current_lang")
     auth = Globals::Auth.user_authenticated? env, lang_code
     authenticated? : Bool = auth[:is_authenticated] && auth[:is_admin]
-    main_params = Services::Admin::Models::MainParams.find_one_to_instance.not_nil!
+    main_params = Services::Admin::Models::GeneralParameters.find_one_to_instance.not_nil!
     img_val : DynFork::Globals::ImageData?
     result = {
       is_authenticated: authenticated?,
